@@ -16,6 +16,7 @@ namespace Clothes_UI.Controllers
 
         public ActionResult About()
         {
+            //yhyhyh
             ViewBag.Message = "Your application description page.";
 
             return View();
