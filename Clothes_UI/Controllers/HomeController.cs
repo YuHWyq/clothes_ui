@@ -10,12 +10,13 @@ namespace Clothes_UI.Controllers
     {
         public ActionResult Index()
         {
-            //ggyg
+            //hhfhfh
             return View();
         }
 
         public ActionResult About()
         {
+            //yhyhyh
             ViewBag.Message = "Your application description page.";
 
             return View();
