@@ -24,6 +24,7 @@ namespace Clothes_UI.Controllers
 
         public ActionResult Contact()
         {
+            //gyhgyhgyhyh
             ViewBag.Message = "Your contact page.";
 
             return View();
