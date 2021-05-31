@@ -10,7 +10,7 @@ namespace Clothes_UI.Controllers
     {
         public ActionResult Index()
         {
-            //hhfhfh
+            //hhfhfh,iimiikikikikiikii
             return View();
         }
 
