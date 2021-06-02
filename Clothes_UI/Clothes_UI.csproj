@@ -258,6 +258,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Production\Index.cshtml" />
+    <Content Include="Views\Production\Production.cshtml" />
+    <Content Include="Views\Production\add.cshtml" />
+    <Content Include="Views\Production\Productions.cshtml" />
+    <Content Include="Views\Quality_test\Index.cshtml" />
+    <Content Include="Views\Production\Productionadd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,10 +273,8 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Material\" />
-    <Folder Include="Views\Production\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Views\Purchase\" />
-    <Folder Include="Views\Quality_test\" />
     <Folder Include="Views\Sale\" />
   </ItemGroup>
   <ItemGroup>

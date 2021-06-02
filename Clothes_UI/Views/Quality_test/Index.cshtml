@@ -1,0 +1,157 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <style>
+        .div1 {
+            margin-top: 10px;
+            width: 1720px;
+            height: 300px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+        .div2 {
+            margin-top: 50px;
+            width: 1720px;
+            height: 400px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+        .btn1 {
+            font-size: 20px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            color: white;
+            background-color: lightseagreen;
+            border: none;
+        }
+        .btn2 {
+            font-size: 20px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            color: white;
+            background-color: lightseagreen;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+        <div class="div1">
+            <span style="font-size:20px;color:dimgray; margin-left:20px;">产品质检单</span>
+            <hr />
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">生产编号：</th>
+                        <th scope="col">操作员:</th>
+                        <th scope="col">经办人:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入生产编号"/></td>
+                        <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名"/></td>
+                        <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="width:1720px;display:flex;">
+                <div style="width:970px;">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">质检时间：</th>
+                                <th scope="col">质检结果:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="date" style="width: 500px; height: 30px;"/></td>
+                                <td style="width:400px; margin:0px;">
+                                    <input type="radio" style="width: 25px; height: 20px;" id="bt1" /><span style="font-size:20px;color:dimgray;">合格</span>
+                                    <input type="radio" style="width: 25px; height: 20px;" id="bt2" /><span style="font-size:20px;color:dimgray;">不合格</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <span><input type="button" value="提交" class="btn1" style="margin-left:200px;margin-top:30px;"/></span>
+            </div>
+        </div>
+        <div class="div2">
+            <span style="font-size:20px;color:dimgray; margin-left:20px;">待检产品信息</span>
+            <hr />
+            <span style="display:flex;">
+                <input type="text" class="text" placeholder="请输入产品名称" />
+                <input type="button" value="搜索" class="btn2" />
+            </span>
+            <br />
+            <span style="font-size:20px;color:dimgray;display:flex;">
+                显示<input type="number" style="width: 80px; height: 22px;" />条
+            </span>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">生产编号</th>
+                        <th scope="col">计划编号</th>
+                        <th scope="col">产品名称</th>
+                        <th scope="col">产品类型</th>
+                        <th scope="col">生产数量</th>
+                        <th scope="col">生产日期</th>
+                        <th scope="col">操作员</th>
+                        <th scope="col">状态</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>02154</td>
+                        <td>品如</td>
+                        <td>T恤</td>
+                        <td>200件</td>
+                        <td>2021/4/5</td>
+                        <td>覃佐继</td>
+                        <td>待质检</td>
+                        <td><input type="button" value="填写" class="btn2" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-left:1500px;">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

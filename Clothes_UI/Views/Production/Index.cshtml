@@ -1,0 +1,143 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .yy {
+            margin-top: 50px;
+            width: 1720px;
+            height: 800px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+
+        .btn {
+            margin-left: 1350px;
+        }
+
+        .btn1 {
+            font-size: 20px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            color: white;
+            background-color: lightseagreen;
+            border: none;
+        }
+
+        .btn2 {
+            font-size: 20px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            color: white;
+            background-color: orange;
+            border: none;
+        }
+
+        .btn3 {
+            font-size: 20px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            color: white;
+            background-color: lightseagreen;
+            border: none;
+            margin-left: -5px;
+        }
+        .btn4 {
+            font-size: 20px;
+            width: 80px;
+            height: 35px;
+            border-radius: 5px;
+            color: white;
+            background-color: lightseagreen;
+            border: none;
+        }
+        .text {
+            width: 200px;
+            height: 34px;
+        }
+    </style>
+    <script>
+       
+    </script>
+</head>
+<body>
+    <div> 
+        <div class="yy">
+            <br />
+            <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
+            <span class="btn">
+                <input type="button" value="添加" class="btn1"/>&nbsp;&nbsp;
+                <input type="button" value="删除" class="btn2" />
+            </span>
+            <br />
+            <br />
+            <hr />
+            <br />
+            <span style="display:flex;">
+                <input type="text" class="text" placeholder="请输入订单编号" />
+                <input type="button" value="搜索" class="btn3" />
+            </span>
+            <br />
+            <span style="font-size:20px;color:dimgray;display:flex;">
+                显示<input type="number" @*list="xl"*@ style="width: 80px; height: 22px;" />
+                @*<datalist id="xl">
+                    <option>1</option>
+                    <option>10</option>
+                    <option>100</option>
+                </datalist>*@条
+            </span>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">计划编号</th>
+                        <th scope="col">订单编号</th>
+                        <th scope="col">产品名称</th>
+                        <th scope="col">订购数量</th>
+                        <th scope="col">计划产量</th>
+                        <th scope="col">生产计划时间</th>
+                        <th scope="col">操作员</th>
+                        <th scope="col">经办人</th>
+                        <th scope="col">状态</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (var item in collection)
+                    {
+
+                    }*@
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>林慕染</td>
+                        <td>20件</td>
+                        <td>14件</td>
+                        <td>2021/4/5</td>
+                        <td>直接染死</td>
+                        <td>覃佐继</td>
+                        <td>未处理</td>
+                        <td><input type="button" value="编辑" class="btn4" /></td>
+                    </tr>
+                </tbody>
+            </table>          
+        </div>
+    </div>
+</body>
+</html>

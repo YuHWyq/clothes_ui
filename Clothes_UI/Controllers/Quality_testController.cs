@@ -9,6 +9,7 @@ namespace Clothes_UI.Controllers
     public class Quality_testController : Controller
     {
         // GET: Quality_test
+        //待检产品
         public ActionResult Index()
         {
             return View();
