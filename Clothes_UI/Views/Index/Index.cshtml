@@ -18,531 +18,448 @@
     <script src="/assets/js/ace-extra.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-default" id="navbar">
-        <script type="text/javascript">
-            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
-        </script>
-
-        <div class="navbar-container" id="navbar-container">
-            <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
-                    <small>
-                        <i class="icon-leaf"></i>
-                        服装系统控制台
-                    </small>
-                </a><!-- /.brand -->
-            </div><!-- /.navbar-header -->
-
-            <div class="navbar-header pull-right" role="navigation">
-                <ul class="nav ace-nav">
-
-
-                    <li class="light-blue">
-                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="/assets/avatars/user.jpg" alt="Jason's Photo" />
-                            <span class="user-info">
-                                <small>欢迎光临,</small>
-                                ADMIN
-                            </span>
-
-                            <i class="icon-caret-down"></i>
-                        </a>
-
-                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <li>
-                                <a href="#">
-                                    <i class="icon-cog"></i>
-                                    设置
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="icon-user"></i>
-                                    个人资料
-                                </a>
-                            </li>
-
-                            <li class="divider"></li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="icon-off"></i>
-                                    退出
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul><!-- /.ace-nav -->
-            </div><!-- /.navbar-header -->
-        </div><!-- /.container -->
-    </div>
-
-    <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
-        </script>
-
-        <div class="main-container-inner">
-            <a class="menu-toggler" id="menu-toggler" href="#">
-                <span class="menu-text"></span>
-            </a>
-
-            <div class="sidebar" id="sidebar">
-                <script type="text/javascript">
-                    try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
-                </script>
-
-                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-
-                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-                        <span class="btn btn-success"></span>
-
-                        <span class="btn btn-info"></span>
-
-                        <span class="btn btn-warning"></span>
-
-                        <span class="btn btn-danger"></span>
-                    </div>
-                </div><!-- #sidebar-shortcuts -->
-
-                <ul class="nav nav-list">
-                    <li class="active">
-                        <a href="index.html">
-                            <i class="icon-dashboard"></i>
-                            <span class="menu-text"> 服装系统控制台 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 首页 </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 企业管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    企业公告
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    人事管理
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="treeview.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    薪资管理
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 系统管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="tables.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    用户管理
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="jqgrid.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    部门管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text">基础信息管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    产品商品信息
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="treeview.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    供应商信息
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text">客户管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    客户资料
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="treeview.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    订单跟踪
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 采购管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    采购单管理
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    采购统计
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 生产管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    生产计划管理
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    产品生产管理
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 质检管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    产品质检
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    商品质检
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 库存管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    出入库管理
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    产品商品库存
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="treeview.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    库存统计
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 销售管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    销售统计
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    销售订单
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 订单管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    订单统计
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    订单查询
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 往来核算管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    采购结款
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    退货管理
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="treeview.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    销售结款
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-
-                </ul><!-- /.nav-list -->
-
-                <div class="sidebar-collapse" id="sidebar-collapse">
-                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
-                </div>
-
-                <script type="text/javascript">
-                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
-                </script>
-            </div>
-
-            <div class="main-content">
-                <div class="breadcrumbs" id="breadcrumbs">
+    <div class="max">
+        <!--头部-->
+        <div class="navbar navbar-default" id="navbar">
+            <script type="text/javascript">
+                try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+            </script>
+
+            <div class="navbar-container" id="navbar-container">
+                <div class="navbar-header pull-left">
+                    <a href="#" class="navbar-brand">
+                        <small>
+                            <i class="icon-leaf"></i>
+                            服装系统控制台
+                        </small>
+                    </a><!-- /.brand -->
+                </div><!-- /.navbar-header -->
+
+                <div class="navbar-header pull-right" role="navigation">
+                    <ul class="nav ace-nav">
+
+
+                        <li class="light-blue">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                <img class="nav-user-photo" src="/assets/avatars/user.jpg" alt="Jason's Photo" />
+                                <span class="user-info">
+                                    <small>欢迎光临,</small>
+                                    ADMIN
+                                </span>
+
+                                <i class="icon-caret-down"></i>
+                            </a>
+
+                            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-cog"></i>
+                                        设置
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>
+                                        个人资料
+                                    </a>
+                                </li>
+
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-off"></i>
+                                        退出
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul><!-- /.ace-nav -->
+                </div><!-- /.navbar-header -->
+            </div><!-- /.container -->
+        </div>
+        <!--身体-->
+        <div>
+            <!--左边导航栏-->
+            <div>
+                <div class="sidebar" id="sidebar">
                     <script type="text/javascript">
-                        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                        try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
                     </script>
 
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="icon-home home-icon"></i>
-                            <a href="#">首页</a>
+                    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+
+                        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                            <span class="btn btn-success"></span>
+
+                            <span class="btn btn-info"></span>
+
+                            <span class="btn btn-warning"></span>
+
+                            <span class="btn btn-danger"></span>
+                        </div>
+                    </div><!-- #sidebar-shortcuts -->
+
+                    <ul class="nav nav-list">
+                        <li class="active">
+                            <a href="#">
+                                <i class="icon-dashboard"></i>
+                                <span class="menu-text"> 服装系统控制台 </span>
+                            </a>
                         </li>
-                        <li class="active">服装系统控制台</li>
-                    </ul><!-- .breadcrumb -->
+                        <li>
+                            <a href="/Home/Home" target="info" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 首页 </span>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text">客户管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Customer/Customer" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        客户资料
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="treeview.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        订单跟踪
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+
+                            
+
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 采购管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Purchase/Purchase" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        采购单管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Purchase/Purchase" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        采购统计
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 生产管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Production/Production" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        生产计划管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品生产管理
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 质检管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Quality_test/Quality_test" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品质检
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        商品质检
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 产品库存管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Product/Product" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        出入库管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品商品库存
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="treeview.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        库存统计
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 销售管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Sale/Sale" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        销售统计
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        销售订单
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 材料商品库存管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Material/Material" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        订单统计
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        订单查询
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 财务管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Finance/Finance" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        采购结款
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        退货管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="treeview.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        销售结款
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul><!-- /.nav-list -->
+
+                    <div class="sidebar-collapse" id="sidebar-collapse">
+                        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                    </div>
+
+                    <script type="text/javascript">
+                        try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                    </script>
                 </div>
+            </div>
+            <!--右边-->
+            <div>
+                <div class="main-container" id="main-container">
+                    <script type="text/javascript">
+                        try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+                    </script>
 
-                <div class="page-content">
-                    <div class="page-header">
-                        <h1>
-                            服装系统控制台
-                            <small>
-                                <i class="icon-double-angle-right"></i>
-                                查看
-                            </small>
-                        </h1>
-                    </div><!-- /.page-header -->
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <!-- PAGE CONTENT BEGINS -->
-
-                            <div class="alert alert-block alert-success">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="icon-remove"></i>
-                                </button>
-
-                                <i class="icon-ok green"></i>
-
-                                欢迎使用
-                                <strong class="green">
-                                    品如服装系统
-                                    <small>(v1.2)</small>
-                                </strong>
-                                ,这里为你提供更更全面的服装信息管理.
-                            </div>
+                    <!--<div class="main-container-inner">-->
+                    <a class="menu-toggler" id="menu-toggler" href="#">
+                        <span class="menu-text"></span>
+                    </a>
 
 
 
+                    <div class="main-content">
+                        <div class="breadcrumbs" id="breadcrumbs">
+                            <script type="text/javascript">
+                                try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                            </script>
+
+                            <ul class="breadcrumb">
+                                <li>
+                                    <i class="icon-home home-icon"></i>
+                                    <a href="#">首页</a>
+                                </li>
+                                <li class="active">服装系统控制台</li>
+                            </ul><!-- .breadcrumb -->
+                        </div>
+
+                        <div class="page-content">
+                            <div class="page-header">
+                                <h1>
+                                    服装系统控制台
+                                    <small>
+                                        <i class="icon-double-angle-right"></i>
+                                        查看
+                                    </small>
+                                </h1>
+                            </div><!-- /.page-header -->
+
+                            <iframe name="info" src="/Home/Home" width="100%" height="780px">
+
+                              
 
 
-                            <!-- PAGE CONTENT ENDS -->
+
+
+                                <!-- PAGE CONTENT ENDS -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->
-                </div><!-- /.page-content -->
-            </div><!-- /.main-content -->
+                    </iframe>
+                    <!--</div>--><!-- /.page-content -->
+                </div><!-- /.main-content -->
 
-            <div class="ace-settings-container" id="ace-settings-container">
-                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-                    <i class="icon-cog bigger-150"></i>
-                </div>
+                        <div class="ace-settings-container" id="ace-settings-container">
+                            <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                                <i class="icon-cog bigger-150"></i>
+                            </div>
 
-                <div class="ace-settings-box" id="ace-settings-box">
-                    <div>
-                        <div class="pull-left">
-                            <select id="skin-colorpicker" class="hide">
-                                <option data-skin="default" value="#438EB9">#438EB9</option>
-                                <option data-skin="skin-1" value="#222A2D">#222A2D</option>
-                                <option data-skin="skin-2" value="#C6487E">#C6487E</option>
-                                <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-                            </select>
-                        </div>
-                        <span>&nbsp; 选择皮肤</span>
-                    </div>
+                            <div class="ace-settings-box" id="ace-settings-box">
+                                <div>
+                                    <div class="pull-left">
+                                        <select id="skin-colorpicker" class="hide">
+                                            <option data-skin="default" value="#438EB9">#438EB9</option>
+                                            <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                            <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                            <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                        </select>
+                                    </div>
+                                    <span>&nbsp; 选择皮肤</span>
+                                </div>
 
-                    <div>
-                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
-                        <label class="lbl" for="ace-settings-navbar"> 固定导航条</label>
-                    </div>
+                                <div>
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
+                                    <label class="lbl" for="ace-settings-navbar"> 固定导航条</label>
+                                </div>
 
-                    <div>
-                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
-                        <label class="lbl" for="ace-settings-sidebar"> 固定滑动条</label>
-                    </div>
+                                <div>
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
+                                    <label class="lbl" for="ace-settings-sidebar"> 固定滑动条</label>
+                                </div>
 
-                    <div>
-                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
-                        <label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
-                    </div>
+                                <div>
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
+                                    <label class="lbl" for="ace-settings-breadcrumbs">固定面包屑</label>
+                                </div>
 
-                    <div>
-                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
-                        <label class="lbl" for="ace-settings-rtl">切换到左边</label>
-                    </div>
+                                <div>
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
+                                    <label class="lbl" for="ace-settings-rtl">切换到左边</label>
+                                </div>
 
-                    <div>
-                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
-                        <label class="lbl" for="ace-settings-add-container">
-                            切换窄屏
-                            <b></b>
-                        </label>
-                    </div>
-                </div>
-            </div><!-- /#ace-settings-container -->
-        </div><!-- /.main-container-inner -->
+                                <div>
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
+                                    <label class="lbl" for="ace-settings-add-container">
+                                        切换窄屏
+                                        <b></b>
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!-- /#ace-settings-container -->
+                    </div><!-- /.main-container-inner -->
 
-        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-            <i class="icon-double-angle-up icon-only bigger-110"></i>
-        </a>
-    </div><!-- /.main-container -->
-    <!-- basic scripts -->
-    <!--[if !IE]> -->
+                    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+                        <i class="icon-double-angle-up icon-only bigger-110"></i>
+                    </a>
+                </div><!-- /.main-container -->
+            </div>
+        </div>
+    </div>
 
     <script src="/assets/js/jquery.min.js"></script>
 
