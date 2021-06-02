@@ -258,24 +258,20 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Production\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Customer\Customer.cshtml" />
+    <Content Include="Views\Finance\Finance.cshtml" />
+    <Content Include="Views\Material\Material.cshtml" />
+    <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Production\Production.cshtml" />
-    <Content Include="Views\Production\add.cshtml" />
-    <Content Include="Views\Production\Productions.cshtml" />
-    <Content Include="Views\Quality_test\Index.cshtml" />
-    <Content Include="Views\Production\Productionadd.cshtml" />
+    <Content Include="Views\Purchase\Purchase.cshtml" />
+    <Content Include="Views\Quality_test\Quality_test.cshtml" />
+    <Content Include="Views\Sale\Sale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Finance\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Login\" />
-    <Folder Include="Views\Material\" />
-    <Folder Include="Views\Product\" />
-    <Folder Include="Views\Purchase\" />
-    <Folder Include="Views\Sale\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
