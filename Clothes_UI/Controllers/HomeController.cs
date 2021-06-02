@@ -8,6 +8,7 @@ namespace Clothes_UI.Controllers
 {
     public class HomeController : Controller
     {
+        //首页
        public ActionResult Home()
         {
             return View();
