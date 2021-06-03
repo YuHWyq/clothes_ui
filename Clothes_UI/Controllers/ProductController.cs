@@ -13,7 +13,7 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
-        //产品管理
+        //产品库存管理
         public ActionResult Product()
         {
             return View();
