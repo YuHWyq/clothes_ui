@@ -18,6 +18,9 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
-
+        public ActionResult Login1()
+        {
+            return View();
+        }
     }
 }

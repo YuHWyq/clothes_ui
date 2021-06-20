@@ -14,8 +14,18 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
-        //质检管理
+        //产品质检单
         public   ActionResult Quality_test()
+        {
+            return View();
+        }
+        //待检商品
+        public ActionResult sho()
+        {
+            return View();
+        }
+        //商品质检单 
+        public ActionResult shop()
         {
             return View();
         }

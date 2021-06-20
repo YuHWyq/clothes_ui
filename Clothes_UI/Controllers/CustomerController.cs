@@ -14,7 +14,18 @@ namespace Clothes_UI.Controllers
             return View();
         }
         //客户管理
+        //客户资料
         public  ActionResult Customer()
+        {
+            return View();
+        }
+        //订单管理
+        public ActionResult Order()
+        {
+            return View();
+        }
+        //添加订单
+        public ActionResult InsertOrder()
         {
             return View();
         }

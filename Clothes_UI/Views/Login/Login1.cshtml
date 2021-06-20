@@ -1,0 +1,114 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login1</title>
+    <script src="~/Scripts/jquery-1.9.0.min.js"></script>
+    <script src="~/images/login.js"></script>
+    <link href="~/Content/login2.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>启航服装ERP<sup></sup></h1>
+
+    <div class="login" style="margin-top:50px;">
+
+        <div class="header">
+            <div class="switch" id="switch">
+                <div style="margin-left:75px;"><a class="switch_btn_focus" id="switch_qlogin" href="javascript:void(0);" tabindex="7">快速登录</a></div>
+                <!--<a class="switch_btn" id="switch_login" href="javascript:void(0);" tabindex="8">快速注册</a><div class="switch_bottom" id="switch_bottom" style="position: absolute; width: 64px; left: 0px;"></div>-->
+            </div>
+        </div>
+
+
+        <div class="web_qr_login" id="web_qr_login" style="display: block; height: 235px;">
+
+            <!--登录-->
+            <div class="web_login" id="web_login">
+
+
+                <div class="login-box">
+
+
+                    <div class="login_form">
+                        <form action="" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
+                            <input type="hidden" name="did" value="0" />
+                            <input type="hidden" name="to" value="log" />
+                            <div class="uinArea" id="uinArea">
+                                <label class="input-tips" for="u">帐号：</label>
+                                <div class="inputOuter" id="uArea">
+
+                                    <input type="text" id="account" name="username" class="inputstyle" />
+                                </div>
+                            </div>
+                            <div class="pwdArea" id="pwdArea">
+                                <label class="input-tips" for="p">密码：</label>
+                                <div class="inputOuter" id="pArea">
+
+                                    <input type="password" id="pwd" name="p" class="inputstyle" />
+                                </div>
+                            </div>
+
+                            <div style="padding-left:50px;margin-top:20px;"><input type="button" id="certTypeCodesCnName" value="登 录" style="width:150px;" class="button_blue" onclick="Clogin()" /></div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--登录end-->
+        </div>
+
+       
+    </div>
+    <!--<div class="jianyi">*推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站</div>-->
+    <script src="~/Scripts/vue.min.js"></script>
+    <script type="text/javascript">
+
+        //回车登录
+        document.onkeydown = function () {
+            if (event.keyCode == "13") {
+                document.getElementById("certTypeCodesCnName").click();
+            }
+        }
+
+        //$(function () {
+        //    $('#certTypeCodesCnName').bind('keydown', function (event) {
+        //        if (event.keyCode == "13") {
+        //            alert($('#certTypeCodesCnName').val());
+        //        }
+        //    });
+        //})
+
+        function Clogin() {
+                var accounts = $("#account").val();
+                var pwds = $("#pwd").val();
+                var xlh = JSON.stringify({
+                    account: accounts,
+                    pwd: pwds
+                });
+                $.ajax({
+                    type: "Post",
+                    url: "https://localhost:44396/api/LoginYZ/LoginUser",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: xlh,
+                    success: function (datas) {
+                        if (datas != "") {
+                            window.location.href = "@Url.Action("Index", "Index")";
+                        } else {
+                            alert("登录失败！账号或密码错误！")
+                        }
+                    }, error: function (error) {
+                        alert("失败了！");
+                    }
+                })
+            }
+    </script>
+</body>
+</html>

@@ -34,5 +34,14 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
+        //添加产品生产登记
+        public ActionResult Productionsadd()
+        {
+            return View();
+        }
+        public ActionResult ss()
+        {
+            return View();
+        }
     }
 }

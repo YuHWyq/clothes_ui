@@ -51,7 +51,7 @@
                             </a>
 
                             <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                                <li>
+                                @*<li>
                                     <a href="#">
                                         <i class="icon-cog"></i>
                                         设置
@@ -65,7 +65,7 @@
                                     </a>
                                 </li>
 
-                                <li class="divider"></li>
+                                <li class="divider"></li>*@
 
                                 <li>
                                     <a href="#">
@@ -103,143 +103,81 @@
 
                     <ul class="nav nav-list">
                         <li class="active">
+                            <a>
                                 <i class="icon-dashboard"></i>
                                 <span class="menu-text"> 服装系统控制台 </span>
                             </a>
                         </li>
                         <li>
+                            <a href="/Home/Home" target="info">
                                 <i class="icon-list"></i>
                                 <span class="menu-text"> 首页 </span>
                             </a>
                         </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text"> 企业管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
+                        @* 采购管理 *@
                         <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    企业公告
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="buttons.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    人事管理
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="treeview.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    薪资管理
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li>
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-list"></i>
-
+                                <span class="menu-text"> 采购管理</span>
                                 <b class="arrow icon-angle-down"></b>
                             </a>
 
                             <ul class="submenu">
                                 <li>
+                                    <a href="/Purchase/Purchase" target="info">
                                         <i class="icon-double-angle-right"></i>
+                                        采购计划
                                     </a>
                                 </li>
 
                                 <li>
-                                <a href="jqgrid.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    部门管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text">基础信息管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    产品商品信息
-                                </a>
-                            </li>
-
-                            <li>
-                                    <a href="treeview.html">
+                                    <a href="jqgrid.html">
                                         <i class="icon-double-angle-right"></i>
+                                        采购订单
                                     </a>
                                 </li>
-
-                            </ul>
-                        </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text">客户管理 </span>
-                        
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li>
-                                <a href="elements.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    客户资料
-                                </a>
-                            </li>
-                            
-                            <li>
-                                <a href="treeview.html">
-                                    <i class="icon-double-angle-right"></i>
-                                    订单跟踪
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle">
-                                <i class="icon-list"></i>
-                                <span class="menu-text"> 采购管理 </span>
-
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-
-                            <ul class="submenu">
                                 <li>
-                                        <i class="icon-double-angle-right"></i>
-                                        采购单管理
-                                    </a>
-                                </li>
-
-                                <li>
+                                    <a href="jqgrid.html">
                                         <i class="icon-double-angle-right"></i>
                                         采购统计
                                     </a>
                                 </li>
-
                             </ul>
                         </li>
+
+                        @* 客户管理 *@
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text">客户管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="elements.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        客户信息
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="treeview.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        客户订单管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="treeview.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        客户订单统计
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @* 生产管理 *@
                         <li>
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-list"></i>
@@ -250,74 +188,28 @@
 
                             <ul class="submenu">
                                 <li>
+                                    <a href="/Production/Index" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        生产计划管理
+                                        生产计划
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="buttons.html">
+                                    <a href="/Production/Production" target="info">
                                         <i class="icon-double-angle-right"></i>
+                                        领料管理
                                     </a>
                                 </li>
 
+                                <li>
+                                    <a href="/Production/Productions" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品生产
+                                    </a>
+                                </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle">
-                                <i class="icon-list"></i>
-                                <span class="menu-text"> 质检管理 </span>
-
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-
-                            <ul class="submenu">
-                                <li>
-                                        <i class="icon-double-angle-right"></i>
-                                        产品质检
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="buttons.html">
-                                        <i class="icon-double-angle-right"></i>
-                                        商品质检
-                                    </a>
-                                </li>
-
-
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle">
-                                <i class="icon-list"></i>
-
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-
-                            <ul class="submenu">
-                                <li>
-                                        <i class="icon-double-angle-right"></i>
-                                        出入库管理
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="buttons.html">
-                                        <i class="icon-double-angle-right"></i>
-                                        产品商品库存
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="treeview.html">
-                                        <i class="icon-double-angle-right"></i>
-                                        库存统计
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
+                        @* 销售管理 *@
                         <li>
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-list"></i>
@@ -328,75 +220,186 @@
 
                             <ul class="submenu">
                                 <li>
+                                    <a>
+                                        <i class="icon-double-angle-right"></i>
+                                        客户订单
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
                                         销售统计
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="buttons.html">
-                                        <i class="icon-double-angle-right"></i>
-                                        销售订单
-                                    </a>
-                                </li>
-
-
                             </ul>
                         </li>
+                        @*  材料商品库存管理*@
                         <li>
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-list"></i>
+                                <span class="menu-text"> 材料商品库存管理 </span>
 
                                 <b class="arrow icon-angle-down"></b>
                             </a>
 
                             <ul class="submenu">
                                 <li>
+                                    <a>
                                         <i class="icon-double-angle-right"></i>
-                                        订单统计
+                                        原料库存
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        订单查询
+                                        材料入库详情
                                     </a>
                                 </li>
 
-
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        材出料库详情
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        入库出库统计
+                                    </a>
+                                </li>
                             </ul>
                         </li>
+                        @* 产品库存管理 *@
                         <li>
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-list"></i>
+                                <span class="menu-text"> 产品库存管理 </span>
 
                                 <b class="arrow icon-angle-down"></b>
                             </a>
 
                             <ul class="submenu">
                                 <li>
+                                    <a href="/Product/Index" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        采购结款
+                                        产品库存管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Product/Product" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        添加产品入库单
+                                    </a>
+                                </li>
+
+                                
+
+                                <li>
+                                    <a href="/Product/Index" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品入库单管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Product/Productes" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        添加产品出库单
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Product/Productees" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品出库单管理
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @* 质检管理 *@
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 质检管理 </span>
+
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="/Quality_test/Quality_test" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品质检单
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Quality_test/Index" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        待检产品
+                                    </a>
+                                </li>
+
+
+                                <li>
+                                    <a href="/Quality_test/shop" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        商品质检单
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Quality_test/sho" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        待检商品
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    @* 财务管理 *@
+                        <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="icon-list"></i>
+                                <span class="menu-text"> 财务管理 </span>
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a>
+                                        <i class="icon-double-angle-right"></i>
+                                        财务详情
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        退货管理
+                                        财务统计
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="treeview.html">
+                                    <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        销售结款
+                                        材料出库详情
                                     </a>
                                 </li>
-
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        入库出库统计
+                                    </a>
+                                </li>
                             </ul>
                         </li>
+                        
 
 
                     </ul><!-- /.nav-list -->
@@ -450,7 +453,9 @@
                                 </h1>
                             </div><!-- /.page-header -->
 
+                            <iframe name="info" src="/Home/Home" width="100%" height="780px" style="border:0px solid red;">
 
+                            </iframe>>
                                 欢迎使用
                                 <strong class="green">
                                     品如服装系统
