@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Styles.Render("~/Content/elementcss")
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .btn1 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            border-radius: 5px;
+        }
+
+        .btn2 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            background-color: #409EFF;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+
+        <el-button v-on:click="visible = true">Button</el-button>
+
+
+        <el-dialog :visible.sync="visible" title="请添加材料数量">
+            <hr />
+            <br />
+            <h3 style="margin-left: 200px;">产品数量:</h3>
+            <input type="number" placeholder="请输入具体数量" style="width: 400px;height: 30px; margin-left: 200px;" />
+            <br />
+            <br />
+            <div style="margin-left: 700px;">
+                <input type="button" value="取消" class="btn1" />&nbsp;&nbsp;&nbsp;
+                <input type="button" value="关闭" class="btn2" />
+            </div>
+        </el-dialog>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return { visible: false }
+        }
+    })
+</script>
+</html>

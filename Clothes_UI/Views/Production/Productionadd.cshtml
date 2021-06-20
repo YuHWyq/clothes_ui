@@ -1,8 +1,9 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
-
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Styles.Render("~/Content/elementcss")
 <!DOCTYPE html>
 
 <html>
@@ -16,27 +17,34 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <style>
+        .top {
+            margin-left: 50px;
+        }
+
         .top1 {
-            margin-top: 50px;
-            width: 1720px;
+            width: 100%;
             height: 150px;
             box-shadow: 0px 0px 5px 5px lightgray;
         }
+
         .top2 {
             margin-top: 50px;
-            width: 1720px;
+            width: 100%;
             height: 400px;
             box-shadow: 0px 0px 5px 5px lightgray;
         }
+
         .top3 {
             margin-top: 50px;
-            width: 1720px;
+            width: 100%;
             height: 300px;
             box-shadow: 0px 0px 5px 5px lightgray;
         }
+
         .btn {
-            margin-left: 1350px;
+            margin-left: 1200px;
         }
+
         .btn1 {
             font-size: 20px;
             width: 80px;
@@ -56,94 +64,164 @@
             background-color: orange;
             border: none;
         }
+
+        .ss {
+            width: 100%;
+            height: 80px;
+            box-shadow: 0px 0px 3px 3px lightgray;
+        }
+
+        .btn11 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            border-radius: 5px;
+        }
+
+        .btn22 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            background-color: #409EFF;
+            color: white;
+            border-radius: 5px;
+        }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
+
     <div>
-        <div class="top1">
-            <br />
-            <span style="font-size:20px;color:dimgray;">添加材料</span>
-            <hr />
-            <div style="margin-left:200px;">
-                <span style="font-size:20px;color:dimgray;">
-                    材料名称：<input type="text" list="xl" style="width: 200px; height: 22px;" />
-                    <datalist id="xl">
-                        <option>布料</option>
-                        <option>染色剂</option>
-                        <option>线团</option>
-                    </datalist>
-                </span>
-            </div>
-        </div>
-        <div class="top2">
-            <br />
-            <span style="font-size:20px;color:dimgray;">材料详情:</span>
-            <span class="btn">
-                <input type="button" value="添加" class="btn1" />&nbsp;&nbsp;
-                <input type="button" value="删除" class="btn2" />
-            </span>
-            <hr />
-            <span style="font-size:20px;color:dimgray;display:flex;">
-                显示<input type="number" style="width: 80px; height: 25px;" />条
-            </span>
-            <br />
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">材料编号</th>
-                        <th scope="col">材料名称</th>
-                        <th scope="col">材料数量</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>尼龙布</td>
-                        <td>200</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div style="margin-left:1500px;">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
+        <div class="ss">
+            <div style="margin-left:50px;">
+                <br />
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">生产管理</li>
+                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">领料管理</li>
+                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">领料计划添加</li>
+                    </ol>
                 </nav>
             </div>
         </div>
+        <br />
+        <br />
+        <div class="top1">
+            <div class="top">
+                <br />
+                <span style="font-size:20px;color:dimgray;">添加材料</span>
+                <hr />
+                <div style="margin-left:200px;">
+                    <span style="font-size:20px;color:dimgray;">
+                        材料名称：<input type="text" list="xl" style="width: 200px; height: 22px;" />
+                        <datalist id="xl">
+                            <option>布料</option>
+                            <option>染色剂</option>
+                            <option>线团</option>
+                        </datalist>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="top2">
+            <div class="top">
+                <br />
+                <span style="font-size:20px;color:dimgray;">材料详情:</span>
+                <div id="app">
+                    <span class="btn">
+
+                        <el-button v-on:click="visible = true" class="btn1">添加</el-button>&nbsp;&nbsp;
+                        <input type="button" value="删除" class="btn2" />
+                    </span>
+
+
+                    <el-dialog :visible.sync="visible" title="请添加材料数量">
+                        <hr />
+                        <h3 style="margin-left: 200px;">产品数量:</h3>
+                        <input type="number" placeholder="请输入具体数量" style="width: 400px;height: 30px; margin-left: 200px;" />
+                        <br />
+                        <br />
+                        <div style="margin-left: 500px;">
+                            <input type="button" value="取消" class="btn11" />&nbsp;&nbsp;&nbsp;
+                            <input type="button" value="提交" class="btn22" />
+                        </div>
+                    </el-dialog>
+                </div>
+                <hr />
+                <span style="font-size:20px;color:dimgray;display:flex;">
+                    显示<input type="number" style="width: 80px; height: 25px;" />条
+                </span>
+                <br />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">材料编号</th>
+                            <th scope="col">材料名称</th>
+                            <th scope="col">材料数量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>尼龙布</td>
+                            <td>200</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-left:1500px;">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
         <div class="top3">
-            <br />
-            <span style="font-size:20px;color:dimgray;">添加领料详情单</span>
-            <hr />
-            <table class="table table-bordered">
-                <tr>
-                    <th scope="col">生产计划编号：</th>
-                    <th scope="col"><input type="text" placeholder="请输入生产计划编号" /></th>
-                    <th scope="col">领料日期：</th>
-                    <th scope="col"><input type="date" /></th>
-                </tr>
-            </table>
-            <table class="table table-bordered">
-                <tr>
-                    <th scope="col">领材料的部门：</th>
-                    <th scope="col"><input type="text" placeholder="请输入领材料的部门" /></th>
-                    <th scope="col">此操作员：</th>
-                    <th scope="col"><input type="text"  placeholder="请输入操作员姓名"/></th>
-                </tr>
-            </table>
+            <div class="top">
+                <br />
+                <span style="font-size:20px;color:dimgray;">添加领料详情单</span>
+                <hr />
+                <table class="table table-bordered">
+                    <tr>
+                        <th scope="col">生产计划编号：</th>
+                        <th scope="col"><input type="text" placeholder="请输入生产计划编号" /></th>
+                        <th scope="col">领料日期：</th>
+                        <th scope="col"><input type="date" /></th>
+                    </tr>
+                    <tr>
+                        <th scope="col">领材料的部门：</th>
+                        <th scope="col"><input type="text" placeholder="请输入领材料的部门" /></th>
+                        <th scope="col">此操作员：</th>
+                        <th scope="col"><input type="text" placeholder="请输入操作员姓名" /></th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return { visible: false }
+        }
+    })
+</script>
 </html>

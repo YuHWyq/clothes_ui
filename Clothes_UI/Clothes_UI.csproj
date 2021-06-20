@@ -287,6 +287,19 @@
     <Content Include="Views\Customer\InsertOrder.cshtml" />
     <Content Include="Views\Customer\Order.cshtml" />
     <Content Include="Views\Login\Login1.cshtml" />
+    <Content Include="Views\Product\Products.cshtml" />
+    <Content Include="Views\Product\Productes.cshtml" />
+    <Content Include="Views\Product\Productees.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Production\Index.cshtml" />
+    <Content Include="Views\Production\add.cshtml" />
+    <Content Include="Views\Production\Productionadd.cshtml" />
+    <Content Include="Views\Production\Productions.cshtml" />
+    <Content Include="Views\Production\Productionsadd.cshtml" />
+    <Content Include="Views\Production\ss.cshtml" />
+    <Content Include="Views\Quality_test\Index.cshtml" />
+    <Content Include="Views\Quality_test\sho.cshtml" />
+    <Content Include="Views\Quality_test\shop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

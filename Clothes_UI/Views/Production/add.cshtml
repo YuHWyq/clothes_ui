@@ -2,7 +2,9 @@
 @{
     Layout = null;
 }
-
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Styles.Render("~/Content/elementcss")
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,13 +18,14 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
         .top1 {
-            margin-top: 50px;
-            width: 1720px;
+            width: 100%;
             height: 150px;
             box-shadow: 0px 0px 5px 5px lightgray;
         }
+
         .btn1 {
             font-size: 20px;
             width: 80px;
@@ -33,20 +36,27 @@
             border: none;
             margin-left: -5px;
         }
+
         .top2 {
-            width: 1720px;
+            width: 100%;
             height: 500px;
             box-shadow: 0px 0px 5px 5px lightgray;
         }
+
+        .top3 {
+            margin-left: 50px;
+        }
+
         .btn2 {
             font-size: 20px;
             width: 80px;
-            height: 35px;
+            height: 40px;
             border-radius: 5px;
             color: white;
             background-color: lightseagreen;
             border: none;
         }
+
         .btn3 {
             font-size: 20px;
             width: 60px;
@@ -56,6 +66,7 @@
             border-color: lightseagreen;
             margin-left: 600px;
         }
+
         .btn4 {
             font-size: 20px;
             width: 60px;
@@ -65,99 +76,162 @@
             border-color: orange;
             margin-left: 400px;
         }
+
+        .ss {
+            width: 100%;
+            height: 80px;
+            box-shadow: 0px 0px 3px 3px lightgray;
+        }
+
+        .btn11 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            border-radius: 5px;
+        }
+
+        .btn22 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            background-color: #409EFF;
+            color: white;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <div> 
-        <div class="top1">
-            <br />
-            <span style="font-size:20px;color:dimgray;">订单信息查询</span>
-            <hr />
-            <div style="margin-left:200px;">
-                <span style="font-size:15px;color:dimgray;">
-                    产品订单ID：
-                    <input type="text" style="border-radius:5px;height:35px;width:300px;" placeholder="请输入产品订单ID"/>&nbsp;&nbsp;&nbsp;
-                    <input type="button" value="查询" class="btn1" />
-                </span>
+    <div>
+        <div class="ss">
+            <div style="margin-left:50px;">
+                <br />
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">生产管理</li>
+                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">生产计划管理</li>
+                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">生产计划添加</li>
+                    </ol>
+                </nav>
             </div>
         </div>
         <br />
         <br />
-        <div class="top2">
-            <br />
-            <span style="font-size:20px;color:dimgray;">订单信息</span>
-            <hr />
-            <br />
-            <span style="font-size:20px;color:dimgray;display:flex;">
-                显示<input type="number" style="width: 80px; height: 25px;" />条
-            </span>
-            <br />
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">订单编号</th>
-                        <th scope="col">产品名称</th>
-                        <th scope="col">产品类别</th>
-                        <th scope="col">产品规格</th>
-                        <th scope="col">产品单位</th>
-                        <th scope="col">订购数量</th>
-                        <th scope="col">计划产量</th>
-                        <th scope="col">操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>李宁</td>
-                        <td>T恤</td>
-                        <td>XXL/td>
-                        <td>件</td>
-                        <td>200</td>
-                        <td>200</td>
-                        <td><input type="button" value="编辑" class="btn2" /></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div style="margin-left:1500px;">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+        <div class="top1">
+            <div class="top3">
+                <br />
+                <span style="font-size:20px;color:dimgray;">订单信息查询</span>
+                <hr />
+                <div style="margin-left:200px;">
+                    <span style="font-size:15px;color:dimgray;">
+                        产品订单ID：
+                        <input type="text" style="border-radius:5px;height:35px;width:300px;" placeholder="请输入产品订单ID" />&nbsp;&nbsp;&nbsp;
+                        <input type="button" value="查询" class="btn1" />
+                    </span>
+                </div>
             </div>
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col">生产计划时间：</th>
-                        <th scope="col">操作员:</th>
-                        <th scope="col">经办人:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="date" style="width: 500px; height: 30px;" /></td>
-                        <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名"/></td>
-                        <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名"/></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div>
-                <input type="button" value="提交" class="btn3" />
-                <input type="button" value="取消" class="btn4" />
+        </div>
+        <br />
+        <br />
+        <div class="top2" id="app">
+            <div class="top3">
+                <br />
+                <span style="font-size:20px;color:dimgray;">订单信息</span>
+                <hr />
+                <br />
+                <span style="font-size:20px;color:dimgray;display:flex;">
+                    显示<input type="number" style="width: 80px; height: 25px;" />条
+                </span>
+                <br />
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">订单编号</th>
+                            <th scope="col">产品名称</th>
+                            <th scope="col">产品类别</th>
+                            <th scope="col">产品规格</th>
+                            <th scope="col">产品单位</th>
+                            <th scope="col">订购数量</th>
+                            <th scope="col">计划产量</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>李宁</td>
+                            <td>T恤</td>
+                            <td>XXL/td>
+                            <td>件</td>
+                            <td>200</td>
+                            <td>200</td>
+                            <td><el-button v-on:click="visible = true" class="btn2">编辑</el-button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-left:1250px;">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">生产计划时间：</th>
+                            <th scope="col">操作员:</th>
+                            <th scope="col">经办人:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="date" style="width: 500px; height: 30px;" /></td>
+                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名" /></td>
+                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <input type="button" value="提交" class="btn3" />
+                    <input type="button" value="取消" class="btn4" />
+                </div>
             </div>
+            <el-dialog :visible.sync="visible" title="添加产品数量">
+                <hr />
+                <h3 style="margin-left: 200px;">计划产品数量:</h3>
+                <input type="number" placeholder="请输入具体数量" style="width: 400px;height: 30px; margin-left: 200px;" />
+                <br />
+                <br />
+                <div style="margin-left: 500px;">
+                    <input type="button" value="取消" class="btn11" />&nbsp;&nbsp;&nbsp;
+                    <input type="button" value="提交" class="btn22" />
+                </div>
+            </el-dialog>
         </div>
     </div>
 </body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return { visible: false }
+        }
+    })
+</script>
 </html>
