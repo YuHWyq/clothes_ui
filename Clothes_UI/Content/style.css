@@ -75,7 +75,7 @@ body{
   -moz-border-radius: 25px;
   -o-border-radius: 25px;
   margin: 0px 0px 12px 0px;
-  width: 80%;
+  width: 75%;
   -webkit-appearance: none;
 }
 .login-top input[type="password"]{
@@ -91,7 +91,7 @@ body{
   -moz-border-radius: 25px;
   -o-border-radius: 25px;
   margin: 0px 0px 12px 0px;
-  width: 80%;
+  width: 75%;
   -webkit-appearance: none;
 }
 .forgot a{

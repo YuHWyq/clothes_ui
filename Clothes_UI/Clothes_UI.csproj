@@ -226,18 +226,25 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\login2.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpg" />
     <Content Include="images\banner.jpg" />
+    <Content Include="images\login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\avatars\Thumbs.db" />
     <Content Include="assets\css\images\Thumbs.db" />
     <Content Include="assets\font\fontawesome-webfont.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\echarts.js" />
+    <Content Include="Scripts\echarts.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.9.0.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -271,6 +278,9 @@
     <Content Include="Views\Quality_test\Quality_test.cshtml" />
     <Content Include="Views\Sale\Sale.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Customer\InsertOrder.cshtml" />
+    <Content Include="Views\Customer\Order.cshtml" />
+    <Content Include="Views\Login\Login1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

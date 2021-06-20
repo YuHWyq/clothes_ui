@@ -51,7 +51,7 @@
                             </a>
 
                             <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                                <li>
+                                @*<li>
                                     <a href="#">
                                         <i class="icon-cog"></i>
                                         设置
@@ -65,7 +65,7 @@
                                     </a>
                                 </li>
 
-                                <li class="divider"></li>
+                                <li class="divider"></li>*@
 
                                 <li>
                                     <a href="#">
@@ -128,17 +128,23 @@
                                 <li>
                                     <a href="/Customer/Customer" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        客户资料
+                                        客户信息
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Customer/Order" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        客户订单管理
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="treeview.html">
                                         <i class="icon-double-angle-right"></i>
-                                        订单跟踪
+                                        客户订单统计
                                     </a>
                                 </li>
-
                             </ul>
                         </li>
                         
@@ -157,7 +163,14 @@
                                 <li>
                                     <a href="/Purchase/Purchase" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        采购单管理
+                                        采购计划
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/Purchase/Purchase" target="info">
+                                        <i class="icon-double-angle-right"></i>
+                                        采购订单
                                     </a>
                                 </li>
 
@@ -167,7 +180,6 @@
                                         采购统计
                                     </a>
                                 </li>
-
                             </ul>
                         </li>
                         <li>
@@ -182,17 +194,23 @@
                                 <li>
                                     <a href="/Production/Production" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        生产计划管理
+                                        生产计划
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        产品生产管理
+                                        领料管理
                                     </a>
                                 </li>
 
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品生产
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -207,14 +225,14 @@
                                 <li>
                                     <a href="/Quality_test/Quality_test" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        产品质检
+                                        待检产品
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        商品质检
+                                        待检原料
                                     </a>
                                 </li>
 
@@ -233,24 +251,30 @@
                                 <li>
                                     <a href="/Product/Product" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        出入库管理
+                                        产品库存
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        产品商品库存
+                                        产品入库管理
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="treeview.html">
                                         <i class="icon-double-angle-right"></i>
-                                        库存统计
+                                        产品出库详情
                                     </a>
                                 </li>
 
+                                <li>
+                                    <a href="treeview.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        产品出库入库统计
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -265,14 +289,14 @@
                                 <li>
                                     <a href="/Sale/Sale" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        销售统计
+                                        客户订单管理
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        销售订单
+                                        销售统计
                                     </a>
                                 </li>
 
@@ -291,18 +315,29 @@
                                 <li>
                                     <a href="/Material/Material" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        订单统计
+                                        原料入库
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        订单查询
+                                        材料入库详情
                                     </a>
                                 </li>
 
-
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        材料出库详情
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="buttons.html">
+                                        <i class="icon-double-angle-right"></i>
+                                        入库出库统计
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -317,23 +352,18 @@
                                 <li>
                                     <a href="/Finance/Finance" target="info">
                                         <i class="icon-double-angle-right"></i>
-                                        采购结款
+                                        财务详细
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="buttons.html">
                                         <i class="icon-double-angle-right"></i>
-                                        退货管理
+                                        财务统计
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="treeview.html">
-                                        <i class="icon-double-angle-right"></i>
-                                        销售结款
-                                    </a>
-                                </li>
+                                
 
                             </ul>
                         </li>
@@ -390,7 +420,7 @@
                                 </h1>
                             </div><!-- /.page-header -->
 
-                            <iframe name="info" src="/Home/Home" width="100%" height="780px">
+                            <iframe name="info" src="/Home/Home" width="100%" height="780px" style="border:0px solid red;">
 
                               
 

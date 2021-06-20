@@ -70,9 +70,11 @@
                     contentType: "application/json",
                     data: xlh,
                     success: function (datas) {
-
-                        var    q = eval(datas)
-                        alert(q);
+                        if (datas != "") {
+                            window.location.href = "@Url.Action("Index", "Index")";
+                        } else {
+                            alert("登录失败！账号或密码错误！")
+                        }
                     }, error: function (error) {
                         alert("失败了！");
                     }
