@@ -1,0 +1,149 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Productionadd</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <style>
+        .top1 {
+            margin-top: 50px;
+            width: 1720px;
+            height: 150px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+        .top2 {
+            margin-top: 50px;
+            width: 1720px;
+            height: 400px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+        .top3 {
+            margin-top: 50px;
+            width: 1720px;
+            height: 300px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+        .btn {
+            margin-left: 1350px;
+        }
+        .btn1 {
+            font-size: 20px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            color: white;
+            background-color: lightseagreen;
+            border: none;
+        }
+
+        .btn2 {
+            font-size: 20px;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            color: white;
+            background-color: orange;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="top1">
+            <br />
+            <span style="font-size:20px;color:dimgray;">添加材料</span>
+            <hr />
+            <div style="margin-left:200px;">
+                <span style="font-size:20px;color:dimgray;">
+                    材料名称：<input type="text" list="xl" style="width: 200px; height: 22px;" />
+                    <datalist id="xl">
+                        <option>布料</option>
+                        <option>染色剂</option>
+                        <option>线团</option>
+                    </datalist>
+                </span>
+            </div>
+        </div>
+        <div class="top2">
+            <br />
+            <span style="font-size:20px;color:dimgray;">材料详情:</span>
+            <span class="btn">
+                <input type="button" value="添加" class="btn1" />&nbsp;&nbsp;
+                <input type="button" value="删除" class="btn2" />
+            </span>
+            <hr />
+            <span style="font-size:20px;color:dimgray;display:flex;">
+                显示<input type="number" style="width: 80px; height: 25px;" />条
+            </span>
+            <br />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">材料编号</th>
+                        <th scope="col">材料名称</th>
+                        <th scope="col">材料数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>尼龙布</td>
+                        <td>200</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-left:1500px;">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="top3">
+            <br />
+            <span style="font-size:20px;color:dimgray;">添加领料详情单</span>
+            <hr />
+            <table class="table table-bordered">
+                <tr>
+                    <th scope="col">生产计划编号：</th>
+                    <th scope="col"><input type="text" placeholder="请输入生产计划编号" /></th>
+                    <th scope="col">领料日期：</th>
+                    <th scope="col"><input type="date" /></th>
+                </tr>
+            </table>
+            <table class="table table-bordered">
+                <tr>
+                    <th scope="col">领材料的部门：</th>
+                    <th scope="col"><input type="text" placeholder="请输入领材料的部门" /></th>
+                    <th scope="col">此操作员：</th>
+                    <th scope="col"><input type="text"  placeholder="请输入操作员姓名"/></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

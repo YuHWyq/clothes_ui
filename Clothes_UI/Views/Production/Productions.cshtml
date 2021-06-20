@@ -8,13 +8,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Production</title>
+    <title>Productions</title>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <style>
         .yy {
             margin-top: 50px;
@@ -98,29 +99,27 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">领料编号</th>
+                        <th scope="col">生产编号</th>
                         <th scope="col">计划编号</th>
-                        <th scope="col">领材料部门</th>
-                        <th scope="col">领料日期</th>
-                        <th scope="col">经办人</th>
+                        <th scope="col">产品名称</th>
+                        <th scope="col">产品类型</th>
+                        <th scope="col">生产数量</th>
+                        <th scope="col">生产日期</th>
                         <th scope="col">操作员</th>
                         <th scope="col">状态</th>
                         <th scope="col">操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @*@foreach (var item in collection)
-                    {
-
-                    }*@
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>布料部</td>
+                        <td>001</td>
+                        <td>2012</td>
+                        <td>品如</td>
+                        <td>T恤</td>
+                        <td>200件</td>
                         <td>2021/4/5</td>
-                        <td>林慕染</td>
                         <td>覃佐继</td>
-                        <td>未处理</td>
+                        <td>待质检</td>
                         <td><input type="button" value="编辑" class="btn4" /></td>
                     </tr>
                 </tbody>
