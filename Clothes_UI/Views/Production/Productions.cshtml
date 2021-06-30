@@ -1,6 +1,4 @@
-﻿
-
-@{
+﻿@{
     Layout = null;
 }
 
@@ -9,13 +7,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Production</title>
+    <title>Productions</title>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <style>
         .ss {
             width: 100%;
@@ -92,7 +91,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">生产管理</li>
-                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">领料管理</li>
+                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">产品生产管理</li>
                     </ol>
                 </nav>
             </div>
@@ -104,7 +103,7 @@
                 <br />
                 <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
                 <span class="btn">
-                    <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionadd'" />&nbsp;&nbsp;
+                    <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionsadd'" />&nbsp;&nbsp;
                     <input type="button" value="删除" class="btn2" />
                 </span>
                 <br />
@@ -122,29 +121,27 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">领料编号</th>
+                            <th scope="col">生产编号</th>
                             <th scope="col">计划编号</th>
-                            <th scope="col">领材料部门</th>
-                            <th scope="col">领料日期</th>
-                            <th scope="col">经办人</th>
+                            <th scope="col">产品名称</th>
+                            <th scope="col">产品类型</th>
+                            <th scope="col">生产数量</th>
+                            <th scope="col">生产日期</th>
                             <th scope="col">操作员</th>
                             <th scope="col">状态</th>
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @*@foreach (var item in collection)
-                            {
-
-                            }*@
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>布料部</td>
+                            <td>001</td>
+                            <td>2012</td>
+                            <td>品如</td>
+                            <td>T恤</td>
+                            <td>200件</td>
                             <td>2021/4/5</td>
-                            <td>林慕染</td>
                             <td>覃佐继</td>
-                            <td>未提货</td>
+                            <td>待质检</td>
                             <td><input type="button" value="编辑" class="btn4" /></td>
                         </tr>
                     </tbody>
@@ -154,4 +151,3 @@
     </div>
 </body>
 </html>
-

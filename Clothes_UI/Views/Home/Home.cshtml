@@ -9,10 +9,220 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Home</title>
+    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
+    <link href="~/Content/homestyle1.css" rel="stylesheet" />
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:400,300" />
+    <link rel="stylesheet" href="/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+    <script src="/assets/js/ace-extra.min.js"></script>
+    <style>
+        body {
+            background-color: #f1f1f0;
+        }
+        .one_se {
+            width: 100%;
+            height: 95px;
+            /*background-color: #438eb9;*/
+            border-radius: 0px 0px 10px 10px;
+            font-size: 20px;
+            /*color: white;*/
+            text-align: center;
+            line-height: 95px;
+        }
+        .two_se{
+            float: left;
+            width: 210px;
+            height: 95px;
+            border-radius: 0px 10px 0px 0px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 95px;
+        }
+        .title {
+            width: 300px;
+            height: 30px;
+            color: #808080;
+            font-size:20px;
+            line-height:30px;
+            padding-left:200px;
+        }
+    </style>
 </head>
 <body>
+    @*<h1>首页</h1>*@
+    <div class="toubu">
+        <div class="toubu_box">
+            <div class="page-content" style="background-color:#f1f1f0">
+                <div class="page-header">
+                    <h1>
+                        首页
+                        <small>
+                            <i class="icon-double-angle-right"></i>
+                            查看
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+            </div>
+        </div>
+    </div>
+    <div id="tops" class="tops">
+        <div class="tops_box">
+            <div class="one">
+                <div class="one_top">
+                    <p>总销售量</p>
+                </div>
+                <div class="one_se">
+                    <p>1000单</p>
+                </div>
+            </div>
+            <div class="one">
+                <div class="one_top">
+                    <p>今年销量</p>
+                </div>
+                <div class="one_se">
+                    <p>173单</p>
+                </div>
+            </div>
+            <div class="two">
+                <div class="two_top">
+                    <p>总支出</p>
+                </div>
+                <div class="two_tops">
+                    <p>总收入</p>
+                </div>
+                <div class="two_se">
+                    <p>1,000万元</p>
+                </div>
+                <div class="two_se">
+                    <p>2,000万元</p>
+                </div>
+            </div>
+            <div class="two">
+                <div class="two_top">
+                    <p>今年支出</p>
+                </div>
+                <div class="two_tops">
+                    <p>今年收人</p>
+                </div>
+                <div class="two_se">
+                    <p>100万元</p>
+                </div>
+                <div class="two_se">
+                    <p>200万元</p>
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <div class="section">
 
-    <h1>首页</h1>
+        <div class="section_box">
+            <div id="appbox">
+                <div id="app" style="width:1000px;height:500px;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottoms">
+        <div class="bottoms_box">
+            <div class="three"></div>
+            <div class="three"></div>
+        </div>
+
+    </div>
+    <script src="~/Scripts/echarts.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script>
+
+        // $.ajax({
+        //     url:'https://localhost:44368/api/Default/ss',
+        //     type:'GET',
+        //     dataType:'JSON',
+        //     success:function(data){
+        //         console.log(data);
+        //     }
+        // });
+        var myChart = echarts.init(document.getElementById('app'));
+        var option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
+                    }
+                }
+            },
+            toolbox: {
+                feature: {
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            legend: {
+                data: ['蒸发量', '降水量', '平均温度']
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '水量',
+                    min: 0,
+                    max: 250,
+                    interval: 50,
+                    axisLabel: {
+                        formatter: '{value} ml'
+                    }
+                },
+                {
+                    type: 'value',
+                    name: '温度',
+                    min: 0,
+                    max: 25,
+                    interval: 5,
+                    axisLabel: {
+                        formatter: '{value} °C'
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '蒸发量',
+                    type: 'bar',
+                    data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+                },
+                {
+                    name: '降水量',
+                    type: 'bar',
+                    data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+                },
+                {
+                    name: '平均温度',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+
+    </script>
 </body>
 </html>

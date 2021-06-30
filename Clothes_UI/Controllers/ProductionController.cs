@@ -9,12 +9,37 @@ namespace Clothes_UI.Controllers
     public class ProductionController : Controller
     {
         // GET: Production
+        //计划管理
         public ActionResult Index()
         {
             return View();
         }
-        //生产管理
+        //添加计划生产单
+        public ActionResult add()
+        {
+            return View();
+        }
+        //领料管理
         public  ActionResult Production()
+        {
+            return View();
+        }
+        //添加领料管理
+        public ActionResult Productionadd()
+        {
+            return View();
+        }
+        //产品生产
+        public ActionResult Productions()
+        {
+            return View();
+        }
+        //添加产品生产登记
+        public ActionResult Productionsadd()
+        {
+            return View();
+        }
+        public ActionResult ss()
         {
             return View();
         }

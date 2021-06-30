@@ -55,9 +55,8 @@
 </head>
 <body>
     <div id="app">
-        <el-dialog 
-                   :visible.sync="dialogVisible"
-                   width="50%" 
+        <el-dialog :visible.sync="dialogVisible"
+                   width="50%"
                    :before-close="handleClose">
             <div style="font-size:30px; text-align:center;">添加产品数量</div>
             <div>
@@ -235,7 +234,7 @@
                 return {
                     num: 1,
                     dialogVisible: false,
-                  
+
                 }
             },
             methods: {
@@ -253,4 +252,4 @@
         })
     </script>
 </body>
-</html >
+</html>
