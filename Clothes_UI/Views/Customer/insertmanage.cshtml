@@ -1,0 +1,256 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>insertmanage</title>
+    <style>
+        #content {
+            width: 100%;
+            height: 450px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+
+        #header {
+            margin-top: 20px;
+        }
+
+
+        #header {
+            /*border: 1px solid black;*/
+            width: 100%;
+            height: 100px;
+        }
+
+        #body {
+            width: 100%;
+            height: 450px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+
+        #bodycontent {
+            margin-top: 400px;
+            width: 100%;
+            height: 100px;
+        }
+
+        #foot {
+            width: 100%;
+            height: 450px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
+
+        #footbody {
+            margin-top: 80px;
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="app">
+        <el-dialog 
+                   :visible.sync="dialogVisible"
+                   width="50%" 
+                   :before-close="handleClose">
+            <div style="font-size:30px; text-align:center;">添加产品数量</div>
+            <div>
+                <span style="font-size:15px;">产品数量：</span>
+                <el-input-number v-model="num" v-on:change="handleChange" :min="1" :max="99" label="描述文字" style="width:30%;"></el-input-number>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button v-on:click="dialogVisible=false">取 消</el-button>
+                <el-button type="primary" v-on:click="dialogVisible=false">确 定</el-button>
+            </span>
+        </el-dialog>
+    </div>
+    <div id="content">
+        <div style="border: 1px solid lightgray; width: 100%;"></div>
+        <div id="header">
+
+            <span style="font-size: 20px; margin: 20px;">商品详情信息</span>
+            <div style="border: 1px solid lightgray; width: 100%; margin-top: 50px;"></div>
+
+            <table style="margin-top:20px; margin-left:150px;" class="table table-dark" border="0" width="75%" height="100%">
+                <thead>
+                    <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-size:20px;">
+                            产品名称：<select style="width: 250px; height: 30px;">
+                                <option value="牛仔裤">牛仔裤</option>
+                                <option value="上衣">上衣</option>
+                                <option value="袜子">袜子</option>
+                                <option value="裙子">裙子</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+
+
+                        <td style="font-size:20px;  margin-left:20px;">产品编号：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        <td style="font-size:20px; margin-left:20px;">产品单价：<input type="text" style="width: 250px; height: 30px;" /></td>
+                    </tr>
+                    <tr>
+
+
+                        <td style="font-size:20px;">产品规格：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        <td style="font-size:20px;">批准文号：<input type="text" style="width: 250px; height: 30px;" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:20px;">产品类别：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        <td style="font-size:20px;">产品产地：<input type="text" style="width: 250px; height: 30px;" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:20px;">产品单位：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        <td style="font-size:20px;">产商名称：<input type="text" style="width: 250px; height: 30px;" /></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+        <div id="body">
+            <div id="bodycontent">
+
+                <span style="font-size: 20px; margin: 20px;">客户资料</span>
+                <el-button type="primary" onclick="addinfo()" style=" float: right; background-color: lightseagreen; height: 40px; width: 70px; margin-left: 10px;">新增</el-button>
+                <el-button type="danger" style=" float: right;  height: 40px; width: 70px; margin-left: 10px;">删除</el-button>
+                <div style="border: 1px solid lightgray; width: 100%; margin-top: 50px;"></div>
+                <div style="margin-left:20px ; font-size:20px ;">
+                    显示<select style="width: 60px; height: 40px; font-size:15px ; border-radius:5px ;">
+                        <option value="volovo">1</option>
+                        <option value="saab">2</option>
+                        <option value="opel">3</option>
+                        <option value="audi">4</option>
+                        <option value="audi">5</option>
+                        <option value="audi">6</option>
+                        <option value="audi">7</option>
+                        <option value="audi">8</option>
+                        <option value="audi">9</option>
+                        <option value="audi">10</option>
+                        <option value="audi">11</option>
+                        <option value="audi">12</option>
+
+                    </select>条
+                </div>
+                <table class="table" border="1" width="100%" height="100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>dd</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>dd</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>dd</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="foot">
+
+            <div id="footbody">
+                <span style="font-size: 20px; margin: 20px;">商品详情信息</span>
+                <div style="border: 1px solid lightgray; width: 100%; margin-top: 50px;"></div>
+
+                <table style="margin-top:70px; margin-left:150px;" class="table table-dark" border="0" width="75%" height="100%">
+                    <thead>
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        <tr>
+
+
+                            <td style="font-size:20px;">预定金额：<input type="text" style="width: 250px; height: 30px;" /></td>
+                            <td style="font-size:20px;">交货日期：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:20px;">操作人员：<input type="text" style="width: 250px; height: 30px;" /></td>
+                            <td style="font-size:20px;">经手人员：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:20px;">客户名称：<input type="text" style="width: 250px; height: 30px;" /></td>
+                            <td style="font-size:20px;">交货方式：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+                <div id="button">
+                    <p style="margin-left:550px;">
+                        <input type="button" value="取消" style="background-color:white ; color: lightsalmon; height: 40px;
+				width: 70px; border-radius:5px;" />
+                        <input type="button" value="提交" style="background-color: #20B2AA; color:white; height: 40px; width: 70px; margin-left: 30px; border-radius:5px;">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script>
+        function addinfo() {
+            vm.dialogVisible = true;
+        }
+        var vm1 = new Vue({
+            el: "#bodycontent",
+            data: {
+
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    num: 1,
+                    dialogVisible: false,
+                  
+                }
+            },
+            methods: {
+                handleClose(done) {
+                    this.$confirm('确认关闭？')
+                        .then(_ => {
+                            done();
+                        })
+                        .catch(_ => { });
+                },
+                handleChange(value) {
+                    console.log(value);
+                }
+            }
+        })
+    </script>
+</body>
+</html >
