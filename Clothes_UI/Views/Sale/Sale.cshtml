@@ -71,36 +71,12 @@
                 </div>
                 <div id="app">
                     <el-input placeholder="请输入名字进行查询" v-model="search" class="input-with-select" style="width:300px;margin-top:20px;margin-left:10px;">
-                        <el-button slot="append" icon="el-icon-search">查询</el-button>
+                        <el-button slot="append" icon="el-icon-search"></el-button>
 
                     </el-input>
                     <div class="biaoge"style="width:90%;text-align:center;">
                         <div style="margin:0px auto;">
-                            <template>
-                                <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-                                          style="width: 100%">
-                                    <el-table-column label="Date"
-                                                     prop="date">
-                                    </el-table-column>
-                                    <el-table-column label="Name"
-                                                     prop="name">
-                                    </el-table-column>
-                                    <el-table-column align="right">
-                                        <template slot="header" slot-scope="scope">
-                                            <el-input v-model="search"
-                                                      size="mini"
-                                                      placeholder="输入关键字搜索" />
-                                        </template>
-                                        <template slot-scope="scope">
-                                            <el-button size="mini"
-                                                       @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-                                            <el-button size="mini"
-                                                       type="danger"
-                                                       @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
-                                        </template>
-                                    </el-table-column>
-                                </el-table>
-                            </template>
+                           
 
                         </div>
                     </div>
