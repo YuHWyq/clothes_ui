@@ -44,7 +44,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: orange;
             border: none;
@@ -54,7 +54,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -65,7 +65,7 @@
             font-size: 20px;
             width: 80px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -73,7 +73,7 @@
 
         .text {
             width: 200px;
-            height: 34px;
+            height: 40px;
         }
     </style>
 </head>
@@ -118,6 +118,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th scope="col" style="width:50px;">选择</th>
                             <th scope="col">入库编号</th>
                             <th scope="col">生产编号</th>
                             <th scope="col">入库日期</th>
@@ -131,7 +132,8 @@
                             {
 
                             }*@
-                        <tr v-for="item in info">
+                        <tr @*v-for="item in info"*@>
+                            <td><input type="checkbox" /></td>
                             <td>002</td>
                             <td>001</td>
                             <td>2021/5/9</td>

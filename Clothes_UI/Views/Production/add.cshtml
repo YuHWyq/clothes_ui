@@ -26,11 +26,22 @@
             box-shadow: 0px 0px 5px 5px lightgray;
         }
 
+        .btn {
+            font-size: 15px;
+            width: 80px;
+            height: 30px;
+            border-radius: 3px;
+            color: white;
+            background-color: Highlight;
+            border: none;
+            margin-left: 100px;
+        }
+
         .btn1 {
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -51,7 +62,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -61,7 +72,7 @@
             font-size: 20px;
             width: 60px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: lightseagreen;
             border-color: lightseagreen;
             margin-left: 600px;
@@ -71,7 +82,7 @@
             font-size: 20px;
             width: 60px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: orange;
             border-color: orange;
             margin-left: 400px;
@@ -87,7 +98,7 @@
             height: 40px;
             width: 80px;
             border: 0;
-            border-radius: 5px;
+            border-radius: 2px;
         }
 
         .btn22 {
@@ -96,12 +107,12 @@
             border: 0;
             background-color: #409EFF;
             color: white;
-            border-radius: 5px;
+            border-radius: 2px;
         }
     </style>
 </head>
 <body>
-    <div>
+    <div id="app">
         <div class="ss">
             <div style="margin-left:50px;">
                 <br />
@@ -124,15 +135,15 @@
                 <div style="margin-left:200px;">
                     <span style="font-size:15px;color:dimgray;">
                         产品订单ID：
-                        <input type="text" style="border-radius:5px;height:35px;width:300px;" placeholder="请输入产品订单ID" />&nbsp;&nbsp;&nbsp;
-                        <input type="button" value="查询" class="btn1" />
+                        <input type="text" style="height:40px;width:300px;" placeholder="请输入产品订单ID" />
+                        <el-button type="primary" icon="el-icon-search">搜索</el-button>
                     </span>
                 </div>
             </div>
         </div>
         <br />
         <br />
-        <div class="top2" id="app">
+        <div class="top2">
             <div class="top3">
                 <br />
                 <span style="font-size:20px;color:dimgray;">订单信息</span>
@@ -160,14 +171,23 @@
                             <td>1</td>
                             <td>李宁</td>
                             <td>T恤</td>
-                            <td>XXL/td>
+                            <td>XXL</td>
                             <td>件</td>
                             <td>200</td>
                             <td>200</td>
                             <td><el-button v-on:click="visible = true" class="btn2">编辑</el-button></td>
+
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <el-dialog :visible.sync="visible" title="添加产品数量">
+                        <hr />
+                        <p>计划产品数量</p>
+                        <input type="text" placeholder="99" style="width:1500px;height:25px;" /><br /><br />
+                        <input type="button" class="btn" value="提交" />
+                    </el-dialog>
+                </div>
                 <div style="margin-left:1250px;">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
@@ -208,17 +228,6 @@
                     <input type="button" value="取消" class="btn4" />
                 </div>
             </div>
-            <el-dialog :visible.sync="visible" title="添加产品数量">
-                <hr />
-                <h3 style="margin-left: 200px;">计划产品数量:</h3>
-                <input type="number" placeholder="请输入具体数量" style="width: 400px;height: 30px; margin-left: 200px;" />
-                <br />
-                <br />
-                <div style="margin-left: 500px;">
-                    <input type="button" value="取消" class="btn11" />&nbsp;&nbsp;&nbsp;
-                    <input type="button" value="提交" class="btn22" />
-                </div>
-            </el-dialog>
         </div>
     </div>
 </body>

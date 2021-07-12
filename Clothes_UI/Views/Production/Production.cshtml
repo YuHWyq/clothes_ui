@@ -3,7 +3,9 @@
 @{
     Layout = null;
 }
-
+@Scripts.Render("~/bundles/vue")
+@Scripts.Render("~/bundles/element")
+@Styles.Render("~/Content/elementcss")
 <!DOCTYPE html>
 
 <html>
@@ -16,6 +18,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
         .ss {
             width: 100%;
@@ -41,7 +44,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: Highlight;
             border: none;
@@ -51,9 +54,9 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
-            background-color: orange;
+            background-color: Highlight;
             border: none;
         }
 
@@ -61,7 +64,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius:2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -72,20 +75,28 @@
             font-size: 20px;
             width: 80px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
         }
-
+        .brn5 {
+            font-size: 20px;
+            width: 80px;
+            height: 35px;
+            border-radius: 2px;
+            color: white;
+            background-color: lightseagreen;
+            border: none;
+        }
         .text {
             width: 200px;
-            height: 34px;
+            height: 40px;
         }
     </style>
 </head>
 <body>
-    <div>
+    <div id="app">
         <div class="ss">
             <div style="margin-left:50px;">
                 <br />
@@ -105,7 +116,7 @@
                 <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
                 <span class="btn">
                     <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionadd'" />&nbsp;&nbsp;
-                    <input type="button" value="删除" class="btn2" />
+                    <el-button type="text" v-on:click="open" class="btn2">删除</el-button>
                 </span>
                 <br />
                 <br />
@@ -113,7 +124,7 @@
                 <br />
                 <span style="display:flex;">
                     <input type="text" class="text" placeholder="请输入订单编号" />
-                    <input type="button" value="搜索" class="btn3" />
+                    <el-button type="primary" icon="el-icon-search">搜索</el-button>
                 </span>
                 <br />
                 <span style="font-size:20px;color:dimgray;display:flex;">
@@ -134,9 +145,9 @@
                     </thead>
                     <tbody>
                         @*@foreach (var item in collection)
-                            {
+                {
 
-                            }*@
+                }*@
                         <tr>
                             <td>1</td>
                             <td>2</td>
@@ -145,13 +156,66 @@
                             <td>林慕染</td>
                             <td>覃佐继</td>
                             <td>未提货</td>
-                            <td><input type="button" value="编辑" class="btn4" /></td>
+                            <td><el-button v-on:click="visible = true"  type="primary" plain>详情</el-button></td>
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <el-dialog :visible.sync="visible" title="材料详情">
+                        <hr />
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">材料详情编号</th>
+                                    <th scope="col">领料单编号</th>
+                                    <th scope="col">材料名称</th>
+                                    <th scope="col">材料数量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2001</td>
+                                    <td>1001</td>
+                                    <td>直接</td>
+                                    <td>100件</td>
+                                </tr>
+                            </tbody>
+</el-dialog>
+                </div>
             </div>
         </div>
     </div>
 </body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return { visible: false }
+        },
+        methods: {
+            open() {
+                this.$confirm('确认删除嘛?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({
+                        type: 'success',
+                        message: '删除成功!'
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            }
+        }
+    })
+</script>
 </html>
 

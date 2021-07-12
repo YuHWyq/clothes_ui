@@ -14,7 +14,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
         .ss {
             width: 100%;
@@ -40,7 +40,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: Highlight;
             border: none;
@@ -50,9 +50,9 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
-            background-color: orange;
+            background-color: Highlight;
             border: none;
         }
 
@@ -60,7 +60,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -71,7 +71,7 @@
             font-size: 20px;
             width: 80px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -79,12 +79,12 @@
 
         .text {
             width: 200px;
-            height: 34px;
+            height: 40px;
         }
     </style>
 </head>
 <body>
-    <div>
+    <div id="app">
         <div class="ss">
             <div style="margin-left:50px;">
                 <br />
@@ -104,7 +104,7 @@
                 <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
                 <span class="btn">
                     <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionsadd'" />&nbsp;&nbsp;
-                    <input type="button" value="删除" class="btn2" />
+                    <el-button type="text" v-on:click="open" class="btn2">删除</el-button>
                 </span>
                 <br />
                 <br />
@@ -112,7 +112,7 @@
                 <br />
                 <span style="display:flex;">
                     <input type="text" class="text" placeholder="请输入订单编号" />
-                    <input type="button" value="搜索" class="btn3" />
+                    <el-button type="primary" icon="el-icon-search">搜索</el-button>
                 </span>
                 <br />
                 <span style="font-size:20px;color:dimgray;display:flex;">
@@ -150,4 +150,35 @@
         </div>
     </div>
 </body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return { visible: false }
+        },
+        methods: {
+            open() {
+                this.$confirm('确认删除嘛?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({
+                        type: 'success',
+                        message: '删除成功!'
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            }
+        }
+    })
+</script>
 </html>

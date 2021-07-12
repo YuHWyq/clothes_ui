@@ -49,7 +49,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -59,7 +59,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: orange;
             border: none;
@@ -75,16 +75,39 @@
             height: 40px;
             width: 80px;
             border: 0;
-            border-radius: 5px;
+            border-radius: 2px;
         }
-
+        .btn12 {
+            margin-left:100px;
+            font-size: 15px;
+            width: 80px;
+            height: 30px;
+            color: white;
+            background-color: Highlight;
+            border: none;
+        }
         .btn22 {
             height: 40px;
             width: 80px;
             border: 0;
             background-color: #409EFF;
             color: white;
-            border-radius: 5px;
+            border-radius: 2px;
+        }
+        .btn111 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            border-radius: 2px;
+        }
+
+        .btn222 {
+            height: 40px;
+            width: 80px;
+            border: 0;
+            background-color: #409EFF;
+            color: white;
+            border-radius: 2px;
         }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -133,19 +156,15 @@
                         <el-button v-on:click="visible = true" class="btn1">添加</el-button>&nbsp;&nbsp;
                         <input type="button" value="删除" class="btn2" />
                     </span>
+                    <div>
+                        <el-dialog :visible.sync="visible" title="添加材料数量">
+                            <hr />
+                            <p>材料数量</p>
+                            <input type="text" placeholder="99" style="width:1500px;height:25px;" /><br /><br />
+                            <input type="button" class="btn12" value="提交" />
+                        </el-dialog>
+                    </div>
 
-
-                    <el-dialog :visible.sync="visible" title="请添加材料数量">
-                        <hr />
-                        <h3 style="margin-left: 200px;">产品数量:</h3>
-                        <input type="number" placeholder="请输入具体数量" style="width: 400px;height: 30px; margin-left: 200px;" />
-                        <br />
-                        <br />
-                        <div style="margin-left: 500px;">
-                            <input type="button" value="取消" class="btn11" />&nbsp;&nbsp;&nbsp;
-                            <input type="button" value="提交" class="btn22" />
-                        </div>
-                    </el-dialog>
                 </div>
                 <hr />
                 <span style="font-size:20px;color:dimgray;display:flex;">
@@ -208,6 +227,12 @@
                         <th scope="col"><input type="text" placeholder="请输入操作员姓名" /></th>
                     </tr>
                 </table>
+                <br />
+                <br />
+                <div style="margin-left: 500px;">
+                    <input type="button" value="取消" class="btn111" />
+                    <input type="button" value="提交" class="btn222" style="margin-left: 500px;"/>
+                </div>
             </div>
         </div>
     </div>

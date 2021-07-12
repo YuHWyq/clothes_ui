@@ -19,6 +19,7 @@
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/vue.js"></script>
     <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
         .yy {
             width: 100%;
@@ -44,7 +45,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: orange;
             border: none;
@@ -54,7 +55,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -65,7 +66,7 @@
             font-size: 20px;
             width: 80px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -73,7 +74,7 @@
 
         .text {
             width: 200px;
-            height: 34px;
+            height:40px;
         }
     </style>
 </head>
@@ -104,7 +105,7 @@
                 <br />
                 <span style="display:flex;">
                     <input type="text" class="text" placeholder="请输入订单编号" />
-                    <input type="button" value="搜索" class="btn3" />
+                    <el-button type="primary" icon="el-icon-search">搜索</el-button>
                 </span>
                 <br />
                 <span style="font-size:20px;color:dimgray;display:flex;">
@@ -118,6 +119,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th scope="col" style="width:50px;">选择</th>
                             <th scope="col">出库编号</th>
                             <th scope="col">订单编号</th>
                             <th scope="col">出库日期</th>
@@ -131,7 +133,8 @@
                             {
 
                             }*@
-                        <tr v-for="item in info">
+                        <tr @*v-for="item in info"*@>
+                            <td><input type="checkbox" /></td>
                             <td>002</td>
                             <td>001</td>
                             <td>2021/5/9</td>
@@ -164,4 +167,15 @@
         </div>
     </div>
 </body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return { visible: false }
+        }
+    })
+</script>
 </html>
