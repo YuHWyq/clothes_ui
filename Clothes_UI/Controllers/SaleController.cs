@@ -18,5 +18,10 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
+        //销售统计
+        public ActionResult Sales()
+        {
+            return View();
+        }
     }
 }
