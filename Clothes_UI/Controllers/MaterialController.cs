@@ -13,10 +13,26 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
-        //材料管理
+        //原料库存
         public ActionResult Material()
         {
             return View();
         }
+        //材料入库
+        public ActionResult materialr_in()
+        {
+            return View();
+        }
+        //材料出库
+        public ActionResult out_materialr()
+        {
+            return View();
+        }
+        //出入库统计
+        public ActionResult Statistics()
+        {
+            return View();
+        }
+        
     }
 }

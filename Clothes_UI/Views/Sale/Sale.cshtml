@@ -44,6 +44,7 @@
             height: 50px;
             border-bottom: 2px solid #f1f1f0;
         }
+      
     </style>
 </head>
 <body>
@@ -56,7 +57,7 @@
                             销售管理
                             <small>
                                 <i class="icon-double-angle-right"></i>
-                                客户订单
+                                客户订单处理
                             </small>
                         </h1>
                     </div><!-- /.page-header -->
@@ -67,18 +68,78 @@
         <div class="section">
             <div class="section_box">
                 <div class="top">
-                    <span style="font-size:16px;font-weight:bolder; padding-left:10px;">订单管理</span>
+                    <span style="font-size:16px;color:#808080;font-weight:bolder; padding-left:20px;line-height:28px;">客户订单处理 / <span style="font-size:14px;">订单销售</span></span>
                 </div>
-                <div id="app">
-                    <el-input placeholder="请输入名字进行查询" v-model="search" class="input-with-select" style="width:300px;margin-top:20px;margin-left:10px;">
-                        <el-button slot="append" icon="el-icon-search"></el-button>
+                <div class="top">
+                    <span style="font-size:16px;font-weight:bolder; padding-left:50px;">订单管理</span>
+                    <div id="apps" style="float:right;">
+                        <a style="color:white" href="/sale/out_repertory">
+                            <el-button type="primary" icon="el-icon-plus" style="background-color: rgb(52,123,183);">
+                                出库
+                            </el-button>
+                        </a>
+                      
+                    </div>
+                </div>
+                <div style="height:700px;">
+                    <div id="app" style="margin-left:100px;">
+                        <div class="biaoge" style="width:90%;text-align:center;">
+                            <div style="margin:0px auto;">
+                                <template>
+                                    <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+                                              style="width: 100%">
+                                        <el-table-column label="订单ID"
+                                                         prop="orderID">
+                                        </el-table-column>
+                                        <el-table-column label="客户名"
+                                                         prop="customer_name">
+                                        </el-table-column>
+                                        <el-table-column label="经手人"
+                                                         prop="person_handling">
+                                        </el-table-column>
+                                        <el-table-column label="已付金额"
+                                                         prop="order_paid">
+                                        </el-table-column>
+                                        <el-table-column label="未付金额"
+                                                         prop="order_unpaid">
+                                        </el-table-column>
+                                        <el-table-column label="计划生产时间"
+                                                         prop="product_time">
+                                        </el-table-column>
+                                        <el-table-column label="计划结束时间"
+                                                         prop="product_end_time">
+                                        </el-table-column>
+                                        <el-table-column label="处理状态"
+                                                         prop="order_status">
+                                        </el-table-column>
+                                        <el-table-column align="right">
+                                            <template slot="header" slot-scope="scope">
+                                                <el-input v-model="search"
+                                                          size="mini"
+                                                          placeholder="输入关键字搜索" />
+                                            </template>
+                                            <template slot-scope="scope">
+                                                <el-button size="mini" v-on:click="dialogTableVisible = true">详情</el-button>
+                                                <el-button size="mini" type="danger" v-on:click="handleDelete()" style="padding-left:10px;padding-right:10px;">删除</el-button>
+                                            </template>
+                                        </el-table-column>
+                                    </el-table>
+                                </template>
 
-                    </el-input>
-                    <div class="biaoge"style="width:90%;text-align:center;">
-                        <div style="margin:0px auto;">
-                           
-
+                            </div>
                         </div>
+
+                        <el-dialog title="销售订单详情" :visible.sync="dialogTableVisible">
+                            <el-table :data="gridData">
+                                <el-table-column property="product_id" label="产品ID" width="150"></el-table-column>
+                                <el-table-column property="product_name" label="产品名" width="200"></el-table-column>
+                                <el-table-column property="product_price" label="产品价格"></el-table-column>
+                                <el-table-column property="quantity" label="产品数量"></el-table-column>
+                                <el-table-column property="product_type" label="产品类型"></el-table-column>
+                                <el-table-column property="product_num" label="产品编号"></el-table-column>
+
+                            </el-table>
+                        </el-dialog>
                     </div>
                 </div>
             </div>
@@ -92,33 +153,70 @@
             data() {
                 return {
                     tableData: [{
-                        date: '2016-05-02',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄'
+                        orderID: 1,
+                        customer_name:'林幕染',
+                        person_handling: '吹梦',
+                        order_paid: 20000,
+                        order_unpaid: 20000,
+                        product_time: '2021-5-1',
+                        product_end_time: '2021-6-1',
+                        order_status: '待提货',
                     }, {
-                        date: '2016-05-04',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1517 弄'
-                    }, {
-                        date: '2016-05-01',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1519 弄'
-                    }, {
-                        date: '2016-05-03',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1516 弄'
+                            orderID: 1,
+                            customer_name: '林幕染',
+                            person_handling: '吹梦',
+                            order_paid: 20000,
+                            order_unpaid: 20000,
+                            product_time: '2021-5-1',
+                            product_end_time: '2021-6-1',
+                            order_status: '待提货',
+                        }, {
+                            orderID: 1,
+                            customer_name: '林幕染',
+                            person_handling: '吹梦',
+                            order_paid: 20000,
+                            order_unpaid: 20000,
+                            product_time: '2021-5-1',
+                            product_end_time: '2021-6-1',
+                            order_status: '待提货',
+                        }, {
+                            orderID: 1,
+                            customer_name: '林幕染',
+                            person_handling: '吹梦',
+                            order_paid: 20000,
+                            order_unpaid: 20000,
+                            product_time: '2021-5-1',
+                            product_end_time: '2021-6-1',
+                            order_status: '待提货',
                     }],
-                    search: ''
+                    search: '',
+                    gridData: [{
+                        product_id:1,
+                        product_name:'透气T恤',
+                        product_price: '100',
+                        quantity: 1000,
+                        product_type: '短袖',
+                        product_num:'1354'
+                    },],
+                    dialogTableVisible: false,
+                    dialogFormVisible: false,
                 }
             },
             methods: {
-                handleEdit(index, row) {
-                    console.log(index, row);
+                handleEdit() {
+                    alert("详情");
                 },
-                handleDelete(index, row) {
-                    console.log(index, row);
+                handleDelete() {
+                    alert("删除");
                 }
+            }
+        })
 
+        var vm1 = new Vue({
+            el: "#apps",
+            data: {
+
+            }
         })
     </script>
 </body>
