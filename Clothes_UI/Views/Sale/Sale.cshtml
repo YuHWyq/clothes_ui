@@ -72,6 +72,14 @@
                 </div>
                 <div class="top">
                     <span style="font-size:16px;font-weight:bolder; padding-left:50px;">订单管理</span>
+                    <div id="apps" style="float:right;">
+                        <a style="color:white" href="/sale/out_repertory">
+                            <el-button type="primary" icon="el-icon-plus" style="background-color: rgb(52,123,183);">
+                                出库
+                            </el-button>
+                        </a>
+                      
+                    </div>
                 </div>
                 <div style="height:700px;">
                     <div id="app" style="margin-left:100px;">
@@ -201,6 +209,13 @@
                 handleDelete() {
                     alert("删除");
                 }
+            }
+        })
+
+        var vm1 = new Vue({
+            el: "#apps",
+            data: {
+
             }
         })
     </script>

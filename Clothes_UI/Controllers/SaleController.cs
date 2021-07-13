@@ -23,5 +23,11 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
+        //出库
+
+        public ActionResult out_repertory()
+        {
+            return View();
+        }
     }
 }
