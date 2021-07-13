@@ -111,7 +111,7 @@
                                                           placeholder="输入关键字搜索" />
                                             </template>
                                             <template slot-scope="scope">
-                                                <el-button size="mini" v-on:click="handleEdit()" >详情</el-button>
+                                                <el-button size="mini" v-on:click="dialogTableVisible = true">详情</el-button>
                                                 <el-button size="mini" type="danger" v-on:click="handleDelete()" style="padding-left:10px;padding-right:10px;">删除</el-button>
                                             </template>
                                         </el-table-column>
@@ -120,6 +120,18 @@
 
                             </div>
                         </div>
+
+                        <el-dialog title="销售订单详情" :visible.sync="dialogTableVisible">
+                            <el-table :data="gridData">
+                                <el-table-column property="product_id" label="产品ID" width="150"></el-table-column>
+                                <el-table-column property="product_name" label="产品名" width="200"></el-table-column>
+                                <el-table-column property="product_price" label="产品价格"></el-table-column>
+                                <el-table-column property="quantity" label="产品数量"></el-table-column>
+                                <el-table-column property="product_type" label="产品类型"></el-table-column>
+                                <el-table-column property="product_num" label="产品编号"></el-table-column>
+
+                            </el-table>
+                        </el-dialog>
                     </div>
                 </div>
             </div>
@@ -169,7 +181,17 @@
                             product_end_time: '2021-6-1',
                             order_status: '待提货',
                     }],
-                    search: ''
+                    search: '',
+                    gridData: [{
+                        product_id:1,
+                        product_name:'透气T恤',
+                        product_price: '100',
+                        quantity: 1000,
+                        product_type: '短袖',
+                        product_num:'1354'
+                    },],
+                    dialogTableVisible: false,
+                    dialogFormVisible: false,
                 }
             },
             methods: {

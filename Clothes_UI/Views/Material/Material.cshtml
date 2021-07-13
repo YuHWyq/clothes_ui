@@ -9,6 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Material</title>
+
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:400,300" />
@@ -50,18 +51,131 @@
             <div class="page-content">
                 <div class="page-header">
                     <h1>
-                        销售管理
+                        材料库存管理
                         <small>
                             <i class="icon-double-angle-right"></i>
-                            客户订单处理
+                            原料库存
                         </small>
                     </h1>
                 </div><!-- /.page-header -->
             </div>
         </div>
     </div>
-    <div>
-        <h1>原料库存</h1>
+    <div class="section">
+        <div class="section_box">
+            <div class="top">
+                <span style="font-size:16px;color:#808080;font-weight:bolder; padding-left:20px;line-height:28px;">材料库存管理 / <span style="font-size:14px;">原料库存</span></span>
+            </div>
+            <div class="top">
+                <span style="font-size:16px;font-weight:bolder; padding-left:50px;">原料库存管理</span>
+            </div>
+            <div style="height:700px;">
+                <div id="app" style="margin-left:100px;">
+                    <div class="biaoge" style="width:90%;text-align:center;">
+                        <div style="margin:0px auto;">
+                            <template>
+                                <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+                                          style="width: 100%">
+                                    <el-table-column label="订单ID"
+                                                     prop="orderID">
+                                    </el-table-column>
+                                    <el-table-column label="客户名"
+                                                     prop="customer_name">
+                                    </el-table-column>
+                                    <el-table-column label="经手人"
+                                                     prop="person_handling">
+                                    </el-table-column>
+                                    <el-table-column label="已付金额"
+                                                     prop="order_paid">
+                                    </el-table-column>
+                                    <el-table-column label="未付金额"
+                                                     prop="order_unpaid">
+                                    </el-table-column>
+                                    <el-table-column label="计划生产时间"
+                                                     prop="product_time">
+                                    </el-table-column>
+                                    <el-table-column label="计划结束时间"
+                                                     prop="product_end_time">
+                                    </el-table-column>
+                                    <el-table-column label="处理状态"
+                                                     prop="order_status">
+                                    </el-table-column>
+                                    <el-table-column align="right">
+                                        <template slot="header" slot-scope="scope">
+                                            <el-input v-model="search"
+                                                      size="mini"
+                                                      placeholder="输入关键字搜索" />
+                                        </template>
+                                        <template slot-scope="scope">
+                                            <el-button size="mini" v-on:click="handleEdit()">详情</el-button>
+                                            <el-button size="mini" type="danger" v-on:click="handleDelete()" style="padding-left:10px;padding-right:10px;">删除</el-button>
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+                            </template>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    tableData: [{
+                        orderID: 1,
+                        customer_name: '林幕染',
+                        person_handling: '吹梦',
+                        order_paid: 20000,
+                        order_unpaid: 20000,
+                        product_time: '2021-5-1',
+                        product_end_time: '2021-6-1',
+                        order_status: '待提货',
+                    }, {
+                        orderID: 1,
+                        customer_name: '林幕染',
+                        person_handling: '吹梦',
+                        order_paid: 20000,
+                        order_unpaid: 20000,
+                        product_time: '2021-5-1',
+                        product_end_time: '2021-6-1',
+                        order_status: '待提货',
+                    }, {
+                        orderID: 1,
+                        customer_name: '林幕染',
+                        person_handling: '吹梦',
+                        order_paid: 20000,
+                        order_unpaid: 20000,
+                        product_time: '2021-5-1',
+                        product_end_time: '2021-6-1',
+                        order_status: '待提货',
+                    }, {
+                        orderID: 1,
+                        customer_name: '林幕染',
+                        person_handling: '吹梦',
+                        order_paid: 20000,
+                        order_unpaid: 20000,
+                        product_time: '2021-5-1',
+                        product_end_time: '2021-6-1',
+                        order_status: '待提货',
+                    }],
+                    search: ''
+                }
+            },
+            methods: {
+                handleEdit() {
+                    alert("详情");
+                },
+                handleDelete() {
+                    alert("删除");
+                }
+            }
+        })
+    </script>
 </body>
 </html>
