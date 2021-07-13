@@ -49,6 +49,13 @@
             line-height:30px;
             padding-left:200px;
         }
+        .section_title{
+            width:100px;
+            height:30px;
+            /*border:1px solid red;*/
+            font-size:25px;
+            margin-left:10px;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +127,7 @@
     <div class="section">
 
         <div class="section_box">
+            <div class="section_title">销量统计</div>
             <div id="appbox">
                 <div id="app" style="width:1000px;height:500px;">
 
@@ -129,8 +137,22 @@
     </div>
     <div class="bottoms">
         <div class="bottoms_box">
-            <div class="three"></div>
-            <div class="three"></div>
+            <div class="three">
+                <div class="section_title">收入统计</div>
+                <div id="app1box" style=" width:410px;height:410px; margin:0px auto;">
+                    <div id="app1" style="width:400px;height:400px;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="three">
+                <div class="section_title">支出统计</div>
+                <div id="app2box" style=" width:410px;height:410px; margin:0px auto;">
+                    <div id="app2" style="width:400px;height:400px;">
+
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -149,7 +171,7 @@
         //     }
         // });
         var myChart = echarts.init(document.getElementById('app'));
-        var option = {
+        option = {
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -222,7 +244,93 @@
         };
         myChart.setOption(option);
 
+        var myChart1 = echarts.init(document.getElementById('app1'))
+        option1 = {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
+                {
+                    name: '收入来源',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        borderRadius: 10,
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    },
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '40',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        { value: 1048, name: 'T恤' },
+                        { value: 735, name: '外套' },
+                        { value: 580, name: '牛仔裤' }
+                    ]
+                }
+            ]
+        };
+        myChart1.setOption(option1);
 
+        var myChart2 = echarts.init(document.getElementById('app2'))
+        option2 = {
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
+                {
+                    name: '收入来源',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        borderRadius: 10,
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    },
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '40',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        { value: 600, name: 'T恤' },
+                        { value: 300, name: '外套' },
+                        { value: 580, name: '牛仔裤' }
+                    ]
+                }
+            ]
+        };
+        myChart2.setOption(option2);
     </script>
 </body>
 </html>

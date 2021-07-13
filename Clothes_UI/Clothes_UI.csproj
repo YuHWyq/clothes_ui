@@ -310,6 +310,9 @@
     <Content Include="Views\Customer\manage.cshtml" />
     <Content Include="Views\Customer\insertmanage.cshtml" />
     <Content Include="Views\Customer\track.cshtml" />
+    <Content Include="Views\Material\materialr_in.cshtml" />
+    <Content Include="Views\Material\out_materialr.cshtml" />
+    <Content Include="Views\Material\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

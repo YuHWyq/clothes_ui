@@ -14,10 +14,10 @@ namespace Clothes_UI.Controllers
             return View();
         }
         //登录Action
-        public ActionResult Login()
-        {
-            return View();
-        }
+        //public ActionResult Login()
+        //{
+        //    return View();
+        //}
         public ActionResult Login1()
         {
             return View();
