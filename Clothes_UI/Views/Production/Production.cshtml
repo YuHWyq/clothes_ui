@@ -1,5 +1,4 @@
 ﻿
-
 @{
     Layout = null;
 }
@@ -18,6 +17,8 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
         .ss {
@@ -64,7 +65,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius:2px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -80,6 +81,7 @@
             background-color: lightseagreen;
             border: none;
         }
+
         .brn5 {
             font-size: 20px;
             width: 80px;
@@ -89,6 +91,7 @@
             background-color: lightseagreen;
             border: none;
         }
+
         .text {
             width: 200px;
             height: 40px;
@@ -96,126 +99,130 @@
     </style>
 </head>
 <body>
-    <div id="app">
-        <div class="ss">
-            <div style="margin-left:50px;">
-                <br />
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">生产管理</li>
-                        <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">领料管理</li>
-                    </ol>
-                </nav>
+    <form action="/Production/Insert" method="post" enctype="multipart/form-data">
+        <div id="app" v-show="show">
+            <div class="ss">
+                <div style="margin-left:50px;">
+                    <br />
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">生产管理</li>
+                            <li class="breadcrumb-item" style="font-size:15px;color:dimgray;">领料管理</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-        </div>
-        <br />
-        <br />
-        <div class="yy">
-            <div class="top">
-                <br />
-                <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
-                <span class="btn">
-                    <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionadd'" />&nbsp;&nbsp;
-                    <el-button type="text" v-on:click="open" class="btn2">删除</el-button>
-                </span>
-                <br />
-                <br />
-                <hr />
-                <br />
-                <span style="display:flex;">
-                    <input type="text" class="text" placeholder="请输入订单编号" />
-                    <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                </span>
-                <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="number" style="width: 80px; height: 22px;" />条
-                </span>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">领料编号</th>
-                            <th scope="col">计划编号</th>
-                            <th scope="col">领材料部门</th>
-                            <th scope="col">领料日期</th>
-                            <th scope="col">经办人</th>
-                            <th scope="col">操作员</th>
-                            <th scope="col">状态</th>
-                            <th scope="col">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @*@foreach (var item in collection)
-                {
-
-                }*@
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>布料部</td>
-                            <td>2021/4/5</td>
-                            <td>林慕染</td>
-                            <td>覃佐继</td>
-                            <td>未提货</td>
-                            <td><el-button v-on:click="visible = true"  type="primary" plain>详情</el-button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <el-dialog :visible.sync="visible" title="材料详情">
-                        <hr />
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">材料详情编号</th>
-                                    <th scope="col">领料单编号</th>
-                                    <th scope="col">材料名称</th>
-                                    <th scope="col">材料数量</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2001</td>
-                                    <td>1001</td>
-                                    <td>直接</td>
-                                    <td>100件</td>
-                                </tr>
-                            </tbody>
-</el-dialog>
+            <br />
+            <br />
+            <div class="yy">
+                <div class="top">
+                    <br />
+                    <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
+                    <span class="btn">
+                        <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionadd'" />&nbsp;&nbsp;
+                        <el-button type="text" v-on:click="open" class="btn2">删除</el-button>
+                    </span>
+                    <br />
+                    <br />
+                    <hr />
+                    <br />
+                    <span style="display:flex;">
+                        <input type="text" class="text" placeholder="请输入订单编号" />
+                        <el-button type="primary" icon="el-icon-search">搜索</el-button>
+                    </span>
+                    <br />
+                    <span style="font-size:20px;color:dimgray;display:flex;">
+                        显示<input type="number" style="width: 80px; height: 22px;" />条
+                    </span>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">领料编号</th>
+                                <th scope="col">计划编号</th>
+                                <th scope="col">领材料部门</th>
+                                <th scope="col">领料日期</th>
+                                <th scope="col">经办人</th>
+                                <th scope="col">操作员</th>
+                                <th scope="col">状态</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in info">
+                                <td><input type="checkbox" /></td>
+                                <td>{{item.w_materials_id}}</td>
+                                <td>{{item.product_plan_id}}</td>
+                                <td>{{item.get_department}}</td>
+                                <td>{{item.get_time}}</td>
+                                <td>{{item.person_handling}}</td>
+                                <td>{{item.operator_per}}</td>
+                                <td>{{item.status}}</td>
+                                <td><el-button v-on:click="visible = true" type="primary" plain>详情</el-button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <el-dialog :visible.sync="visible" title="材料详情">
+                            <hr />
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">材料详情编号</th>
+                                        <th scope="col">领料单编号</th>
+                                        <th scope="col">材料名称</th>
+                                        <th scope="col">材料数量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2001</td>
+                                        <td>1001</td>
+                                        <td>直接</td>
+                                        <td>100件</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </el-dialog>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
-<!-- import Vue before Element -->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- import JavaScript -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script>
-    new Vue({
-        el: '#app',
-        data: function () {
-            return { visible: false }
-        },
-        methods: {
-            open() {
-                this.$confirm('确认删除嘛?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功!'
+    </form>
+    <!-- import Vue before Element -->
+    <script src="~/Scripts/vue.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: 
+                function() {
+                    return { visible: false }
+                },
+            methods: {
+                open() {
+                    this.$confirm('确认删除嘛?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        });
                     });
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消删除'
-                    });
-                });
+                }
             }
-        }
-    })
-</script>
+        });
+    </script>
+</body>
 </html>
 

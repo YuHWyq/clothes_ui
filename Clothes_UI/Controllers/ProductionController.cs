@@ -24,6 +24,7 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
+        
         //添加领料管理
         public ActionResult Productionadd()
         {

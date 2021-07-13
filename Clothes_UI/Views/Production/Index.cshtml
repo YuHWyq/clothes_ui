@@ -105,7 +105,7 @@
             <br />
             <br />
             <div class="yy">
-                <div class="top1" id="app">
+                <div class="top1">
                     <br />
                     <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
                     <span class="btn">
@@ -116,8 +116,8 @@
                     <hr />
                     <br />
                     <span style="display:flex;">
-                        <input type="text" class="text" placeholder="请输入订单编号" />
-                        <input type="button" value="搜索" class="btn3" />
+                        <input type="text" class="text" v-model="seach" placeholder="请输入订单编号" />
+                        <input type="button" value="搜索" class="btn3" onclick="sousuo()"/>
                     </span>
                     <br />
                     <span style="font-size:20px;color:dimgray;display:flex;">
@@ -131,6 +131,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th scope="col"><input type="checkbox" />全选</th>
                                 <th scope="col">计划编号</th>
                                 <th scope="col">订单编号</th>
                                 <th scope="col">产品名称</th>
@@ -144,15 +145,16 @@
                         </thead>
                         <tbody>
                             <tr v-for="item in info">
+                                <td><input type="checkbox" /></td>
                                 <td>{{item.product_plan_id}}</td>
-                                <td>2</td>
-                                <td>林慕染</td>
-                                <td>20件</td>
-                                <td>{{item.product_plan_num}}</td>
+                                <td>{{item.order_id}}</td>
+                                <td>{{item.product_name}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.planned_output}}</td>
                                 <td>{{item.product_time}}</td>
-                                <td>{{item.p_operator}}</td>
+                                <td>{{item.operator_per}}</td>
                                 <td>{{item.person_handling}}</td>
-                                <td>未处理</td>
+                                <td>{{item.status}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -190,7 +192,8 @@
             el: "#app",
             data: {
                 info: [],
-                show: true
+                show: true,
+                seach:""
             },
             methods: {
                 open() {
@@ -212,6 +215,9 @@
                 }
             }
         });
+        function sousuo() {
+
+        }
         $.ajax({
             url: "https://localhost:44360/api/Production/plan_table",
             type: "get",
