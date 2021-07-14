@@ -9,9 +9,167 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Purchase</title>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
+    <style>
+    #content {
+        width: 100%;
+        height: 800px;
+        @*box-shadow: 0px 0px 5px 5px lightgray;
+        *@ @* margin-left: 150px;
+        *@
+    }
+        a {
+            text-decoration: none;
+            font-size: 20px;
+        }
+        #header {
+            margin-top: 20px;
+        }
+        .btn2 {
+            float: right;
+            background-color: lightseagreen;
+            height: 40px;
+            width: 70px;
+            margin-left: 10px;
+        }
+
+    </style>
 </head>
+
 <body>
-    <div> <h1>采购管理</h1>
+    <div id="content">
+        <div id="contentheader">
+            <div id="headerbody" style="border: 1px solid white">
+                <p style="margin-top:20px; margin-left:40px; font-size: 30px;">添加采购订单</p>
+                <a href="" style="margin-left:20px ;">首页</a>
+                /<a href="">采购单管理</a>
+                /<a href="">采购统计</a>
+            </div>
+        </div>
+        <div style="border: 1px solid lightgray; width: 100%; margin-top:20px;"></div>
+
+        <div id="header">
+
+            <span style="font-size: 20px; margin: 20px;">添加采购单</span>
+
+            <input type="button" class="btn2" value="添加" style="margin-right:20px; border-radius:5px; color: white;"></input>
+
+
+
+        </div>
+        <div style="border: 1px solid lightgray; width: 100%; margin-top:50px;"></div>
+        <div id="body">
+            <input type="text" placeholder="请输入材料名称" style="height:40px; width: 300px; margin: 20px; font-size: 20px;" />
+            <input type="button" value="搜索" style="margin: -25px; height: 50px; width: 75px; height:48px; border-radius: 5px; background-color: #20B2AA; color: white;">
+            <span style="font-size:20px;color:dimgray;display:flex;">
+                显示<input type="text" list="xl" style="width: 80px; height: 22px;" />
+                <datalist id="xl">
+                    <option>1</option>
+                    <option>50</option>
+                    <option>100</option>
+                </datalist>条
+            </span>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">材料ID</th>
+                        <th scope="col">材料名</th>
+                        <th scope="col">材料类型</th>
+                        <th scope="col">材料价格</th>
+                        <th scope="col">供应商</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr v-for="item in info">
+                        <td>002</td>
+                        <td>001</td>
+                        <td>品如</td>
+                        <td>T恤</td>
+                        <td>件</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <div id="bodyfoot" style="margin-left:550px; margin-top:100px;">
+                <div id="app">
+                    处理状态：
+                    <el-input v-model="input" placeholder="请输入内容" style="width: 135px;"></el-input>
+                    <span style="margin-left: 20px;">
+                        操作人：
+                        <el-input v-model="input" placeholder="请输入内容" style="width: 135px;"></el-input>
+                    </span>
+                    <div id="input1" style="margin-top: 20px;">
+                        操作时间： <el-date-picker style="width: 135px;"
+                                              v-model="value2"
+                                              type="datetime"
+                                              placeholder="请选择日期"
+                                              align="right"
+                                              :picker-options="pickerOptions">
+                        </el-date-picker>
+                        <span style="margin-left: 20px;">
+                            经手人：
+                            <el-input v-model="input" placeholder="请输入内容" style="width: 135px;"></el-input>
+                        </span>
+                    </div>
+                    <div id="btn" style="margin-top: 20px; margin-left:150px;">
+                        <el-button type="primary">提交</el-button>
+                        <span style="margin-left: 50px;"><el-button type="danger">取消</el-button></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    input: '',
+                    pickerOptions: {
+                        shortcuts: [{
+                            text: '今天',
+                            onClick(picker) {
+                                picker.$emit('pick', new Date());
+                            }
+                        }, {
+                            text: '昨天',
+                            onClick(picker) {
+                                const date = new Date();
+                                date.setTime(date.getTime() - 3600 * 1000 * 24);
+                                picker.$emit('pick', date);
+                            }
+                        }, {
+                            text: '一周前',
+                            onClick(picker) {
+                                const date = new Date();
+                                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                                picker.$emit('pick', date);
+                            }
+                        }]
+                    },
+                    value1: '',
+                    value2: '',
+                    value3: ''
+                }
+            }
+        })
+    </script>
 </body>
 </html>

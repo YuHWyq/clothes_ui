@@ -9,6 +9,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>insertmanage</title>
+
+    
     <style>
         #content {
             width: 100%;
@@ -102,7 +104,7 @@
 
 
                         <td style="font-size:20px;">产品规格：<input type="text" style="width: 250px; height: 30px;" /></td>
-                        <td style="font-size:20px;">批准文号：<input type="text" style="width: 250px; height: 30px;" /></td>
+                        <td style="font-size:20px;">厂商地址：<input type="text" style="width: 250px; height: 30px;" /></td>
                     </tr>
                     <tr>
                         <td style="font-size:20px;">产品类别：<input type="text" style="width: 250px; height: 30px;" /></td>
@@ -145,73 +147,83 @@
                 <table class="table" border="1" width="100%" height="100%">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">产品编号</th>
+                            <th scope="col">产品名称</th>
+                            <th scope="col">产品单价</th>
+                            <th scope="col">产品数量</th>
+                            
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>dd</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>dd</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>dd</td>
-                        </tr>
-                    </tbody>
+                    @foreach (var insert in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <th scope="row">@insert.product_num</th>
+                                <td>@insert.product_name</td>
+                                <td>@insert.product_price</td>
+                                <td>@insert.product_quantity</td>
+                            </tr>
+
+                        </tbody>
+                    }
+
                 </table>
             </div>
         </div>
         <div id="foot">
 
             <div id="footbody">
-                <span style="font-size: 20px; margin: 20px;">商品详情信息</span>
+                <span style="font-size: 20px; margin: 20px;">客户订单</span>
                 <div style="border: 1px solid lightgray; width: 100%; margin-top: 50px;"></div>
 
-                <table style="margin-top:70px; margin-left:150px;" class="table table-dark" border="0" width="75%" height="100%">
-                    <thead>
-                        <tr>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div id="ed" style="margin-top:100px; margin-left:500px;" >
+                    客户id：
+                    <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                    <span style="margin-left: 20px;">
+                        订单编号：
+                        <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                    </span>
+                    <span style="margin-left: 20px;">
+                        经手人：
+                        <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                    </span>
+                    <div id="input1" style="margin-top: 20px;">
+                        交付时间： <el-date-picker style="width: 200px;"
+                                              v-model="value2"
+                                              type="datetime"
+                                              placeholder="请选择日期"
+                                              align="right"
+                                              :picker-options="pickerOptions">
+                        </el-date-picker>
+                        <span style="margin-left: 20px;">
+                            操作人：
+                            <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                        </span>
+                        <span style="margin-left: 20px;">
+                           已付金额：
+                            <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                        </span>
 
+                    </div>
+                    <div id="input2" style="margin-top: 20px; margin-left:-20px;">
+                        <span style="margin-left: 20px;">
+                            未付金额：
+                            <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                        </span>
+                        <span style="margin-left: 20px;">
+                            订单状态：
+                            <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                        </span>
+                        <span style="margin-left: 20px;">
+                            下单时间：
+                            <el-input v-model="input" placeholder="请输入内容" style="width: 200px;"></el-input>
+                        </span>
+                    </div>
+                    <div id="btn" style="margin-top: 20px; margin-left:300px;">
+                        <el-button type="primary">提交</el-button>
+                        <span style="margin-left: 50px;"><el-button type="danger">取消</el-button></span>
+                    </div>
 
-                        <tr>
-
-
-                            <td style="font-size:20px;">预定金额：<input type="text" style="width: 250px; height: 30px;" /></td>
-                            <td style="font-size:20px;">交货日期：<input type="text" style="width: 250px; height: 30px;" /></td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:20px;">操作人员：<input type="text" style="width: 250px; height: 30px;" /></td>
-                            <td style="font-size:20px;">经手人员：<input type="text" style="width: 250px; height: 30px;" /></td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:20px;">客户名称：<input type="text" style="width: 250px; height: 30px;" /></td>
-                            <td style="font-size:20px;">交货方式：<input type="text" style="width: 250px; height: 30px;" /></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-                <div id="button">
-                    <p style="margin-left:550px;">
-                        <input type="button" value="取消" style="background-color:white ; color: lightsalmon; height: 40px;
-				width: 70px; border-radius:5px;" />
-                        <input type="button" value="提交" style="background-color: #20B2AA; color:white; height: 40px; width: 70px; margin-left: 30px; border-radius:5px;">
-                    </p>
                 </div>
             </div>
         </div>
@@ -249,6 +261,40 @@
                     console.log(value);
                 }
             }
+        })
+        var vm2 = new Vue({
+            el: '#ed',
+            data() {
+                return {
+                    input: '',
+                    pickerOptions: {
+                        shortcuts: [{
+                            text: '今天',
+                            onClick(picker) {
+                                picker.$emit('pick', new Date());
+                            }
+                        }, {
+                            text: '昨天',
+                            onClick(picker) {
+                                const date = new Date();
+                                date.setTime(date.getTime() - 3600 * 1000 * 24);
+                                picker.$emit('pick', date);
+                            }
+                        }, {
+                            text: '一周前',
+                            onClick(picker) {
+                                const date = new Date();
+                                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                                picker.$emit('pick', date);
+                            }
+                        }]
+                    },
+                    value1: '',
+                    value2: '',
+                    value3: ''
+                }
+            }
+
         })
     </script>
 </body>

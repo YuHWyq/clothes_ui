@@ -9,6 +9,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>manage</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <link href="~/Scripts/ElementUI/element-ui.js" />
     <style>
         #content {
             width: 100%;
@@ -90,43 +101,52 @@
 
                 </select>条
             </div>
-            <table class="table" border="1" width="100%" height="100%">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">订单编号</th>
+                        <th scope="col">用户id</th>
+                        <th scope="col">下单时间</th>
+                        <th scope="col">交付时间</th>
+                        <th scope="col">经手人</th>
+                        <th scope="col">操作人</th>
+                        <th scope="col">已付金额</th>
+                        <th scope="col">未付金额</th>
+                        <th scope="col">订单状态</th>
+                      
+                        <th scope="col">操作</th>
+
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>dd</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>dd</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>dd</td>
-                    </tr>
-                </tbody>
+                @foreach (var order in Model)
+                {
+                    <tbody>
+
+                        <tr v-for="item in info">
+                            <td>@order.order_id</td>
+                            <td>@order.customer_id</td>
+                            <td>@order.order_starttime</td>
+                            <td>@order.order_endtime</td>
+                            <td>@order.person_handling</td>
+                            <td>@order.operator_per</td>
+                            <td>@order.order_paid</td>
+                            <td>@order.order_unpaid</td>
+                            <td>@order.order_status</td>
+                          @*  <td>@order.order_delivery_way</td>*@
+                            <td><button>修改</button><button>删除</button></td>
+                        </tr>
+                    </tbody>
+                }
             </table>
+
         </div>
     </div>
+    <script>
+        function skip() {
+            window.location.href = '/Customer/insertmanage';
+        }
+    </script>
+
 </body>
-<script>
-    function skip() {
-        window.location.href = '/Customer/insertmanage';
-    }
-</script>
 
 </html>

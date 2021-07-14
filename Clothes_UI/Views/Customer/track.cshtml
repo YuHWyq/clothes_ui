@@ -24,7 +24,15 @@
         width: 100%;
         height: 600px;
     }
+    .el-table .warning-row {
+        background: oldlace;
+    }
+
+    .el-table .success-row {
+        background: #f0f9eb;
+    }
 </style>
+<link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
 
 <html>
 <head>
@@ -32,6 +40,8 @@
     <title>track</title>
 </head>
 <body>
+    
+    </div>
     <div id="content">
         <div id="contentheader">
             <div id="headerbody" style="border: 1px solid white">
@@ -71,7 +81,64 @@
         <div id="contentbody" style="margin-top:50px;">
             <span style="font-size: 20px; margin: 20px;">订单详细信息</span>
             <div style="border: 1px solid lightgray; width: 100%; margin-top:50px;"></div>
+            <div id="app" style="margin-top:40px;">
+                <template style="">
+                    <el-table :data="tableData"
+                              style="width: 50%"
+                              :row-class-name="tableRowClassName">
+                        <el-table-column prop="date"
+                                         label="订单信息"
+                                         width="180">
+                        </el-table-column>
+                        <el-table-column prop="name"
+                                         label="姓名"
+                                         width="180">
+                        </el-table-column>
+                        <el-table-column prop="address"
+                                         label="地址">
+                        </el-table-column>
+                    </el-table>
+                </template>
+
+            </div>
         </div>
-    </div>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            methods: {
+                tableRowClassName({ row, rowIndex }) {
+                    if (rowIndex === 1) {
+                        return 'warning-row';
+                    } else if (rowIndex === 3) {
+                        return 'success-row';
+                    }
+                    return '';
+                }
+            },
+            data() {
+                return {
+                    tableData: [{
+                        date: '2016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                    }, {
+                        date: '2016-05-04',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }, {
+                        date: '2016-05-01',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                    }, {
+                        date: '2016-05-03',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }]
+                }
+            }
+        })
+    </script>
 </body>
 </html>

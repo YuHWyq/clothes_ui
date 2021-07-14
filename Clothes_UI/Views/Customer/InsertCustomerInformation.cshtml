@@ -47,68 +47,70 @@
 
     </div>
     <div style="border: 1px solid white; width: 100%; margin-top:30px;"></div>
-    <div id="content">
+    <form action="/Customer/Insert" method="post" enctype="multipart/form-data">
+        <div id="content">
 
-        <div style="border: 1px solid white; width: 100%;"></div>
-        <div id="header">
-            <div style="font-size: 20px;  margin-left: 20px;">客户资料</div>
+            <div style="border: 1px solid white; width: 100%;"></div>
+            <div id="header">
+                <div style="font-size: 20px;  margin-left: 20px;">客户资料</div>
 
-            <div style="border: 1px solid lightgray; width: 100%; margin-top: 50px;"></div>
+                <div style="border: 1px solid lightgray; width: 100%; margin-top: 50px;"></div>
 
-
-        </div>
-        <div id="body">
-
-            <div id="ulstyle" style="margin: 50px;">
-                <table style="border:1;">
-                    <tr>
-                        <th><p style="font-size: 20px; margin-left:-150px ;">客户名称</p></th>
-                        <th><p style="font-size: 20px; margin-left:-25px ;">电话</p></th>
-                        <th><p style="font-size: 20px; margin-left:0px ;">联系人</p></th>
-                    </tr>
-
-                    <tr>
-                        <td><input type="text" placeholder="启航服装有限公司" style="width: 250px; height: 30px;font-size: 18px;"></td>
-                        <td><input type="text" placeholder="请输入电话" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"></td>
-                        <td><input type="text" placeholder="请输入联系人" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"></td>
-                    </tr>
-                    <tr>
-                        <th><p style="font-size: 20px; margin-left:-150px ;">电子邮箱</p></th>
-
-                        <th><p style="font-size: 20px; margin-left:-25px ;">开户银行</p></th>
-
-                        <th><p style="font-size: 20px; margin-left:0px ;">客户地址</p></th>
-                    </tr>
-
-                    <tr>
-                        <td><input type="text" placeholder="请输入电子邮箱" style="width: 250px; height: 30px;font-size: 18px;"></td>
-                        <td><input type="text" placeholder="请输入开户银行" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"></td>
-                        <td><input type="text" placeholder="请输入客户地址" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"></td>
-                    </tr>
-                    <tr>
-                        <th><p style="font-size: 20px; margin-left:-150px ;">客户传真</p></th>
-
-                        <th><p style="font-size: 20px; margin-left:-25px ;">银行账号</p></th>
-
-                        <th><p style="font-size: 20px; margin-left:0px ;">邮箱编码</p></th>
-                    </tr>
-
-                    <tr>
-                        <td><input type="text" placeholder="请输入客户传真" style="width: 250px; height: 30px;font-size: 18px;"></td>
-                        <td><input type="text" placeholder="请输入银行账号" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"></td>
-                        <td><input type="text" placeholder="请输入客户地址" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"></td>
-                    </tr>
-                </table>
-                <div id="button">
-                    <p style="text-align: center;">
-                        <input type="button" value="取消" style="background-color:white ; color: lightsalmon; height: 40px;
-				width: 70px; border-radius:5px;" />
-                        <input type="button" value="提交" style="background-color: #20B2AA; color:white; height: 40px; width: 70px; margin-left: 30px; border-radius:5px;">
-                    </p>
-                </div>
 
             </div>
+            <div id="body">
+
+                <div id="ulstyle" style="margin: 50px;">
+                    <table style="border:1;">
+                        <tr>
+                            <th><p style="font-size: 20px; margin-left:-150px ;">客户名称</p></th>
+                            <th><p style="font-size: 20px; margin-left:-25px ;">电话</p></th>
+                            <th><p style="font-size: 20px; margin-left:0px ;">联系人</p></th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" placeholder="启航服装有限公司" style="width: 250px; height: 30px;font-size: 18px;" name="customer_name"></td>
+                            <td><input type="text" placeholder="请输入电话" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"  name="customer_phone"></td>
+                            <td><input type="text" placeholder="请输入联系人" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"  name="customer_linkman"></td>
+                        </tr>
+                        <tr>
+                            <th><p style="font-size: 20px; margin-left:-150px ;">电子邮箱</p></th>
+
+                            <th><p style="font-size: 20px; margin-left:-25px ;">开户银行</p></th>
+
+                            <th><p style="font-size: 20px; margin-left:0px ;">客户地址</p></th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" placeholder="请输入电子邮箱" style="width: 250px; height: 30px;font-size: 18px;"  name="customer_email"></td>
+                            <td><input type="text" placeholder="请输入开户银行" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"  name="bank"></td>
+                            <td><input type="text" placeholder="请输入客户地址" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"  name="customer_address"></td>
+                        </tr>
+                        <tr>
+                            <th><p style="font-size: 20px; margin-left:-150px ;">客户传真</p></th>
+
+                            <th><p style="font-size: 20px; margin-left:-25px ;">银行账号</p></th>
+
+                            <th><p style="font-size: 20px; margin-left:0px ;">邮箱编码</p></th>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" placeholder="请输入客户传真" style="width: 250px; height: 30px;font-size: 18px;"  name="customer_fax"></td>
+                            <td><input type="text" placeholder="请输入银行账号" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"  name="bank_account"></td>
+                            <td><input type="text" placeholder="请输入客户地址" style="width: 250px; height: 30px;font-size: 18px; margin-left:150px ;"  name="customer_postcode"></td>
+                        </tr>
+                    </table>
+                    <div id="button">
+                        <p style="text-align: center;">
+                            <input type="button" value="取消" style="background-color:white ; color: lightsalmon; height: 40px;
+				width: 70px; border-radius:5px;" />
+                            <input type="submit" value="提交" style="background-color: #20B2AA; color:white; height: 40px; width: 70px; margin-left: 30px; border-radius:5px;">
+                        </p>
+                    </div>
+
+                </div>
+            </div>
         </div>
-    </div>
+        </form>
 </body>
 </html>
