@@ -9,7 +9,7 @@ namespace Clothes_UI.Controllers
 {
     public class CustomerController : Controller
     {
-        ClothingDBEntities1 db = new ClothingDBEntities1();
+        ClothingDBEntities2 db = new ClothingDBEntities2();
         // GET: Customer
         public ActionResult Index()
         {
@@ -51,8 +51,8 @@ namespace Clothes_UI.Controllers
         //订单管理
         public ActionResult manage()
         {
-            var order =  db.order.ToList();
-            return View(order);
+            var orders =  db.orders.ToList();
+            return View(orders);
         }
         //添加订单
         public ActionResult insertmanage()

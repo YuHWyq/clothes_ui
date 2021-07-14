@@ -13,10 +13,10 @@ namespace Clothes_UI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ClothingDBEntities1 : DbContext
+    public partial class ClothingDBEntities2 : DbContext
     {
-        public ClothingDBEntities1()
-            : base("name=ClothingDBEntities1")
+        public ClothingDBEntities2()
+            : base("name=ClothingDBEntities2")
         {
         }
     
@@ -39,8 +39,8 @@ namespace Clothes_UI.Models
         public virtual DbSet<materials_plan> materials_plan { get; set; }
         public virtual DbSet<materials_plan_details> materials_plan_details { get; set; }
         public virtual DbSet<materials_quality_testing> materials_quality_testing { get; set; }
-        public virtual DbSet<order> order { get; set; }
         public virtual DbSet<order_details> order_details { get; set; }
+        public virtual DbSet<orders> orders { get; set; }
         public virtual DbSet<out_materialr> out_materialr { get; set; }
         public virtual DbSet<out_money> out_money { get; set; }
         public virtual DbSet<out_repertory> out_repertory { get; set; }

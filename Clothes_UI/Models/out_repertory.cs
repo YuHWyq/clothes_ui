@@ -20,6 +20,6 @@ namespace Clothes_UI.Models
         public string operator_per { get; set; }
         public System.DateTime out_time { get; set; }
     
-        public virtual order order { get; set; }
+        public virtual orders orders { get; set; }
     }
 }

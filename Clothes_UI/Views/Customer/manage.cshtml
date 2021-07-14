@@ -118,20 +118,20 @@
 
                     </tr>
                 </thead>
-                @foreach (var order in Model)
+                @foreach (var orders in Model)
                 {
                     <tbody>
 
                         <tr v-for="item in info">
-                            <td>@order.order_id</td>
-                            <td>@order.customer_id</td>
-                            <td>@order.order_starttime</td>
-                            <td>@order.order_endtime</td>
-                            <td>@order.person_handling</td>
-                            <td>@order.operator_per</td>
-                            <td>@order.order_paid</td>
-                            <td>@order.order_unpaid</td>
-                            <td>@order.order_status</td>
+                            <td>@orders.order_id</td>
+                            <td>@orders.customer_id</td>
+                            <td>@orders.order_starttime</td>
+                            <td>@orders.order_endtime</td>
+                            <td>@orders.person_handling</td>
+                            <td>@orders.operator_per</td>
+                            <td>@orders.order_paid</td>
+                            <td>@orders.order_unpaid</td>
+                            <td>@orders.order_status</td>
                           @*  <td>@order.order_delivery_way</td>*@
                             <td><button>修改</button><button>删除</button></td>
                         </tr>
