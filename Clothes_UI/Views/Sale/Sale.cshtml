@@ -89,7 +89,7 @@
                                     <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
                                               style="width: 100%">
                                         <el-table-column label="订单ID"
-                                                         prop="orderID">
+                                                         prop="order_id">
                                         </el-table-column>
                                         <el-table-column label="客户名"
                                                          prop="customer_name">
@@ -104,10 +104,10 @@
                                                          prop="order_unpaid">
                                         </el-table-column>
                                         <el-table-column label="计划生产时间"
-                                                         prop="product_time">
+                                                         prop="order_starttime"  >
                                         </el-table-column>
                                         <el-table-column label="计划结束时间"
-                                                         prop="product_end_time">
+                                                         prop="order_endtime"   >
                                         </el-table-column>
                                         <el-table-column label="处理状态"
                                                          prop="order_status">
@@ -119,8 +119,8 @@
                                                           placeholder="输入关键字搜索" />
                                             </template>
                                             <template slot-scope="scope">
-                                                <el-button size="mini" v-on:click="dialogTableVisible = true">详情</el-button>
-                                                <el-button size="mini" type="danger" v-on:click="handleDelete()" style="padding-left:10px;padding-right:10px;">删除</el-button>
+                                                <el-button size="mini" v-on:click="handleEdit(scope.row)">详情</el-button>
+                                                <el-button size="mini" type="danger" v-on:click="handleDelete(scope.row)" style="padding-left:10px;padding-right:10px;">删除</el-button>
                                             </template>
                                         </el-table-column>
                                     </el-table>
@@ -146,76 +146,65 @@
         </div>
     </div>
     <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script>
         var vm = new Vue({
             el: "#app",
             data() {
                 return {
-                    tableData: [{
-                        orderID: 1,
-                        customer_name:'林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }, {
-                            orderID: 1,
-                            customer_name: '林幕染',
-                            person_handling: '吹梦',
-                            order_paid: 20000,
-                            order_unpaid: 20000,
-                            product_time: '2021-5-1',
-                            product_end_time: '2021-6-1',
-                            order_status: '待提货',
-                        }, {
-                            orderID: 1,
-                            customer_name: '林幕染',
-                            person_handling: '吹梦',
-                            order_paid: 20000,
-                            order_unpaid: 20000,
-                            product_time: '2021-5-1',
-                            product_end_time: '2021-6-1',
-                            order_status: '待提货',
-                        }, {
-                            orderID: 1,
-                            customer_name: '林幕染',
-                            person_handling: '吹梦',
-                            order_paid: 20000,
-                            order_unpaid: 20000,
-                            product_time: '2021-5-1',
-                            product_end_time: '2021-6-1',
-                            order_status: '待提货',
-                    }],
+                    tableData: [],
                     search: '',
-                    gridData: [{
-                        product_id:1,
-                        product_name:'透气T恤',
-                        product_price: '100',
-                        quantity: 1000,
-                        product_type: '短袖',
-                        product_num:'1354'
-                    },],
+                    gridData: [],
                     dialogTableVisible: false,
                     dialogFormVisible: false,
                 }
             },
             methods: {
-                handleEdit() {
-                    alert("详情");
+                handleEdit(row) {
+                    this.dialogTableVisible = true;
+                    console.log(row);
+                    $.ajax({
+                        type: "GET",
+                        url: "https://localhost:44396/api/Sale/customer_detail?id=" + row.order_id,
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (data) {
+                            var jsonObj = JSON.parse(data)
+                            for (var i = 0; i < jsonObj.length; i++) {
+                                vm.gridData.push(jsonObj[i]);
+                            }
+                        }
+                    })
+                    this.gridData = [];
                 },
                 handleDelete() {
                     alert("删除");
-                }
+                },
+                
             }
+        })
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44396/api/Sale/customer_order_detail",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                  var jsonObj =  JSON.parse(data)
+                    for (var i = 0; i < jsonObj.length; i++) {
+                        vm.tableData.push(jsonObj[i]);
+                    }
+                }
+            })
+
         })
 
         var vm1 = new Vue({
             el: "#apps",
             data: {
-
+                   
             }
         })
     </script>

@@ -432,6 +432,7 @@
     <Content Include="Views\Material\out_materialr.cshtml" />
     <Content Include="Views\Material\Statistics.cshtml" />
     <Content Include="Views\Sale\out_repertory.cshtml" />
+    <Content Include="Views\Material\AddYL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

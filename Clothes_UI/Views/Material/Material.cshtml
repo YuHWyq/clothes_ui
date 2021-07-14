@@ -68,6 +68,14 @@
             </div>
             <div class="top">
                 <span style="font-size:16px;font-weight:bolder; padding-left:50px;">原料库存管理</span>
+                <div id="apps" style="float:right;">
+                    <a style="color:white" href="/Material/AddYL">
+                        <el-button type="primary" icon="el-icon-plus" style="background-color: rgb(52,123,183);">
+                            新增
+                        </el-button>
+                    </a>
+
+                </div>
             </div>
             <div style="height:700px;">
                 <div id="app" style="margin-left:100px;">
@@ -76,29 +84,20 @@
                             <template>
                                 <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
                                           style="width: 100%">
-                                    <el-table-column label="订单ID"
-                                                     prop="orderID">
+                                    <el-table-column label="库存编号"
+                                                     prop="materialr_epertory_id">
                                     </el-table-column>
-                                    <el-table-column label="客户名"
-                                                     prop="customer_name">
+                                    <el-table-column label="材料名"
+                                                     prop="materialr_details_name">
                                     </el-table-column>
-                                    <el-table-column label="经手人"
-                                                     prop="person_handling">
+                                    <el-table-column label="材料数量"
+                                                     prop="materialr_num">
                                     </el-table-column>
-                                    <el-table-column label="已付金额"
-                                                     prop="order_paid">
+                                    <el-table-column label="材料价格"
+                                                     prop="materialr_details_price">
                                     </el-table-column>
-                                    <el-table-column label="未付金额"
-                                                     prop="order_unpaid">
-                                    </el-table-column>
-                                    <el-table-column label="计划生产时间"
-                                                     prop="product_time">
-                                    </el-table-column>
-                                    <el-table-column label="计划结束时间"
-                                                     prop="product_end_time">
-                                    </el-table-column>
-                                    <el-table-column label="处理状态"
-                                                     prop="order_status">
+                                    <el-table-column label="供应商"
+                                                     prop="material_supplier">
                                     </el-table-column>
                                     <el-table-column align="right">
                                         <template slot="header" slot-scope="scope">
@@ -107,7 +106,7 @@
                                                       placeholder="输入关键字搜索" />
                                         </template>
                                         <template slot-scope="scope">
-                                            <el-button size="mini" v-on:click="handleEdit()">详情</el-button>
+                                            <el-button size="mini" v-on:click="handleEdit()">修改</el-button>
                                             <el-button size="mini" type="danger" v-on:click="handleDelete()" style="padding-left:10px;padding-right:10px;">删除</el-button>
                                         </template>
                                     </el-table-column>
@@ -128,42 +127,12 @@
             data() {
                 return {
                     tableData: [{
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }, {
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }, {
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }, {
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }],
+                        materialr_epertory_id: 1,
+                        materialr_details_name: '棉',
+                        materialr_num: 100,
+                        materialr_details_price: 20.00,
+                        material_supplier: '新疆棉公司',
+                    }, ],
                     search: ''
                 }
             },
@@ -174,6 +143,13 @@
                 handleDelete() {
                     alert("删除");
                 }
+            }
+        })
+
+        var vm1 = new Vue({
+            el: "#apps",
+            data: {
+
             }
         })
     </script>

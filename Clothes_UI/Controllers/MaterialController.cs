@@ -33,6 +33,12 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
+
+        //新增原料
+        public ActionResult AddYL()
+        {
+            return View();
+        }
         
     }
 }

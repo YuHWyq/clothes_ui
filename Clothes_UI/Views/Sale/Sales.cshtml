@@ -45,6 +45,18 @@
             height: 50px;
             border-bottom: 2px solid #f1f1f0;
         }
+        .as{
+            width:1050px;
+            height:300px;
+            /*border:1px solid red;*/
+        }
+        .as_left{
+            width:300px;
+            height:290px;
+            /*border:1px solid black;*/
+            float:left;
+             margin-left:50px;
+        }
     </style>
 </head>
 <body>
@@ -64,13 +76,60 @@
         </div>
     </div>
 
-    <div class="tops">
-        <div class="tops_box">
+    <div class="tops"  style="height:300px;">
+        <div class="tops_box" style="height:300px;">
             <div class="top">
                 <span style="font-size:16px;font-weight:bolder; padding-left:10px;">销售统计查询</span>
             </div>
             <div class="sleft">
+                <div id="appbox" style="width:1050px;height:350px;margin:0px auto; padding-top:50px;">
+                    <div id="app1" style="width:1000px;height:300px;">
+                        <div class="as">
+                            <div class="as_left">
+                                <div>
+                                    <template>
+                                        <div class="block">
+                                            <div class="demonstration">
+                                                <span class="demonstration">日期：</span>
+                                            </div>
+                                            <el-date-picker v-model="value1"
+                                                            type="date"
+                                                            placeholder="选择日期">
+                                            </el-date-picker>
+                                        </div>
 
+                                    </template>
+                                </div>
+                                <div style="margin-top:40px;">
+                                    <template>
+                                        <!-- `checked` 为 true 或 false -->
+                                        <div class="demonstration">
+                                            <span class="demonstration">选择图形：</span>
+                                        </div>
+                                        <el-checkbox v-model="checked1">柱形图</el-checkbox>
+                                        <el-checkbox v-model="checked2">饼状图</el-checkbox>
+
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="as_left">
+                                <div class="demonstration">
+                                    <span class="demonstration">产品名称：</span>
+                                </div>
+                                <el-input placeholder="请输入内容"
+                                          v-model="input"
+                                          clearable>
+                                </el-input>
+
+                                <div style="margin-top:40px;">
+                                    <el-row>
+                                        <el-button type="primary" icon="el-icon-search">查询</el-button>
+                                    </el-row>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="sright"></div>
         </div>
@@ -167,6 +226,43 @@
         };
         myChart.setOption(option);
 
+
+        var vm1 = new Vue({
+            el: "#app1",
+            data() {
+                return {
+                    pickerOptions: {
+                        disabledDate(time) {
+                            return time.getTime() > Date.now();
+                        },
+                        shortcuts: [{
+                            text: '今天',
+                            onClick(picker) {
+                                picker.$emit('pick', new Date());
+                            }
+                        }, {
+                            text: '昨天',
+                            onClick(picker) {
+                                const date = new Date();
+                                date.setTime(date.getTime() - 3600 * 1000 * 24);
+                                picker.$emit('pick', date);
+                            }
+                        }, {
+                            text: '一周前',
+                            onClick(picker) {
+                                const date = new Date();
+                                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                                picker.$emit('pick', date);
+                            }
+                        }]
+                    }, input: '',
+                    value1: '',
+                    value2: '',
+                    checked1: false,
+                    checked2:false,
+                };
+            }
+        }) 
 
     </script>
 </body>
