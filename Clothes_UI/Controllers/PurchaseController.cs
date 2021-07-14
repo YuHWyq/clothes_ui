@@ -13,8 +13,13 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
-        //采购管理
+        //添加采购计划添加采购单
         public ActionResult Purchase()
+        {
+            return View();
+        }
+        //采购订单管理
+    public ActionResult ordermanagement()
         {
             return View();
         }

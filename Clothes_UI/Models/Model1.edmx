@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ClothingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ClothingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="ID" />
@@ -224,6 +224,7 @@
           <Property Name="product_address" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="unit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="size" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_quantity" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="product_plan">
           <Key>
@@ -953,6 +954,7 @@
           <Property Name="product_address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="product_quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="order_details" Relationship="Self.FK_order_details_product" FromRole="product" ToRole="order_details" />
           <NavigationProperty Name="pro_repertory" Relationship="Self.FK_pro_repertory_product" FromRole="product" ToRole="pro_repertory" />
           <NavigationProperty Name="product_plan_details" Relationship="Self.FK_product_plan_details_product" FromRole="product" ToRole="product_plan_details" />
@@ -1764,6 +1766,7 @@
                 <ScalarProperty Name="product_address" ColumnName="product_address" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
                 <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

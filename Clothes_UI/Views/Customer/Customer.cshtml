@@ -9,6 +9,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CustomerInformation</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+   <link href="~/Scripts/ElementUI/element-ui.js" />
     <style>
         #content {
             width: 100%;
@@ -21,13 +32,7 @@
             margin-top: 20px;
         }
 
-        .btn1 {
-            float: right;
-            background-color: lightseagreen;
-            height: 40px;
-            width: 70px;
-            margin-left: 10px;
-        }
+      
 
         .btn2 {
             float: right;
@@ -65,7 +70,7 @@
             <span style="font-size: 20px; margin: 20px;">客户资料</span>
 
             <input type="button" class="btn2" value="添加" style="margin-right:20px; border-radius:5px; color: white;" onclick="skip()"></input>
-            <input type="button" class="btn1" value="删除" style="border-radius:5px; color: white;"></input>
+
 
 
 
@@ -91,43 +96,63 @@
 
                 </select>条
             </div>
-            <table class="table" border="1" width="100%" height="100%">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>dd</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>dd</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>dd</td>
-                    </tr>
-                </tbody>
-            </table>
+           
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">客户ID</th>
+                            <th scope="col">用户名称</th>
+                            <th scope="col">用户电话号码</th>
+                            <th scope="col">联系人</th>
+                            <th scope="col">用户邮箱</th>
+                            <th scope="col">客户地址</th>
+                            <th scope="col">客户传真</th>
+                            <th scope="col">邮政编码</th>
+                            <th scope="col">开户银行</th>
+                            <th scope="col">银行账户</th>
+                            <th scope="col">操作</th>
+
+                        </tr>
+                    </thead>
+
+                    @foreach (var Customer in Model)
+                    {
+            <tbody>
+
+                <tr v-for="item in info">
+                    <td>@Customer.customer_id</td>
+                    <td>@Customer.customer_name</td>
+                    <td>@Customer.customer_phone</td>
+                    <td>@Customer.customer_linkman</td>
+                    <td>@Customer.customer_email</td>
+                    <td>@Customer.customer_address</td>
+                    <td>@Customer.customer_fax</td>
+                    <td>@Customer.customer_postcode</td>
+                    <td>@Customer.bank</td>
+                    <td>@Customer.bank_account</td>
+                    <td><button>修改</button><a href="/Customer/Delete?id=@Customer.customer_id" onclick="return confirm('确认删除吗？')" el-button type="danger">删除</a></td>
+                </tr>
+            </tbody>}
+
+                </table>
+            
         </div>
     </div>
+
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script>
         function skip() {
             window.location.href = '/Customer/InsertCustomerInformation';
 
         }
+        var vm = new Vue({
+            el: "button",
+            data() {
+
+            }
+        })
+
     </script>
 </body>
 </html>
