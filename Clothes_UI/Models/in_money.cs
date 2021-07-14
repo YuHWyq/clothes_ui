@@ -17,6 +17,6 @@ namespace Clothes_UI.Models
         public int in_money_id { get; set; }
         public int out_in_id { get; set; }
     
-        public virtual order order { get; set; }
+        public virtual orders orders { get; set; }
     }
 }

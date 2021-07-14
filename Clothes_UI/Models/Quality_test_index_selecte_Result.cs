@@ -10,16 +10,16 @@
 namespace Clothes_UI.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class out_repertory
+    public partial class Quality_test_index_selecte_Result
     {
-        public int out_repertoryout_repertory_id { get; set; }
-        public int order_id { get; set; }
-        public string person_handling { get; set; }
+        public System.DateTime product_time { get; set; }
         public string operator_per { get; set; }
-        public System.DateTime out_time { get; set; }
-    
-        public virtual orders orders { get; set; }
+        public string status { get; set; }
+        public string product_name { get; set; }
+        public string product_type { get; set; }
+        public int product_plan_id { get; set; }
+        public int product_details_num { get; set; }
+        public int product_plan_details_id { get; set; }
     }
 }

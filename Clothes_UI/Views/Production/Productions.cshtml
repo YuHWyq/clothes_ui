@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
+@model IEnumerable<Clothes_UI.Models.Production_Productions_selecte_Result>
 <!DOCTYPE html>
 
 <html>
@@ -9,8 +9,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>Productions</title>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
@@ -115,9 +113,6 @@
                     <el-button type="primary" icon="el-icon-search">搜索</el-button>
                 </span>
                 <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="number" style="width: 80px; height: 22px;" />条
-                </span>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -133,52 +128,56 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach (var item in Model)
+                        {
                         <tr>
-                            <td>001</td>
-                            <td>2012</td>
-                            <td>品如</td>
-                            <td>T恤</td>
-                            <td>200件</td>
-                            <td>2021/4/5</td>
-                            <td>覃佐继</td>
-                            <td>待质检</td>
-                            <td><input type="button" value="编辑" class="btn4" /></td>
+                            <td>@item.pro_production_id</td>
+                            <td>@item.product_plan_id</td>
+                            <td>@item.product_name</td>
+                            <td>@item.product_type</td>
+                            <td>@item.product_details_num</td>
+                            <td>@item.product_time</td>
+                            <td>@item.operator_per</td>
+                            <td>@item.status</td>
+                            <td><input value="详情" type="button" v-on:click="visible = true" plain class="btn2" /></td>
                         </tr>
-                    </tbody>
+                                }
+                            
+                        </tbody>
                 </table>
             </div>
         </div>
     </div>
-</body>
-<!-- import Vue before Element -->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- import JavaScript -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script>
-    new Vue({
-        el: '#app',
-        data: function () {
-            return { visible: false }
-        },
-        methods: {
-            open() {
-                this.$confirm('确认删除嘛?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功!'
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function () {
+                return { visible: false }
+            },
+            methods: {
+                open() {
+                    this.$confirm('确认删除嘛?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        });
                     });
-                }).catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消删除'
-                    });
-                });
+                }
             }
-        }
-    })
-</script>
+        })
+    </script>
+</body>
+
 </html>

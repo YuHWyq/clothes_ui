@@ -2,9 +2,7 @@
 @{
     Layout = null;
 }
-@Scripts.Render("~/bundles/vue")
-@Scripts.Render("~/bundles/element")
-@Styles.Render("~/Content/elementcss")
+@model IEnumerable<Clothes_UI.Models.get_materials>
 <!DOCTYPE html>
 
 <html>
@@ -12,13 +10,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>Production</title>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
         .ss {
@@ -99,8 +94,8 @@
     </style>
 </head>
 <body>
-    <form action="/Production/Insert" method="post" enctype="multipart/form-data">
-        <div id="app" v-show="show">
+    <form action="/Production/Production" method="post" enctype="multipart/form-data">
+        <div id="app">
             <div class="ss">
                 <div style="margin-left:50px;">
                     <br />
@@ -130,10 +125,7 @@
                         <input type="text" class="text" placeholder="请输入订单编号" />
                         <el-button type="primary" icon="el-icon-search">搜索</el-button>
                     </span>
-                    <br />
-                    <span style="font-size:20px;color:dimgray;display:flex;">
-                        显示<input type="number" style="width: 80px; height: 22px;" />条
-                    </span>
+                    <br />                   
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -148,18 +140,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in info">
-                                <td><input type="checkbox" /></td>
-                                <td>{{item.w_materials_id}}</td>
-                                <td>{{item.product_plan_id}}</td>
-                                <td>{{item.get_department}}</td>
-                                <td>{{item.get_time}}</td>
-                                <td>{{item.person_handling}}</td>
-                                <td>{{item.operator_per}}</td>
-                                <td>{{item.status}}</td>
-                                <td><el-button v-on:click="visible = true" type="primary" plain>详情</el-button></td>
+
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@item.w_materials_id</td>
+                                <td>@item.product_plan_id</td>
+                                <td>@item.get_department</td>
+                                <td>@item.get_time</td>
+                                <td>@item.person_handling</td>
+                                <td>@item.operator_per</td>
+                                <td>@item.status</td>
+                                <td><input value="详情" type="button" v-on:click="visible = true" plain class="btn2" /></td>
                             </tr>
-                        </tbody>
+                                    }
+                                
+                            </tbody>
                     </table>
                     <div>
                         <el-dialog :visible.sync="visible" title="材料详情">
@@ -188,20 +184,14 @@
             </div>
         </div>
     </form>
-    <!-- import Vue before Element -->
-    <script src="~/Scripts/vue.js"></script>
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <!-- import JavaScript -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script>
         var vm = new Vue({
             el: '#app',
-            data: 
-                function() {
-                    return { visible: false }
-                },
+            data: function () {
+                return { visible: false }
+            },
             methods: {
                 open() {
                     this.$confirm('确认删除嘛?', '提示', {
@@ -221,7 +211,7 @@
                     });
                 }
             }
-        });
+        })
     </script>
 </body>
 </html>

@@ -127,109 +127,89 @@
         </div>
         <br />
         <br />
-        <div class="top1">
-            <div class="top3">
-                <br />
-                <span style="font-size:20px;color:dimgray;">订单信息查询</span>
-                <hr />
-                <div style="margin-left:200px;">
-                    <span style="font-size:15px;color:dimgray;">
-                        产品订单ID：
-                        <input type="text" style="height:40px;width:300px;" placeholder="请输入产品订单ID" />
-                        <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                    </span>
+        <form action="/Production/product_planadd" method="post" enctype="multipart/form-data">
+            <div class="top1">
+                <div class="top3">
+                    <br />
+                    <span style="font-size:20px;color:dimgray;">订单信息查询</span>
+                    <hr />
+                    <div style="margin-left:200px;">
+                        <span style="font-size:15px;color:dimgray;">
+                            产品订单ID：
+                            <input type="text" style="height:40px;width:300px;" placeholder="请输入产品订单ID" name="order_id" />
+                            <el-button type="primary" icon="el-icon-search">搜索</el-button>
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br />
-        <br />
-        <div class="top2">
-            <div class="top3">
-                <br />
-                <span style="font-size:20px;color:dimgray;">订单信息</span>
-                <hr />
-                <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="number" style="width: 80px; height: 25px;" />条
-                </span>
-                <br />
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">订单编号</th>
-                            <th scope="col">产品名称</th>
-                            <th scope="col">产品类别</th>
-                            <th scope="col">产品规格</th>
-                            <th scope="col">产品单位</th>
-                            <th scope="col">订购数量</th>
-                            <th scope="col">计划产量</th>
-                            <th scope="col">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>李宁</td>
-                            <td>T恤</td>
-                            <td>XXL</td>
-                            <td>件</td>
-                            <td>200</td>
-                            <td>200</td>
-                            <td><el-button v-on:click="visible = true" class="btn2">编辑</el-button></td>
-
-                        </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <el-dialog :visible.sync="visible" title="添加产品数量">
-                        <hr />
-                        <p>计划产品数量</p>
-                        <input type="text" placeholder="99" style="width:1500px;height:25px;" /><br /><br />
-                        <input type="button" class="btn" value="提交" />
-                    </el-dialog>
-                </div>
-                <div style="margin-left:1250px;">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">生产计划时间：</th>
-                            <th scope="col">操作员:</th>
-                            <th scope="col">经办人:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="date" style="width: 500px; height: 30px;" /></td>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名" /></td>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <input type="button" value="提交" class="btn3" />
-                    <input type="button" value="取消" class="btn4" />
+            <br />
+            <br />
+            <div class="top2">
+                <div class="top3">
+                    <br />
+                    <span style="font-size:20px;color:dimgray;">订单信息</span>
+                    <hr />
+                    <br />
+                    <br />
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">订单编号</th>
+                                <th scope="col">产品名称</th>
+                                <th scope="col">产品类别</th>
+                                <th scope="col">产品规格</th>
+                                <th scope="col">产品单位</th>
+                                <th scope="col">订购数量</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>李宁</td>
+                                <td>T恤</td>
+                                <td>XXL</td>
+                                <td>件</td>
+                                <td>200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <el-dialog :visible.sync="visible" title="添加产品数量">
+                            <hr />
+                            <p>计划产品数量</p>
+                            <input type="text" placeholder="99" style="width:1500px;height:25px;" /><br /><br />
+                            <input type="button" class="btn" value="提交" />
+                        </el-dialog>
+                    </div>
+                    <hr />
+                    <br />
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">生产计划时间：</th>
+                                <th scope="col">操作员:</th>
+                                <th scope="col">经办人:</th>
+                                <th scope="col">计划产量:</th>
+                                <th scope="col">处理状态:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="date" style="width: 500px; height: 30px;" name="product_time" /></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名" name="operator_per" /></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名" name="person_handling" /></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入计划产量" name="Planned output" /></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入处理状态" name="status" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-left:300px;">
+                        <input type="submit" value="提交" class="btn3" />
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </form>
+</div>
 </body>
 <!-- import Vue before Element -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -238,9 +218,6 @@
 <script>
     new Vue({
         el: '#app',
-        data: function () {
-            return { visible: false }
-        }
     })
 </script>
 </html>

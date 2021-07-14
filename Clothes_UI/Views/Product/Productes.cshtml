@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model IEnumerable<Clothes_UI.Models.Product_Productes_selecte_Result>
 <!DOCTYPE html>
 
 <html>
@@ -129,139 +129,115 @@
         </div>
         <br />
         <br />
-        <div class="cc">
-            <div class="top">
-                <span style="font-size:20px;color:dimgray; margin-left:20px;">填写产品出库信息</span>
-                <hr />
-                <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">生产编号：</th>
-                            <th scope="col">操作员:</th>
-                            <th scope="col">经办人:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入生产编号" /></td>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名" /></td>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="width:100%;display:flex;">
-                    <div style="width:270px;">
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col">出库日期：</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="date" style="width: 500px; height: 30px;" /></td>
-                                </tr>
-                            </tbody>
-                        </table>
+        <form action="/Product/Productesadd" method="post" enctype="multipart/form-data">
+            <div class="cc">
+                <div class="top">
+                    <span style="font-size:20px;color:dimgray; margin-left:20px;">填写产品出库信息</span>
+                    <hr />
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">订单编号：</th>
+                                <th scope="col">操作员:</th>
+                                <th scope="col">经办人:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入订单编号" v-model="pro" name="order_id"/></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名" name="operator_per"/></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名" name="person_handling"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="width:100%;display:flex;">
+                        <div style="width:270px;">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">出库日期：</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="date" style="width: 500px; height: 30px;" name="out_time"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <span><input type="submit" value="提交" class="btn1" style="margin-left:100px;margin-top:40px;" /></span>
                     </div>
-                    <span><input type="button" value="提交" class="btn1" style="margin-left:100px;margin-top:40px;" /></span>
                 </div>
             </div>
-        </div>
-        <br />
-        <br />
-        <div class="yy">
-            <div class="top2">
-                <br />
-                <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;订单管理</span>
-                <span class="btn">
-                    <input type="button" value="删除" class="btn2" />
-                </span>
-                <br />
-                <hr />
-                <br />
-                <span style="display:flex;">
-                    <input type="text" class="text" placeholder="请输入订单编号或客户" />
-                    <el-button type="primary" icon="el-icon-search">搜索</el-button>
-                </span>
-                <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="text" list="xl" style="width: 80px; height: 22px;" />
-                    <datalist id="xl">
-                        <option>1</option>
-                        <option>50</option>
-                        <option>100</option>
-                    </datalist>条
-                </span>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col" style="width:50px;">选择</th>
-                            <th scope="col">订单编号</th>
-                            <th scope="col">订单客户</th>
-                            <th scope="col">订单日期</th>
-                            <th scope="col">商品总数量</th>
-                            <th scope="col">总金额</th>
-                            <th scope="col">预定定金</th>
-                            <th scope="col">未付金额</th>
-                            <th scope="col">状态</th>
-                            <th scope="col">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @*@foreach (var item in collection)
-                            {
+        </form>
+            <br />
+            <br />
+            <div class="yy">
+                <div class="top2">
+                    <br />
+                    <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;订单管理</span>
+                    <span class="btn">
+                        <input type="button" value="删除" class="btn2" />
+                    </span>
+                    <br />
+                    <hr />
+                    <br />
+                    <span style="display:flex;">
+                        <input type="text" class="text" placeholder="请输入订单编号" />
+                        <el-button type="primary" icon="el-icon-search">搜索</el-button>
+                    </span>
+                    <br />
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:80px;"><input type="checkbox" />全选</th>
+                                <th scope="col">订单编号</th>
+                                <th scope="col">订单客户</th>
+                                <th scope="col">订单日期</th>
+                                <th scope="col">商品总数量</th>
+                                <th scope="col">总金额</th>
+                                <th scope="col">已付金额</th>
+                                <th scope="col">未付金额</th>
+                                <th scope="col">状态</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                            }*@
-                        <tr @*v-for="item in info"*@>
-                            <td><input type="checkbox" /></td>
-                            <td>1001</td>
-                            <td>蓝思科技</td>
-                            <td>2021/7/8</td>
-                            <td>3000</td>
-                            <td>50000</td>
-                            <td>40000</td>
-                            <td>10000</td>
-                            <td>已处理</td>
-                            <td>
-                                <input type="button" value="查看" class="btn11" />&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input type="button" value="编辑" class="btn11" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="margin-left:1250px;">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>@item.order_id</td>
+                                <td>@item.customer_name</td>
+                                <td>@item.order_starttime</td>
+                                <td>@item.quantity</td>
+                                <td>@item.order_paid+@item.order_unpaid</td>
+                                <td>@item.order_paid</td>
+                                <td>@item.order_unpaid</td>
+                                <td>@item.order_status</td>
+                                <td><input type="button" value="出库" class="btn11" onclick="chuku(@item.order_id)" /></td>
+                            </tr>
+                                    }
+                                
+                            </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
     </div>
-</body>
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- import JavaScript -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script>
-    new Vue({
-        el: '#app',
-        data: function () {
-            return { visible: false }
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+      var vm = new Vue({
+            el: '#app',
+            data: function () {
+                return { visible: false , pro: "" }
+            }
+        })
+        function chuku(id) {
+            vm.pro = id;
         }
-    })
-</script>
+    </script>
+</body>
 </html>

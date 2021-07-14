@@ -10,15 +10,16 @@
 namespace Clothes_UI.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class materialr_details
+    public partial class Product_Productes_selecte_Result
     {
-        public int materials_id { get; set; }
-        public int w_materials_id { get; set; }
-        public int materialr_details_num { get; set; }
-        public int materialr_details_id { get; set; }
-    
-        public virtual materialr materialr { get; set; }
+        public string customer_name { get; set; }
+        public int order_id { get; set; }
+        public System.DateTime order_starttime { get; set; }
+        public int quantity { get; set; }
+        public decimal order_paid { get; set; }
+        public decimal order_unpaid { get; set; }
+        public string order_status { get; set; }
+        public int customer_id { get; set; }
     }
 }

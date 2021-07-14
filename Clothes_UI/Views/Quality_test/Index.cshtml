@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
+@model IEnumerable<Clothes_UI.Models.Quality_test_index_selecte_Result1>
 <!DOCTYPE html>
 
 <html>
@@ -62,7 +62,7 @@
     </style>
 </head>
 <body>
-    <div>
+    <div id="app">
         <div class="ss">
             <div style="margin-left:50px;">
                 <br />
@@ -76,113 +76,109 @@
         </div>
         <br />
         <br />
-        <div class="div1">
-            <br />
-            <div class="top">
-                <span style="font-size:20px;color:dimgray; margin-left:20px;">产品质检单</span>
-                <hr />
-                <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">生产编号：</th>
-                            <th scope="col">操作员:</th>
-                            <th scope="col">经办人:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入生产编号" /></td>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名" /></td>
-                            <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入经办人姓名" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="width:100%;display:flex;">
-                    <div style="width:970px;">
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th scope="col">质检时间：</th>
-                                    <th scope="col">质检结果:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="date" style="width: 500px; height: 30px;" /></td>
-                                    <td style="width:400px; margin:0px;">
-                                        <input type="radio" style="width: 25px; height: 20px;" name="ra" /><span style="font-size:20px;color:dimgray;">合格</span>
-                                        <input type="radio" style="width: 25px; height: 20px;" name="ra" /><span style="font-size:20px;color:dimgray;">不合格</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <span><input type="button" value="提交" class="btn1" style="margin-left:200px;margin-top:30px;" /></span>
-                </div>
-            </div>
-        </div>
-        <div class="div2">
-            <br />
-            <div class="top">
-                <span style="font-size:20px;color:dimgray; margin-left:20px;">待检产品信息</span>
-                <hr />
-                <span style="display:flex;">
-                    <input type="text" class="text" placeholder="请输入产品名称" />
-                    <input type="button" value="搜索" class="btn2" />
-                </span>
+        <form action="/Quality_test/Indexadd" method="post" enctype="multipart/form-data">
+            <div class="div1">
                 <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="number" style="width: 80px; height: 22px;" />条
-                </span>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">生产编号</th>
-                            <th scope="col">计划编号</th>
-                            <th scope="col">产品名称</th>
-                            <th scope="col">产品类型</th>
-                            <th scope="col">生产数量</th>
-                            <th scope="col">生产日期</th>
-                            <th scope="col">操作员</th>
-                            <th scope="col">状态</th>
-                            <th scope="col">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>02154</td>
-                            <td>品如</td>
-                            <td>T恤</td>
-                            <td>200件</td>
-                            <td>2021/4/5</td>
-                            <td>覃佐继</td>
-                            <td>待质检</td>
-                            <td><input type="button" value="填写" class="btn2" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div style="margin-left:1200px;">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="top">
+                    <span style="font-size:20px;color:dimgray; margin-left:20px;">产品质检单</span>
+                    <hr />
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">生产编号：</th>
+                                <th scope="col">操作员:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" v-model="pro" style="width: 500px; height: 30px;" placeholder="请输入生产编号" name="pro_production_id"/></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入操作员姓名" name="operator_per"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="width:100%;display:flex;">
+                        <div style="width:970px;">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">质检时间：</th>
+                                        <th scope="col">质检结果:</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="date" style="width: 500px; height: 30px;" name="quality_testing_time" /></td>
+                                        <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入质检结果" name="result" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <span><input type="submit" value="提交" class="btn1" style="margin-left:200px;margin-top:30px;" /></span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
+            <div class="div2">
+                <br />
+                <div class="top">
+                    <span style="font-size:20px;color:dimgray; margin-left:20px;">待检产品信息</span>
+                    <hr />
+                    <span style="display:flex;">
+                        <input type="text" class="text" placeholder="请输入产品名称" />
+                        <input type="button" value="搜索" class="btn2" />
+                    </span>
+                    <br />
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:80px;"><input type="checkbox" />全选</th>
+                                <th scope="col">生产编号</th>
+                                <th scope="col">计划编号</th>
+                                <th scope="col">产品名称</th>
+                                <th scope="col">产品类型</th>
+                                <th scope="col">生产数量</th>
+                                <th scope="col">生产日期</th>
+                                <th scope="col">操作员</th>
+                                <th scope="col">状态</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>@item.pro_production_id</td>
+                                    <td>@item.product_plan_id</td>
+                                    <td>@item.product_name</td>
+                                    <td>@item.product_type</td>
+                                    <td>@item.product_details_num</td>
+                                    <td>@item.product_time</td>
+                                    <td>@item.operator_per</td>
+                                    <td>@item.status</td>
+                                    <td><input type="button" value="填写" class="btn1" onclick="tx(@item.pro_production_id)" /></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     </div>
+    <!-- import Vue before Element -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function() {
+                return{ pro: "" }
+            }
+        })
+        function tx(id) {
+            vm.pro = id;
+        }
+    </script>
 </body>
 </html>

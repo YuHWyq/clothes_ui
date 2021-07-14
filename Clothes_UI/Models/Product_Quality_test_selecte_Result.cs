@@ -10,15 +10,15 @@
 namespace Clothes_UI.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class materialr_details
+    public partial class Product_Quality_test_selecte_Result
     {
-        public int materials_id { get; set; }
-        public int w_materials_id { get; set; }
-        public int materialr_details_num { get; set; }
-        public int materialr_details_id { get; set; }
-    
-        public virtual materialr materialr { get; set; }
+        public int pro_production_id { get; set; }
+        public int quality_testing_id { get; set; }
+        public System.DateTime quality_testing_time { get; set; }
+        public string result { get; set; }
+        public int product_plan_details_id { get; set; }
+        public string operator_per { get; set; }
+        public string product_name { get; set; }
     }
 }
