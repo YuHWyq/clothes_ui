@@ -35,7 +35,7 @@
             font-size: 20px;
             width: 60px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: lightseagreen;
             border-color: lightseagreen;
             margin-left: 150px;
@@ -45,7 +45,7 @@
             font-size: 20px;
             width: 60px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: orange;
             border-color: orange;
             margin-left: 500px;
@@ -68,44 +68,55 @@
         </div>
         <br />
         <br />
-        <div class="top1">
-            <div class="top">
-                <br />
-                <span style="font-size:20px;color:dimgray;">生产产品登记信息</span>
-                <hr />
-                <table class="table table-borderless">
-                    <thead>
-                        <tr>
-                            <th scope="col">计划编号</th>
-                            <th scope="col">生产部门</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" placeholder="请输入计划编号" /></td>
-                            <td><input type="text" placeholder="请输入生产部门" /></td>
-                        </tr>
-                    </tbody>
-                    <thead>
-                        <tr>
-                            <th scope="col">生产日期</th>
-                            <th scope="col">操作员</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="date" /></td>
-                            <td><input type="text" placeholder="请输入操作员" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <input type="button" value="提交" class="btn1" />
-                    <input type="button" value="取消" class="btn2" />
+        <form action="/Production/Productionsaddadd" method="post" enctype="multipart/form-data">
+            <div class="top1">
+                <div class="top">
+                    <br />
+                    <span style="font-size:20px;color:dimgray;">生产产品登记信息</span>
+                    <hr />
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">计划详情编号</th>
+                                <th scope="col">生产部门</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" placeholder="请输入计划详情编号" name="product_plan_details_id" /></td>
+                                <td><input type="text" placeholder="请输入生产部门" name="pro_production_dep" /></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th scope="col">生产日期</th>
+                                <th scope="col">操作员</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="date" name="product_time" /></td>
+                                <td><input type="text" placeholder="请输入操作员" name="operator_per" /></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th scope="col">质检状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" placeholder="请输入质检状态" name="status" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-left:400px;">
+                        <input type="submit" value="提交" class="btn1"/>
+                    </div>
+                    <br />
                 </div>
-                <br />
             </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>

@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model IEnumerable<Clothes_UI.Models.in_repertory>
 <!DOCTYPE html>
 
 <html>
@@ -22,7 +22,7 @@
     <style>
         .yy {
             width: 100%;
-            height: 100%;
+            height: 400px;
             box-shadow: 0px 0px 5px 5px lightgray;
         }
 
@@ -44,7 +44,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: orange;
             border: none;
@@ -54,7 +54,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -65,7 +65,7 @@
             font-size: 20px;
             width: 80px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -73,7 +73,7 @@
 
         .text {
             width: 200px;
-            height: 34px;
+            height: 40px;
         }
     </style>
 </head>
@@ -107,17 +107,10 @@
                     <input type="button" value="搜索" class="btn3" />
                 </span>
                 <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="text" list="xl" style="width: 80px; height: 22px;" />
-                    <datalist id="xl">
-                        <option>1</option>
-                        <option>50</option>
-                        <option>100</option>
-                    </datalist>条
-                </span>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th scope="col" style="width:80px;"><input type="checkbox" />全选</th>
                             <th scope="col">入库编号</th>
                             <th scope="col">生产编号</th>
                             <th scope="col">入库日期</th>
@@ -127,39 +120,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @*@foreach (var item in collection)
-                            {
 
-                            }*@
-                        <tr v-for="item in info">
-                            <td>002</td>
-                            <td>001</td>
-                            <td>2021/5/9</td>
-                            <td>覃佐继</td>
-                            <td>林慕染</td>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>@item.in_repertory_id</td>
+                            <td>@item.pro_production_id</td>
+                            <td>@item.in_time</td>
+                            <td>@item.person_handling</td>
+                            <td>@item.operator_per</td>
                             <td><input type="button" value="查看" class="btn4" /></td>
                         </tr>
-                    </tbody>
+                                }
+                            
+
+                        </tbody>
                 </table>
-                <div style="margin-left:1250px;">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
     </div>

@@ -12,10 +12,10 @@ namespace Clothes_UI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class order
+    public partial class orders
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public order()
+        public orders()
         {
             this.in_money = new HashSet<in_money>();
             this.order_details = new HashSet<order_details>();

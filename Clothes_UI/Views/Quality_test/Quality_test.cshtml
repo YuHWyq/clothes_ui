@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model IEnumerable<Clothes_UI.Models.Product_Quality_test_selecte_Result>
 <!DOCTYPE html>
 
 <html>
@@ -35,7 +35,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: orange;
             border: none;
@@ -45,7 +45,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -54,7 +54,7 @@
 
         .text {
             width: 200px;
-            height: 34px;
+            height: 40px;
         }
 
         .ss {
@@ -94,61 +94,35 @@
                     <input type="button" value="搜索" class="btn2" />
                 </span>
                 <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="number" @*list="xl"*@ style="width: 80px; height: 22px;" />
-                    @*<datalist id="xl">
-                            <option>1</option>
-                            <option>10</option>
-                            <option>100</option>
-                        </datalist>*@条
-                </span>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th scope="col" style="width:80px;"><input type="checkbox" />全选</th>
                             <th scope="col">质检编号</th>
                             <th scope="col">生产编号</th>
                             <th scope="col">产品名称</th>
                             <th scope="col">质检日期</th>
                             <th scope="col">操作员</th>
-                            <th scope="col">经办人</th>
                             <th scope="col">质检结果</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @*@foreach (var item in collection)
-                            {
 
-                            }*@
+                        @foreach (var item in Model)
+                        {
                         <tr>
-                            <td>001</td>
-                            <td>212</td>
-                            <td>七匹狼</td>
-                            <td>2021/4/5</td>
-                            <td>林慕染</td>
-                            <td>覃佐继</td>
-                            <td>合格</td>
+                            <td><input type="checkbox" /></td>
+                            <td>@item.quality_testing_id</td>
+                            <td>@item.pro_production_id</td>
+                            <td>@item.product_name</td>
+                            <td>@item.quality_testing_time</td>
+                            <td>@item.operator_per</td>
+                            <td>@item.result</td>
                         </tr>
-                    </tbody>
+                                }
+                            
+                        </tbody>
                 </table>
-                <div style="margin-left:1250px;">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
     </div>

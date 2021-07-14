@@ -12,15 +12,18 @@ namespace Clothes_UI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class order_details
+    public partial class V_Product_index_selecte
     {
-        public int order_details_id { get; set; }
         public int product_id { get; set; }
-        public int order_id { get; set; }
-        public decimal order_details_money { get; set; }
-        public int quantity { get; set; }
-    
-        public virtual orders orders { get; set; }
-        public virtual product product { get; set; }
+        public string product_num { get; set; }
+        public string product_name { get; set; }
+        public string product_producer { get; set; }
+        public string product_type { get; set; }
+        public string product_price { get; set; }
+        public string product_address { get; set; }
+        public string unit { get; set; }
+        public string size { get; set; }
+        public int pro_repertory_num { get; set; }
+        public int repertory_id { get; set; }
     }
 }

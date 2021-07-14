@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-
+@model IEnumerable<Clothes_UI.Models.Production_Productions_selecte_Result>
 <!DOCTYPE html>
 
 <html>
@@ -9,12 +9,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>Productions</title>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
         .ss {
             width: 100%;
@@ -40,7 +38,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: Highlight;
             border: none;
@@ -50,9 +48,9 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
-            background-color: orange;
+            background-color: Highlight;
             border: none;
         }
 
@@ -60,7 +58,7 @@
             font-size: 20px;
             width: 80px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -71,7 +69,7 @@
             font-size: 20px;
             width: 80px;
             height: 35px;
-            border-radius: 5px;
+            border-radius: 2px;
             color: white;
             background-color: lightseagreen;
             border: none;
@@ -79,12 +77,12 @@
 
         .text {
             width: 200px;
-            height: 34px;
+            height: 40px;
         }
     </style>
 </head>
 <body>
-    <div>
+    <div id="app">
         <div class="ss">
             <div style="margin-left:50px;">
                 <br />
@@ -104,7 +102,7 @@
                 <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
                 <span class="btn">
                     <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionsadd'" />&nbsp;&nbsp;
-                    <input type="button" value="删除" class="btn2" />
+                    <el-button type="text" v-on:click="open" class="btn2">删除</el-button>
                 </span>
                 <br />
                 <br />
@@ -112,12 +110,9 @@
                 <br />
                 <span style="display:flex;">
                     <input type="text" class="text" placeholder="请输入订单编号" />
-                    <input type="button" value="搜索" class="btn3" />
+                    <el-button type="primary" icon="el-icon-search">搜索</el-button>
                 </span>
                 <br />
-                <span style="font-size:20px;color:dimgray;display:flex;">
-                    显示<input type="number" style="width: 80px; height: 22px;" />条
-                </span>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -133,21 +128,56 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach (var item in Model)
+                        {
                         <tr>
-                            <td>001</td>
-                            <td>2012</td>
-                            <td>品如</td>
-                            <td>T恤</td>
-                            <td>200件</td>
-                            <td>2021/4/5</td>
-                            <td>覃佐继</td>
-                            <td>待质检</td>
-                            <td><input type="button" value="编辑" class="btn4" /></td>
+                            <td>@item.pro_production_id</td>
+                            <td>@item.product_plan_id</td>
+                            <td>@item.product_name</td>
+                            <td>@item.product_type</td>
+                            <td>@item.product_details_num</td>
+                            <td>@item.product_time</td>
+                            <td>@item.operator_per</td>
+                            <td>@item.status</td>
+                            <td><input value="详情" type="button" v-on:click="visible = true" plain class="btn2" /></td>
                         </tr>
-                    </tbody>
+                                }
+                            
+                        </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function () {
+                return { visible: false }
+            },
+            methods: {
+                open() {
+                    this.$confirm('确认删除嘛?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        this.$message({
+                            type: 'success',
+                            message: '删除成功!'
+                        });
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        });
+                    });
+                }
+            }
+        })
+    </script>
 </body>
+
 </html>
