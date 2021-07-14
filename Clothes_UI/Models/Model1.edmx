@@ -165,7 +165,6 @@
           <Property Name="order_paid" Type="money" Nullable="false" />
           <Property Name="order_unpaid" Type="money" Nullable="false" />
           <Property Name="order_status" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="order_delivery_way" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="out_materialr">
           <Key>
@@ -263,34 +262,6 @@
           </Key>
           <Property Name="product_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_type_name" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“ClothingDB.dbo.V_Product_index_selecte”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
-        <EntityType Name="V_Product_index_selecte">
-          <Key>
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="product_num" />
-            <PropertyRef Name="product_name" />
-            <PropertyRef Name="product_producer" />
-            <PropertyRef Name="product_type" />
-            <PropertyRef Name="product_price" />
-            <PropertyRef Name="product_address" />
-            <PropertyRef Name="unit" />
-            <PropertyRef Name="size" />
-            <PropertyRef Name="pro_repertory_num" />
-            <PropertyRef Name="repertory_id" />
-          </Key>
-          <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="product_num" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="product_producer" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="product_type" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_price" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_address" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="unit" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="size" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="pro_repertory_num" Type="int" Nullable="false" />
-          <Property Name="repertory_id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_buy_materials_details_in_materialr">
           <End Role="in_materialr" Type="Self.in_materialr" Multiplicity="1" />
@@ -593,21 +564,6 @@
           <EntitySet Name="product_plan_details" EntityType="Self.product_plan_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_quality_testing" EntityType="Self.product_quality_testing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_type" EntityType="Self.product_type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="V_Product_index_selecte" EntityType="Self.V_Product_index_selecte" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [V_Product_index_selecte].[product_id] AS [product_id], 
-    [V_Product_index_selecte].[product_num] AS [product_num], 
-    [V_Product_index_selecte].[product_name] AS [product_name], 
-    [V_Product_index_selecte].[product_producer] AS [product_producer], 
-    [V_Product_index_selecte].[product_type] AS [product_type], 
-    [V_Product_index_selecte].[product_price] AS [product_price], 
-    [V_Product_index_selecte].[product_address] AS [product_address], 
-    [V_Product_index_selecte].[unit] AS [unit], 
-    [V_Product_index_selecte].[size] AS [size], 
-    [V_Product_index_selecte].[pro_repertory_num] AS [pro_repertory_num], 
-    [V_Product_index_selecte].[repertory_id] AS [repertory_id]
-    FROM [dbo].[V_Product_index_selecte] AS [V_Product_index_selecte]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_buy_materials_details_in_materialr" Association="Self.FK_buy_materials_details_in_materialr">
             <End Role="in_materialr" EntitySet="in_materialr" />
             <End Role="buy_materials_details" EntitySet="buy_materials_details" />
@@ -697,7 +653,8 @@
             <End Role="product_quality_testing" EntitySet="product_quality_testing" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClothingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -883,7 +840,6 @@
           <Property Name="order_paid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="order_unpaid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="order_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="order_delivery_way" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="customer" Relationship="Self.FK_order_customer" FromRole="orders" ToRole="customer" />
           <NavigationProperty Name="in_money" Relationship="Self.FK_in_money_order" FromRole="orders" ToRole="in_money" />
           <NavigationProperty Name="order_details" Relationship="Self.FK_order_details_order_details" FromRole="orders" ToRole="order_details" />
@@ -965,7 +921,7 @@
           <Key>
             <PropertyRef Name="product_plan_id" />
           </Key>
-          <Property Name="product_plan_id" Type="Int32" Nullable="false" />
+          <Property Name="product_plan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="operator_per" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="person_handling" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1268,7 +1224,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ClothingDBEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ClothingDBEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admin" EntityType="Self.admin" />
           <EntitySet Name="buy_materials_details" EntityType="Self.buy_materials_details" />
           <EntitySet Name="customer" EntityType="Self.customer" />
@@ -1386,14 +1342,13 @@
           <FunctionImport Name="Product_index_selecte" ReturnType="Collection(ClothingDBModel.Product_index_selecte_Result)" />
           <FunctionImport Name="Product_Productees_selecte" ReturnType="Collection(ClothingDBModel.Product_Productees_selecte_Result)" />
           <FunctionImport Name="Product_Productes_selecte" ReturnType="Collection(ClothingDBModel.Product_Productes_selecte_Result)" />
+          <FunctionImport Name="Product_Quality_test_selecte" ReturnType="Collection(ClothingDBModel.Product_Quality_test_selecte_Result)" />
           <FunctionImport Name="Production_index_select" ReturnType="Collection(ClothingDBModel.Production_index_select_Result)" />
           <FunctionImport Name="Production_index_selected" ReturnType="Collection(ClothingDBModel.Production_index_selected_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Production_Productions_selecte" ReturnType="Collection(ClothingDBModel.Production_Productions_selecte_Result)" />
-          <FunctionImport Name="Product_Quality_test_selecte" ReturnType="Collection(ClothingDBModel.Product_Quality_test_selecte_Result)" />
-          <FunctionImport Name="Quality_test_index_selecte" ReturnType="Collection(ClothingDBModel.Quality_test_index_selecte_Result1)" />
-          <EntitySet Name="V_Product_index_selecte" EntityType="ClothingDBModel.V_Product_index_selecte" />
+          <FunctionImport Name="Quality_test_index_selecte" ReturnType="Collection(ClothingDBModel.Quality_test_index_selecte_Result)" />
         </EntityContainer>
         <ComplexType Name="Product_index_selecte_Result">
           <Property Type="Int32" Name="product_id" Nullable="false" />
@@ -1405,6 +1360,7 @@
           <Property Type="String" Name="product_address" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="unit" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="size" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="product_quantity" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="pro_repertory_num" Nullable="false" />
           <Property Type="Int32" Name="repertory_id" Nullable="false" />
         </ComplexType>
@@ -1429,6 +1385,16 @@
           <Property Type="Decimal" Name="order_unpaid" Nullable="false" Precision="19" />
           <Property Type="String" Name="order_status" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="customer_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Product_Quality_test_selecte_Result">
+          <Property Type="Int32" Name="pro_production_id" Nullable="false" />
+          <Property Type="Int32" Name="quality_testing_id" Nullable="false" />
+          <Property Type="DateTime" Name="quality_testing_time" Nullable="false" />
+          <Property Type="String" Name="result" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="product_plan_details_id" Nullable="false" />
+          <Property Type="String" Name="operator_per" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="product_plan_details_id1" Nullable="false" />
+          <Property Type="String" Name="product_name" Nullable="false" MaxLength="200" />
         </ComplexType>
         <ComplexType Name="Production_index_select_Result">
           <Property Type="Int32" Name="product_plan_id" Nullable="false" />
@@ -1464,29 +1430,9 @@
           <Property Type="Int32" Name="product_plan_id" Nullable="false" />
           <Property Type="String" Name="product_type" Nullable="false" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="Product_Quality_test_selecte_Result">
-          <Property Type="Int32" Name="pro_production_id" Nullable="false" />
-          <Property Type="Int32" Name="quality_testing_id" Nullable="false" />
-          <Property Type="DateTime" Name="quality_testing_time" Nullable="false" />
-          <Property Type="String" Name="result" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="product_plan_details_id" Nullable="false" />
-          <Property Type="String" Name="operator_per" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="product_plan_details_id1" Nullable="false" />
-          <Property Type="String" Name="product_name" Nullable="false" MaxLength="200" />
-        </ComplexType>
         <ComplexType Name="Quality_test_index_selecte_Result">
           <Property Type="DateTime" Name="product_time" Nullable="false" />
           <Property Type="String" Name="operator_per" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="status" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="product_name" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="product_type" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="product_plan_id" Nullable="false" />
-          <Property Type="Int32" Name="product_details_num" Nullable="false" />
-          <Property Type="Int32" Name="product_plan_details_id" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Quality_test_index_selecte_Result1">
-          <Property Type="DateTime" Name="product_time" Nullable="false" />
-          <Property Type="String" Name="operator_per" Nullable="false" MaxLength="10" />
           <Property Type="Int32" Name="pro_production_id" Nullable="false" />
           <Property Type="String" Name="status" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="product_name" Nullable="false" MaxLength="200" />
@@ -1495,38 +1441,12 @@
           <Property Type="Int32" Name="product_details_num" Nullable="false" />
           <Property Type="Int32" Name="product_plan_details_id" Nullable="false" />
         </ComplexType>
-        <EntityType Name="V_Product_index_selecte">
-          <Key>
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="product_num" />
-            <PropertyRef Name="product_name" />
-            <PropertyRef Name="product_producer" />
-            <PropertyRef Name="product_type" />
-            <PropertyRef Name="product_price" />
-            <PropertyRef Name="product_address" />
-            <PropertyRef Name="unit" />
-            <PropertyRef Name="size" />
-            <PropertyRef Name="pro_repertory_num" />
-            <PropertyRef Name="repertory_id" />
-          </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="product_num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="product_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="product_producer" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="product_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="product_price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="product_address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="unit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="pro_repertory_num" Type="Int32" Nullable="false" />
-          <Property Name="repertory_id" Type="Int32" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ClothingDBModelStoreContainer" CdmEntityContainer="ClothingDBEntities2">
+        <EntityContainerMapping StorageEntityContainer="ClothingDBModelStoreContainer" CdmEntityContainer="ClothingDBEntities3">
           <EntitySetMapping Name="admin">
             <EntityTypeMapping TypeName="ClothingDBModel.admin">
               <MappingFragment StoreEntitySet="admin">
@@ -1701,7 +1621,6 @@
                 <ScalarProperty Name="order_paid" ColumnName="order_paid" />
                 <ScalarProperty Name="order_unpaid" ColumnName="order_unpaid" />
                 <ScalarProperty Name="order_status" ColumnName="order_status" />
-                <ScalarProperty Name="order_delivery_way" ColumnName="order_delivery_way" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1824,6 +1743,7 @@
                 <ScalarProperty Name="product_address" ColumnName="product_address" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
                 <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
                 <ScalarProperty Name="pro_repertory_num" ColumnName="pro_repertory_num" />
                 <ScalarProperty Name="repertory_id" ColumnName="repertory_id" />
               </ComplexTypeMapping>
@@ -1856,6 +1776,20 @@
                 <ScalarProperty Name="order_unpaid" ColumnName="order_unpaid" />
                 <ScalarProperty Name="order_status" ColumnName="order_status" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Product_Quality_test_selecte" FunctionName="ClothingDBModel.Store.Product_Quality_test_selecte">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClothingDBModel.Product_Quality_test_selecte_Result">
+                <ScalarProperty Name="pro_production_id" ColumnName="pro_production_id" />
+                <ScalarProperty Name="quality_testing_id" ColumnName="quality_testing_id" />
+                <ScalarProperty Name="quality_testing_time" ColumnName="quality_testing_time" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="product_plan_details_id" ColumnName="product_plan_details_id" />
+                <ScalarProperty Name="operator_per" ColumnName="operator_per" />
+                <ScalarProperty Name="product_plan_details_id1" ColumnName="product_plan_details_id1" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1905,23 +1839,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Product_Quality_test_selecte" FunctionName="ClothingDBModel.Store.Product_Quality_test_selecte">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ClothingDBModel.Product_Quality_test_selecte_Result">
-                <ScalarProperty Name="pro_production_id" ColumnName="pro_production_id" />
-                <ScalarProperty Name="quality_testing_id" ColumnName="quality_testing_id" />
-                <ScalarProperty Name="quality_testing_time" ColumnName="quality_testing_time" />
-                <ScalarProperty Name="result" ColumnName="result" />
-                <ScalarProperty Name="product_plan_details_id" ColumnName="product_plan_details_id" />
-                <ScalarProperty Name="operator_per" ColumnName="operator_per" />
-                <ScalarProperty Name="product_plan_details_id1" ColumnName="product_plan_details_id1" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Quality_test_index_selecte" FunctionName="ClothingDBModel.Store.Quality_test_index_selecte">
-          <ResultMapping>
-              <ComplexTypeMapping TypeName="ClothingDBModel.Quality_test_index_selecte_Result1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClothingDBModel.Quality_test_index_selecte_Result">
                 <ScalarProperty Name="product_time" ColumnName="product_time" />
                 <ScalarProperty Name="operator_per" ColumnName="operator_per" />
                 <ScalarProperty Name="pro_production_id" ColumnName="pro_production_id" />
@@ -1934,23 +1854,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="V_Product_index_selecte">
-            <EntityTypeMapping TypeName="ClothingDBModel.V_Product_index_selecte">
-              <MappingFragment StoreEntitySet="V_Product_index_selecte">
-                <ScalarProperty Name="repertory_id" ColumnName="repertory_id" />
-                <ScalarProperty Name="pro_repertory_num" ColumnName="pro_repertory_num" />
-                <ScalarProperty Name="size" ColumnName="size" />
-                <ScalarProperty Name="unit" ColumnName="unit" />
-                <ScalarProperty Name="product_address" ColumnName="product_address" />
-                <ScalarProperty Name="product_price" ColumnName="product_price" />
-                <ScalarProperty Name="product_type" ColumnName="product_type" />
-                <ScalarProperty Name="product_producer" ColumnName="product_producer" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_num" ColumnName="product_num" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1966,7 +1869,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>

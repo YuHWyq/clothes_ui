@@ -15,6 +15,7 @@ namespace Clothes_UI.Models
     {
         public System.DateTime product_time { get; set; }
         public string operator_per { get; set; }
+        public int pro_production_id { get; set; }
         public string status { get; set; }
         public string product_name { get; set; }
         public string product_type { get; set; }

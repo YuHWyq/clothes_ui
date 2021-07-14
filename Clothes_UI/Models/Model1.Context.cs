@@ -15,10 +15,10 @@ namespace Clothes_UI.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class ClothingDBEntities2 : DbContext
+    public partial class ClothingDBEntities3 : DbContext
     {
-        public ClothingDBEntities2()
-            : base("name=ClothingDBEntities2")
+        public ClothingDBEntities3()
+            : base("name=ClothingDBEntities3")
         {
         }
     
@@ -53,7 +53,6 @@ namespace Clothes_UI.Models
         public virtual DbSet<product_plan_details> product_plan_details { get; set; }
         public virtual DbSet<product_quality_testing> product_quality_testing { get; set; }
         public virtual DbSet<product_type> product_type { get; set; }
-        public virtual DbSet<V_Product_index_selecte> V_Product_index_selecte { get; set; }
     
         public virtual ObjectResult<Product_index_selecte_Result> Product_index_selecte()
         {
@@ -68,6 +67,11 @@ namespace Clothes_UI.Models
         public virtual ObjectResult<Product_Productes_selecte_Result> Product_Productes_selecte()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Productes_selecte_Result>("Product_Productes_selecte");
+        }
+    
+        public virtual ObjectResult<Product_Quality_test_selecte_Result> Product_Quality_test_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Quality_test_selecte_Result>("Product_Quality_test_selecte");
         }
     
         public virtual ObjectResult<Production_index_select_Result> Production_index_select()
@@ -89,14 +93,9 @@ namespace Clothes_UI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Production_Productions_selecte_Result>("Production_Productions_selecte");
         }
     
-        public virtual ObjectResult<Product_Quality_test_selecte_Result> Product_Quality_test_selecte()
+        public virtual ObjectResult<Quality_test_index_selecte_Result> Quality_test_index_selecte()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Quality_test_selecte_Result>("Product_Quality_test_selecte");
-        }
-    
-        public virtual ObjectResult<Quality_test_index_selecte_Result1> Quality_test_index_selecte()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quality_test_index_selecte_Result1>("Quality_test_index_selecte");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quality_test_index_selecte_Result>("Quality_test_index_selecte");
         }
     }
 }
