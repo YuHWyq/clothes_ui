@@ -13,8 +13,14 @@ namespace Clothes_UI.Controllers
         {
             return View();
         }
-        //财务管理
+        //财务收入详情
         public ActionResult Finance()
+        {
+            return View();
+        }
+
+        //财务支出详情
+        public ActionResult zhichuFinance()
         {
             return View();
         }

@@ -73,32 +73,24 @@
                     <div class="biaoge" style="width:90%;text-align:center;">
                         <div style="margin:0px auto;">
                             <template>
-                                <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+                                <el-table :data="tableData.filter(data => !search || data.materialr_details_name.toLowerCase().includes(search.toLowerCase()))"
                                           style="width: 100%">
-                                    <el-table-column label="订单ID"
-                                                     prop="orderID">
+                                    <el-table-column label="材料出库"
+                                                     prop="out_materialr_id">
                                     </el-table-column>
-                                    <el-table-column label="客户名"
-                                                     prop="customer_name">
+                                    <el-table-column label="材料数量"
+                                                     prop="materialr_details_num">
                                     </el-table-column>
-                                    <el-table-column label="经手人"
-                                                     prop="person_handling">
+                                    <el-table-column label="材料名称"
+                                                     prop="materialr_details_name">
                                     </el-table-column>
-                                    <el-table-column label="已付金额"
-                                                     prop="order_paid">
+                                    <el-table-column label="材料价格"
+                                                     prop="materialr_details_price">
                                     </el-table-column>
-                                    <el-table-column label="未付金额"
-                                                     prop="order_unpaid">
+                                    <el-table-column label="供应商"
+                                                     prop="material_supplier">
                                     </el-table-column>
-                                    <el-table-column label="计划生产时间"
-                                                     prop="product_time">
-                                    </el-table-column>
-                                    <el-table-column label="计划结束时间"
-                                                     prop="product_end_time">
-                                    </el-table-column>
-                                    <el-table-column label="处理状态"
-                                                     prop="order_status">
-                                    </el-table-column>
+                                    
                                     <el-table-column align="right">
                                         <template slot="header" slot-scope="scope">
                                             <el-input v-model="search"
@@ -121,48 +113,13 @@
     </div>
     <script src="~/Scripts/vue.min.js"></script>
     <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script>
         var vm = new Vue({
             el: "#app",
             data() {
                 return {
-                    tableData: [{
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }, {
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }, {
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }, {
-                        orderID: 1,
-                        customer_name: '林幕染',
-                        person_handling: '吹梦',
-                        order_paid: 20000,
-                        order_unpaid: 20000,
-                        product_time: '2021-5-1',
-                        product_end_time: '2021-6-1',
-                        order_status: '待提货',
-                    }],
+                    tableData: [],
                     search: ''
                 }
             },
@@ -174,6 +131,22 @@
                     alert("删除");
                 }
             }
+        })
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44396/api/Material/out_material",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    var jsonObj = JSON.parse(data)
+                    for (var i = 0; i < jsonObj.length; i++) {
+                        vm.tableData.push(jsonObj[i]);
+                    }
+                }
+            })
+
         })
     </script>
 </body>

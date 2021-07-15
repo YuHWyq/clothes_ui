@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ClothingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ClothingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="ID" />
@@ -262,34 +262,6 @@
           </Key>
           <Property Name="product_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_type_name" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“ClothingDB.dbo.V_Product_index_selecte”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
-        <EntityType Name="V_Product_index_selecte">
-          <Key>
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="product_num" />
-            <PropertyRef Name="product_name" />
-            <PropertyRef Name="product_producer" />
-            <PropertyRef Name="product_type" />
-            <PropertyRef Name="product_price" />
-            <PropertyRef Name="product_address" />
-            <PropertyRef Name="unit" />
-            <PropertyRef Name="size" />
-            <PropertyRef Name="pro_repertory_num" />
-            <PropertyRef Name="repertory_id" />
-          </Key>
-          <Property Name="product_id" Type="int" Nullable="false" />
-          <Property Name="product_num" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_name" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="product_producer" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="product_type" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_price" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="product_address" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="unit" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="size" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="pro_repertory_num" Type="int" Nullable="false" />
-          <Property Name="repertory_id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_buy_materials_details_in_materialr">
           <End Role="in_materialr" Type="Self.in_materialr" Multiplicity="1" />
@@ -639,21 +611,6 @@
           <EntitySet Name="product_plan_details" EntityType="Self.product_plan_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_quality_testing" EntityType="Self.product_quality_testing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="product_type" EntityType="Self.product_type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="V_Product_index_selecte" EntityType="Self.V_Product_index_selecte" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [V_Product_index_selecte].[product_id] AS [product_id], 
-    [V_Product_index_selecte].[product_num] AS [product_num], 
-    [V_Product_index_selecte].[product_name] AS [product_name], 
-    [V_Product_index_selecte].[product_producer] AS [product_producer], 
-    [V_Product_index_selecte].[product_type] AS [product_type], 
-    [V_Product_index_selecte].[product_price] AS [product_price], 
-    [V_Product_index_selecte].[product_address] AS [product_address], 
-    [V_Product_index_selecte].[unit] AS [unit], 
-    [V_Product_index_selecte].[size] AS [size], 
-    [V_Product_index_selecte].[pro_repertory_num] AS [pro_repertory_num], 
-    [V_Product_index_selecte].[repertory_id] AS [repertory_id]
-    FROM [dbo].[V_Product_index_selecte] AS [V_Product_index_selecte]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_buy_materials_details_in_materialr" Association="Self.FK_buy_materials_details_in_materialr">
             <End Role="in_materialr" EntitySet="in_materialr" />
             <End Role="buy_materials_details" EntitySet="buy_materials_details" />
@@ -751,7 +708,8 @@
             <End Role="product_quality_testing" EntitySet="product_quality_testing" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClothingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1526,7 +1484,7 @@
           <FunctionImport Name="Product_Quality_test_selecte" ReturnType="Collection(ClothingDBModel.Product_Quality_test_selecte_Result)" />
           <FunctionImport Name="Production_index_select" ReturnType="Collection(ClothingDBModel.Production_index_select_Result)" />
           <FunctionImport Name="Production_index_selected" ReturnType="Collection(ClothingDBModel.Production_index_selected_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Production_Productions_selecte" ReturnType="Collection(ClothingDBModel.Production_Productions_selecte_Result)" />
           <FunctionImport Name="Quality_test_index_selecte" ReturnType="Collection(ClothingDBModel.Quality_test_index_selecte_Result)" />

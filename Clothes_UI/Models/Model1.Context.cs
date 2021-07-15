@@ -53,7 +53,6 @@ namespace Clothes_UI.Models
         public virtual DbSet<product_plan_details> product_plan_details { get; set; }
         public virtual DbSet<product_quality_testing> product_quality_testing { get; set; }
         public virtual DbSet<product_type> product_type { get; set; }
-        public virtual DbSet<V_Product_index_selecte> V_Product_index_selecte { get; set; }
     
         public virtual ObjectResult<pro_plan_details_Result> pro_plan_details(Nullable<int> pro_plan_id)
         {

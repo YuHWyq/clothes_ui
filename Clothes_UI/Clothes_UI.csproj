@@ -195,15 +195,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Model1.Designer.cs">
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Model11.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -382,7 +383,7 @@
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <LastGenOutput>Model11.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -459,10 +460,12 @@
     <Content Include="Views\Customer\manage.cshtml" />
     <Content Include="Views\Customer\insertmanage.cshtml" />
     <Content Include="Views\Customer\track.cshtml" />
+    <Content Include="Views\Material\AddYL.cshtml" />
     <Content Include="Views\Material\materialr_in.cshtml" />
     <Content Include="Views\Material\out_materialr.cshtml" />
     <Content Include="Views\Material\Statistics.cshtml" />
     <Content Include="Views\Sale\out_repertory.cshtml" />
+    <Content Include="Views\Finance\zhichuFinance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

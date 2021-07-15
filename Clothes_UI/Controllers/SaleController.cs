@@ -15,7 +15,7 @@ namespace Clothes_UI.Controllers
         }
         //销售管理
         public ActionResult Sale()
-        {
+        {   
             return View();
         }
         //销售统计
