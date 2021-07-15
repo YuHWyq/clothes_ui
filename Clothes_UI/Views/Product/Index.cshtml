@@ -98,8 +98,7 @@
             <div class="top1" id="app">
                 <br />
                 <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;产品库存管理</span>
-                <span class="btn">
-                    <input type="button" value="删除" class="btn2" />
+                <span class="btn">                   
                 </span>
                 <br />
                 <hr />
@@ -120,6 +119,7 @@
                             <th scope="col">产品单位</th>
                             <th scope="col">产商名称</th>
                             <th scope="col">库存数量</th>
+                            <th scope="col">操作</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -134,6 +134,7 @@
                                 <td>@item.unit</td>
                                 <td>@item.product_producer</td>
                                 <td>@item.pro_repertory_num</td>
+                                <td><a href="/Product/Delete?id=@item.repertory_id" onclick="return confirm('确认删除嘛')"><input type="button" value="删除" class="btn2" /></a></td>
                             }
                         </tr>
                     </tbody>

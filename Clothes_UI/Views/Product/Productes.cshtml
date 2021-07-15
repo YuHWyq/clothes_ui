@@ -177,7 +177,7 @@
                     <br />
                     <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;订单管理</span>
                     <span class="btn">
-                        <input type="button" value="删除" class="btn2" />
+                        
                     </span>
                     <br />
                     <hr />
@@ -212,11 +212,11 @@
                                 <td>@item.customer_name</td>
                                 <td>@item.order_starttime</td>
                                 <td>@item.quantity</td>
-                                <td>@item.order_paid+@item.order_unpaid</td>
+                                <td>@(item.order_paid+ item.order_unpaid)</td>
                                 <td>@item.order_paid</td>
                                 <td>@item.order_unpaid</td>
                                 <td>@item.order_status</td>
-                                <td><input type="button" value="出库" class="btn11" onclick="chuku(@item.order_id)" /></td>
+                                <td><input type="button" value="出库" class="btn11" onclick="chuku(@item.order_id)" />&nbsp;&nbsp;&nbsp;<a href="/Product/ProductesDelete?id=@item.order_id" onclick="return confirm('确认删除嘛')"><input type="button" value="删除" class="btn2" /></a></td>
                             </tr>
                                     }
                                 

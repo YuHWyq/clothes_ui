@@ -57,7 +57,11 @@
         .top3 {
             margin-left: 50px;
         }
-
+        .top4{
+            width: 100%;
+            height: 300px;
+            box-shadow: 0px 0px 5px 5px lightgray;
+        }
         .btn2 {
             font-size: 20px;
             width: 80px;
@@ -137,7 +141,7 @@
                         <span style="font-size:15px;color:dimgray;">
                             产品订单ID：
                             <input type="text" style="height:40px;width:300px;" placeholder="请输入产品订单ID" name="order_id" />
-                            <el-button type="primary" icon="el-icon-search">搜索</el-button>
+                            <input type="button" value="搜索" class="btn2"/>
                         </span>
                     </div>
                 </div>
@@ -173,14 +177,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div>
-                        <el-dialog :visible.sync="visible" title="添加产品数量">
-                            <hr />
-                            <p>计划产品数量</p>
-                            <input type="text" placeholder="99" style="width:1500px;height:25px;" /><br /><br />
-                            <input type="button" class="btn" value="提交" />
-                        </el-dialog>
-                    </div>
                     <hr />
                     <br />
                     <table class="table table-borderless">
@@ -209,15 +205,38 @@
                 </div>
             </div>
         </form>
-</div>
+        <br />
+        <br />
+        <form action="/Production/product_plan_detailsadd" method="post" enctype="multipart/form-data">
+            <div class="top4">
+                <div class="top3">
+                    <br />
+                    <span style="font-size:20px;color:dimgray;">生产计划详情</span>
+
+                    <hr />
+                    <br />
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">生产计划编号：</th>
+                                <th scope="col">生产产品数量:</th>
+                                <th scope="col">产品信息:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入生产计划编号" name="product_plan_id" /></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入生产产品数量" name="product_details_num" /></td>
+                                <td><input type="text" style="width: 500px; height: 30px;" placeholder="请输入产品信息" name="product_id" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="margin-left:300px;">
+                        <input type="submit" value="提交" class="btn3" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
-<!-- import Vue before Element -->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- import JavaScript -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script>
-    new Vue({
-        el: '#app',
-    })
-</script>
 </html>

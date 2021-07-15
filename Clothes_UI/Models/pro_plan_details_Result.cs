@@ -11,16 +11,20 @@ namespace Clothes_UI.Models
 {
     using System;
     
-    public partial class Quality_test_index_selecte_Result1
+    public partial class pro_plan_details_Result
     {
-        public System.DateTime product_time { get; set; }
-        public string operator_per { get; set; }
-        public int pro_production_id { get; set; }
-        public string status { get; set; }
+        public int product_id { get; set; }
+        public string product_num { get; set; }
         public string product_name { get; set; }
+        public string product_producer { get; set; }
         public string product_type { get; set; }
-        public int product_plan_id { get; set; }
+        public string product_price { get; set; }
+        public string product_address { get; set; }
+        public string unit { get; set; }
+        public string size { get; set; }
+        public string product_quantity { get; set; }
         public int product_details_num { get; set; }
+        public int product_plan_id { get; set; }
         public int product_plan_details_id { get; set; }
     }
 }

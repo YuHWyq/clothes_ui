@@ -2,9 +2,7 @@
 @{
     Layout = null;
 }
-@Scripts.Render("~/bundles/vue")
-@Scripts.Render("~/bundles/element")
-@Styles.Render("~/Content/elementcss")
+@model IEnumerable<Clothes_UI.Models.Production_index_select_Result>
 <!DOCTYPE html>
 
 <html>
@@ -109,29 +107,19 @@
                     <br />
                     <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
                     <span class="btn">
-                        <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/add'" />&nbsp;&nbsp;
-                        <el-button type="text" v-on:click="open" class="btn2">删除</el-button>
+                        <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/add'" />
                     </span>
                     <br />
                     <hr />
                     <br />
                     <span style="display:flex;">
                         <input type="text" class="text" v-model="seach" placeholder="请输入订单编号" />
-                        <input type="button" value="搜索" class="btn3" onclick="sousuo()"/>
+                        <input type="button" value="搜索" class="btn3" onclick="sousuo()" />
                     </span>
                     <br />
-                    <span style="font-size:20px;color:dimgray;display:flex;">
-                        显示<input type="text" list="xl" style="width: 80px; height: 22px;" />
-                        <datalist id="xl">
-                            <option>1</option>
-                            <option>50</option>
-                            <option>100</option>
-                        </datalist>条
-                    </span>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col"><input type="checkbox" />全选</th>
                                 <th scope="col">计划编号</th>
                                 <th scope="col">订单编号</th>
                                 <th scope="col">产品名称</th>
@@ -141,91 +129,83 @@
                                 <th scope="col">操作员</th>
                                 <th scope="col">经办人</th>
                                 <th scope="col">状态</th>
+                                <th scope="col">操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in info">
-                                <td><input type="checkbox" /></td>
-                                <td>{{item.product_plan_id}}</td>
-                                <td>{{item.order_id}}</td>
-                                <td>{{item.product_name}}</td>
-                                <td>{{item.quantity}}</td>
-                                <td>{{item.planned_output}}</td>
-                                <td>{{item.product_time}}</td>
-                                <td>{{item.operator_per}}</td>
-                                <td>{{item.person_handling}}</td>
-                                <td>{{item.status}}</td>
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.product_plan_id</td>
+                                    <td>@item.order_id</td>
+                                    <td>@item.product_name</td>
+                                    <td>@item.quantity</td>
+                                    <td>@item.planned_output</td>
+                                    <td>@item.product_time</td>
+                                    <td>@item.operator_per</td>
+                                    <td>@item.person_handling</td>
+                                    <td>@item.status</td>
+                                    <td>
+                                        <input value="详情" type="button" plain class="btn2" onclick="xiangq(@item.product_plan_id)"/>&nbsp;&nbsp;&nbsp;  
+                                        <a href="/Production/Delete?id=@item.product_plan_id" onclick="return confirm('确认删除嘛')"><button class="btn2">删除</button></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
-                    <div style="margin-left:1250px;">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <div>
+                        <el-dialog :visible.sync="visible" title="材料详情">
+                            <hr />
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">生产计划详情编号</th>
+                                        <th scope="col">生产计划编号</th>
+                                        <th scope="col">生产产品编号</th>
+                                        <th scope="col">产品名称</th>
+                                        <th scope="col">生产数量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="item in infolist">
+                                        <td>{{item.product_plan_details_id}}</td>
+                                        <td>{{item.product_plan_id}}</td>
+                                        <td>{{item.product_id}}</td>
+                                        <td>{{item.product_name}}件</td>
+                                        <td>{{item.product_details_num}}件</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </el-dialog>
                     </div>
                 </div>
             </div>
         </div>
     </transition>
-    <script src="~/Scripts/vue.js"></script>
+    <!-- import Vue before Element -->
     <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- import JavaScript -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script>
-        var vm = new Vue({
-            el: "#app",
-            data: {
-                info: [],
-                show: true,
-                seach:""
-            },
-            methods: {
-                open() {
-                    this.$confirm('确认删除嘛?', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
-                        type: 'warning'
-                    }).then(() => {
-                        this.$message({
-                            type: 'success',
-                            message: '删除成功!'
-                        });
-                    }).catch(() => {
-                        this.$message({
-                            type: 'info',
-                            message: '已取消删除'
-                        });
-                    });
+        //显示产品详情
+        function xiangq(id) {
+            vm.visible = true;
+            $.ajax({
+                url: "https://localhost:44397/Production/product_plan_details?id="+id,
+                type: "get",
+                success: function (data) {
+                    vm.infolist = eval(data);
                 }
-            }
-        });
-        function sousuo() {
-
+            })
         }
-        $.ajax({
-            url: "https://localhost:44360/api/Production/plan_table",
-            type: "get",
-            success: function (data) {
-                console.log("进来了" + data);
-                vm.info = eval(data);
+       var vm= new Vue({
+           el: '#app',
+           data: function () {
+               return { visible: false, show: true, infolist:[]}
             }
-        })
+       })
+
     </script>
 </body>
 </html>

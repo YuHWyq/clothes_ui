@@ -31,7 +31,6 @@ namespace Clothes_UI.Models
         public decimal order_paid { get; set; }
         public decimal order_unpaid { get; set; }
         public string order_status { get; set; }
-        public string order_delivery_way { get; set; }
     
         public virtual customer customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -102,7 +102,6 @@
                 <span style="font-size:20px;color:dimgray;">&nbsp;&nbsp;&nbsp;&nbsp;生产计划管理表</span>
                 <span class="btn">
                     <input type="button" value="添加" class="btn1" onclick="javascrtpt:window.location.href='/Production/Productionsadd'" />&nbsp;&nbsp;
-                    <el-button type="text" v-on:click="open" class="btn2">删除</el-button>
                 </span>
                 <br />
                 <br />
@@ -140,7 +139,7 @@
                             <td>@item.product_time</td>
                             <td>@item.operator_per</td>
                             <td>@item.status</td>
-                            <td><input value="详情" type="button" v-on:click="visible = true" plain class="btn2" /></td>
+                            <td><a href="/Production/ProductionsDelete?id=@item.pro_production_id" onclick="return confirm('确认删除嘛')"><input type="button" value="删除" class="btn2" /></a></td>
                         </tr>
                                 }
                             
@@ -149,35 +148,6 @@
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script>
-        var vm = new Vue({
-            el: '#app',
-            data: function () {
-                return { visible: false }
-            },
-            methods: {
-                open() {
-                    this.$confirm('确认删除嘛?', '提示', {
-                        confirmButtonText: '确定',
-                        cancelButtonText: '取消',
-                        type: 'warning'
-                    }).then(() => {
-                        this.$message({
-                            type: 'success',
-                            message: '删除成功!'
-                        });
-                    }).catch(() => {
-                        this.$message({
-                            type: 'info',
-                            message: '已取消删除'
-                        });
-                    });
-                }
-            }
-        })
-    </script>
 </body>
 
 </html>

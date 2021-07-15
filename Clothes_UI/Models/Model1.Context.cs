@@ -15,10 +15,10 @@ namespace Clothes_UI.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class ClothingDBEntities2 : DbContext
+    public partial class ClothingDBEntities3 : DbContext
     {
-        public ClothingDBEntities2()
-            : base("name=ClothingDBEntities2")
+        public ClothingDBEntities3()
+            : base("name=ClothingDBEntities3")
         {
         }
     
@@ -55,6 +55,15 @@ namespace Clothes_UI.Models
         public virtual DbSet<product_type> product_type { get; set; }
         public virtual DbSet<V_Product_index_selecte> V_Product_index_selecte { get; set; }
     
+        public virtual ObjectResult<pro_plan_details_Result> pro_plan_details(Nullable<int> pro_plan_id)
+        {
+            var pro_plan_idParameter = pro_plan_id.HasValue ?
+                new ObjectParameter("pro_plan_id", pro_plan_id) :
+                new ObjectParameter("pro_plan_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pro_plan_details_Result>("pro_plan_details", pro_plan_idParameter);
+        }
+    
         public virtual ObjectResult<Product_index_selecte_Result> Product_index_selecte()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_index_selecte_Result>("Product_index_selecte");
@@ -68,6 +77,11 @@ namespace Clothes_UI.Models
         public virtual ObjectResult<Product_Productes_selecte_Result> Product_Productes_selecte()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Productes_selecte_Result>("Product_Productes_selecte");
+        }
+    
+        public virtual ObjectResult<Product_Quality_test_selecte_Result> Product_Quality_test_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Quality_test_selecte_Result>("Product_Quality_test_selecte");
         }
     
         public virtual ObjectResult<Production_index_select_Result> Production_index_select()
@@ -89,14 +103,9 @@ namespace Clothes_UI.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Production_Productions_selecte_Result>("Production_Productions_selecte");
         }
     
-        public virtual ObjectResult<Product_Quality_test_selecte_Result> Product_Quality_test_selecte()
+        public virtual ObjectResult<Quality_test_index_selecte_Result> Quality_test_index_selecte()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Quality_test_selecte_Result>("Product_Quality_test_selecte");
-        }
-    
-        public virtual ObjectResult<Quality_test_index_selecte_Result1> Quality_test_index_selecte()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quality_test_index_selecte_Result1>("Quality_test_index_selecte");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quality_test_index_selecte_Result>("Quality_test_index_selecte");
         }
     }
 }

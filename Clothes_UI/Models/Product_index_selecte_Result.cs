@@ -22,6 +22,7 @@ namespace Clothes_UI.Models
         public string product_address { get; set; }
         public string unit { get; set; }
         public string size { get; set; }
+        public string product_quantity { get; set; }
         public int pro_repertory_num { get; set; }
         public int repertory_id { get; set; }
     }

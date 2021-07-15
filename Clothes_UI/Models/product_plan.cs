@@ -17,6 +17,7 @@ namespace Clothes_UI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public product_plan()
         {
+            this.get_materials = new HashSet<get_materials>();
             this.product_plan_details = new HashSet<product_plan_details>();
         }
     
@@ -28,6 +29,8 @@ namespace Clothes_UI.Models
         public string status { get; set; }
         public int planned_output { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<get_materials> get_materials { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product_plan_details> product_plan_details { get; set; }
     }
