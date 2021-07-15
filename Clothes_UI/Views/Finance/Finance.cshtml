@@ -9,10 +9,193 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Finance</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:400,300" />
+    <link rel="stylesheet" href="/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+    <script src="/assets/js/ace-extra.min.js"></script>
+    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f1f1f0;
+        }
+
+        .section {
+            margin-top: 30px;
+            width: 100%;
+            height: 600px;
+            /*background-color:white;*/
+        }
+
+        .section_box {
+            width: 95%;
+            margin: 0px auto;
+            background-color: white;
+            box-shadow: 0px 1px 10px 3px rgb(228,228,229);
+        }
+
+        .top {
+            padding-top: 10px;
+            width: 100%;
+            height: 50px;
+            border-bottom: 2px solid #f1f1f0;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>财务管理</h1>
+
+    <div id="1app">
+        <div class="toubu">
+            <div class="toubu_box">
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>
+                            财务管理
+                            <small>
+                                <i class="icon-double-angle-right"></i>
+                                财务收入详情
+                            </small>
+                        </h1>
+                    </div><!-- /.page-header -->
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section_box">
+                <div class="top">
+                    <span style="font-size:16px;color:#808080;font-weight:bolder; padding-left:20px;line-height:28px;">财务收入详情 / <span style="font-size:14px;"></span></span>
+                </div>
+                <div class="top">
+                    <span style="font-size:16px;font-weight:bolder; padding-left:50px;"></span>
+                    <div id="apps" style="float:right;">
+                        @*<a style="color:white" href="/sale/out_repertory">
+                            <el-button type="primary" icon="el-icon-plus" style="background-color: rgb(52,123,183);">
+                                出库
+                            </el-button>
+                        </a>*@
+
+                    </div>
+                </div>
+                <div style="height:700px;">
+                    <div id="app" style="margin-left:100px;">
+                        <div class="biaoge" style="width:90%;text-align:center;">
+                            <div style="margin:0px auto;">
+                                <template>
+                                    <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+                                              style="width: 100%">
+                                        <el-table-column label="财务收入编号"
+                                                         prop="in_money_id">
+                                        </el-table-column>
+                                        <el-table-column label="订单编号"
+                                                         prop="order_id">
+                                        </el-table-column>
+                                        <el-table-column label="产品名称"
+                                                         prop="product_name">
+                                        </el-table-column>
+                                        <el-table-column label="总金额"
+                                                         prop="zong">
+                                        </el-table-column>
+                                       
+                                        
+                                        
+                                        <el-table-column align="right">
+                                            <template slot="header" slot-scope="scope">
+                                                <el-input v-model="search"
+                                                          size="mini"
+                                                          placeholder="输入关键字搜索" />
+                                            </template>
+                                            <template slot-scope="scope">
+                                                @*<el-button size="mini" v-on:click="handleEdit(scope.row)">详情</el-button>*@
+                                                @*<el-button size="mini" type="danger" v-on:click="handleDelete(scope.row)" style="padding-left:10px;padding-right:10px;">删除</el-button>*@
+                                            </template>
+                                        </el-table-column>
+                                    </el-table>
+                                </template>
+
+                            </div>
+                        </div>
+
+                        <el-dialog title="销售订单详情" :visible.sync="dialogTableVisible">
+                            <el-table :data="gridData">
+                                <el-table-column property="product_id" label="产品ID" width="150"></el-table-column>
+                                <el-table-column property="product_name" label="产品名" width="200"></el-table-column>
+                                <el-table-column property="product_price" label="产品价格"></el-table-column>
+                                <el-table-column property="quantity" label="产品数量"></el-table-column>
+                                <el-table-column property="product_type" label="产品类型"></el-table-column>
+                                <el-table-column property="product_num" label="产品编号"></el-table-column>
+
+                            </el-table>
+                        </el-dialog>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    tableData: [],
+                    search: '',
+                    gridData: [],
+                    dialogTableVisible: false,
+                    dialogFormVisible: false,
+                }
+            },
+            methods: {
+                handleEdit(row) {
+                    this.dialogTableVisible = true;
+                    console.log(row);
+                    $.ajax({
+                        type: "GET",
+                        url: "https://localhost:44396/api/Sale/customer_detail?id=" + row.order_id,
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (data) {
+                            var jsonObj = JSON.parse(data)
+                            for (var i = 0; i < jsonObj.length; i++) {
+                                vm.gridData.push(jsonObj[i]);
+                            }
+                        }
+                    })
+                    this.gridData = [];
+                },
+                handleDelete() {
+                    alert("删除");
+                },
+
+            }
+        })
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44396/api/Finance/in_m",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    var jsonObj = JSON.parse(data)
+                    for (var i = 0; i < jsonObj.length; i++) {
+                        vm.tableData.push(jsonObj[i]);
+                    }
+                }
+            })
+
+        })
+
+        var vm1 = new Vue({
+            el: "#apps",
+            data: {
+
+            }
+        })
+    </script>
 </body>
 </html>

@@ -8,9 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Sale</title>
-    @*<link href="~/Content/homestyle1.css" rel="stylesheet" />*@
-    @*<link href="~/Content/homestyle1.css" rel="stylesheet" />*@
+    <title>Finance</title>
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:400,300" />
@@ -44,20 +42,20 @@
             height: 50px;
             border-bottom: 2px solid #f1f1f0;
         }
-      
     </style>
 </head>
 <body>
+
     <div id="1app">
         <div class="toubu">
             <div class="toubu_box">
                 <div class="page-content">
                     <div class="page-header">
                         <h1>
-                            销售管理
+                            财务管理
                             <small>
                                 <i class="icon-double-angle-right"></i>
-                                客户订单处理
+                                财务支出详情
                             </small>
                         </h1>
                     </div><!-- /.page-header -->
@@ -68,17 +66,17 @@
         <div class="section">
             <div class="section_box">
                 <div class="top">
-                    <span style="font-size:16px;color:#808080;font-weight:bolder; padding-left:20px;line-height:28px;">客户订单处理 / <span style="font-size:14px;">订单销售</span></span>
+                    <span style="font-size:16px;color:#808080;font-weight:bolder; padding-left:20px;line-height:28px;">财务支出详情 / <span style="font-size:14px;"></span></span>
                 </div>
                 <div class="top">
-                    <span style="font-size:16px;font-weight:bolder; padding-left:50px;">订单管理</span>
+                    <span style="font-size:16px;font-weight:bolder; padding-left:50px;"></span>
                     <div id="apps" style="float:right;">
-                        <a style="color:white" href="/sale/out_repertory">
+                        @*<a style="color:white" href="/sale/out_repertory">
                             <el-button type="primary" icon="el-icon-plus" style="background-color: rgb(52,123,183);">
                                 出库
                             </el-button>
-                        </a>
-                      
+                        </a>*@
+
                     </div>
                 </div>
                 <div style="height:700px;">
@@ -86,31 +84,19 @@
                         <div class="biaoge" style="width:90%;text-align:center;">
                             <div style="margin:0px auto;">
                                 <template>
-                                    <el-table :data="tableData.filter(data => !search || data.customer_name.toLowerCase().includes(search.toLowerCase()))"
+                                    <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
                                               style="width: 100%">
-                                        <el-table-column label="订单ID"
+                                        <el-table-column label="财务收入编号"
+                                                         prop="in_money_id">
+                                        </el-table-column>
+                                        <el-table-column label="订单编号"
                                                          prop="order_id">
                                         </el-table-column>
-                                        <el-table-column label="客户名"
-                                                         prop="customer_name">
+                                        <el-table-column label="产品名称"
+                                                         prop="product_name">
                                         </el-table-column>
-                                        <el-table-column label="经手人"
-                                                         prop="person_handling">
-                                        </el-table-column>
-                                        <el-table-column label="已付金额"
-                                                         prop="order_paid">
-                                        </el-table-column>
-                                        <el-table-column label="未付金额"
-                                                         prop="order_unpaid">
-                                        </el-table-column>
-                                        <el-table-column label="计划生产时间"
-                                                         prop="order_starttime"  >
-                                        </el-table-column>
-                                        <el-table-column label="计划结束时间"
-                                                         prop="order_endtime"   >
-                                        </el-table-column>
-                                        <el-table-column label="处理状态"
-                                                         prop="order_status">
+                                        <el-table-column label="总金额"
+                                                         prop="zong">
                                         </el-table-column>
                                         <el-table-column align="right">
                                             <template slot="header" slot-scope="scope">
@@ -119,8 +105,8 @@
                                                           placeholder="输入关键字搜索" />
                                             </template>
                                             <template slot-scope="scope">
-                                                <el-button size="mini" v-on:click="handleEdit(scope.row)">详情</el-button>
-                                                <el-button size="mini" type="danger" v-on:click="handleDelete(scope.row)" style="padding-left:10px;padding-right:10px;">删除</el-button>
+                                                @*<el-button size="mini" v-on:click="handleEdit(scope.row)">详情</el-button>*@
+                                                @*<el-button size="mini" type="danger" v-on:click="handleDelete(scope.row)" style="padding-left:10px;padding-right:10px;">删除</el-button>*@
                                             </template>
                                         </el-table-column>
                                     </el-table>
@@ -153,7 +139,18 @@
             el: "#app",
             data() {
                 return {
-                    tableData: [],
+                    tableData: [{
+                        in_money_id: 1,
+                        order_id: 1,
+                        product_name: "棉",
+                        zong:10000    
+                    },
+                        {
+                            in_money_id: 2,
+                            order_id: 2,
+                            product_name: "布",
+                            zong: 8000
+                        }],
                     search: '',
                     gridData: [],
                     dialogTableVisible: false,
@@ -181,30 +178,30 @@
                 handleDelete() {
                     alert("删除");
                 },
-                
+
             }
         })
 
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "https://localhost:44396/api/Sale/customer_order_detail",
-                dataType: "json",
-                contentType: "application/json",
-                success: function (data) {
-                  var jsonObj =  JSON.parse(data)
-                    for (var i = 0; i < jsonObj.length; i++) {
-                        vm.tableData.push(jsonObj[i]);
-                    }
-                }
-            })
+        //$(document).ready(function () {
+        //    $.ajax({
+        //        type: "GET",
+        //        url: "https://localhost:44396/api/Sale/customer_order_detail",
+        //        dataType: "json",
+        //        contentType: "application/json",
+        //        success: function (data) {
+        //            var jsonObj = JSON.parse(data)
+        //            for (var i = 0; i < jsonObj.length; i++) {
+        //                vm.tableData.push(jsonObj[i]);
+        //            }
+        //        }
+        //    })
 
-        })
+        //})
 
         var vm1 = new Vue({
             el: "#apps",
             data: {
-                   
+
             }
         })
     </script>

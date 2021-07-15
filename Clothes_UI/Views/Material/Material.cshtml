@@ -82,22 +82,22 @@
                     <div class="biaoge" style="width:90%;text-align:center;">
                         <div style="margin:0px auto;">
                             <template>
-                                <el-table :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+                                <el-table :data="tableData.filter(data => !search || data.clName.toLowerCase().includes(search.toLowerCase()))"
                                           style="width: 100%">
                                     <el-table-column label="库存编号"
-                                                     prop="materialr_epertory_id">
+                                                     prop="clID">
                                     </el-table-column>
                                     <el-table-column label="材料名"
-                                                     prop="materialr_details_name">
+                                                     prop="clName">
                                     </el-table-column>
                                     <el-table-column label="材料数量"
-                                                     prop="materialr_num">
+                                                     prop="clnum">
                                     </el-table-column>
                                     <el-table-column label="材料价格"
-                                                     prop="materialr_details_price">
+                                                     prop="clprice">
                                     </el-table-column>
                                     <el-table-column label="供应商"
-                                                     prop="material_supplier">
+                                                     prop="clgys">
                                     </el-table-column>
                                     <el-table-column align="right">
                                         <template slot="header" slot-scope="scope">
@@ -106,13 +106,48 @@
                                                       placeholder="输入关键字搜索" />
                                         </template>
                                         <template slot-scope="scope">
-                                            <el-button size="mini" v-on:click="handleEdit()">修改</el-button>
-                                            <el-button size="mini" type="danger" v-on:click="handleDelete()" style="padding-left:10px;padding-right:10px;">删除</el-button>
+                                            <el-button size="mini" v-on:click="handleEdit(scope.row)">修改</el-button>
+                                            <el-button size="mini" type="danger" v-on:click="handleDelete(scope.row)" style="padding-left:10px;padding-right:10px;">删除</el-button>
                                         </template>
                                     </el-table-column>
                                 </el-table>
                             </template>
 
+                            @*<el-button type="text" v-on:click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>*@
+
+                            <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+                                <el-form :model="form">
+                                    <table>
+                                        <tr>
+                                            <td>材料名称：</td>
+                                            <td class="lefttd">
+                                                <el-input placeholder="请输入内容" v-model="form.clName"></el-input>
+                                            </td>
+
+                                            <td>材料价格：</td>
+                                            <td>
+                                                <el-input placeholder="请输入内容" v-model="form.clprice"></el-input>
+                                            </td>
+                                        </tr>
+                                        <tr style="height:100px;">
+                                            <td>@*材料规格：*@库存数量：</td>
+                                            <td class="lefttd">
+                                                <el-input-number v-model="form.clnum" :min="1" :max="10000" label="描述文字"></el-input-number>
+                                                @*<el-input placeholder="请输入内容" v-model="pro_guige"></el-input>*@
+                                            </td>
+                                            <td>供应商：</td>
+                                            <td class="lefttd">
+                                                <el-input placeholder="请输入内容" v-model="form.clgys"></el-input>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </el-form>
+                                <div slot="footer" class="dialog-footer">
+                                    <el-button v-on:click="dialogFormVisible = false">取 消</el-button>
+                                    <el-button type="primary" v-on:click="baocun()">确 定</el-button>
+                                </div>
+                            </el-dialog>
                         </div>
                     </div>
                 </div>
@@ -121,27 +156,81 @@
     </div>
     <script src="~/Scripts/vue.min.js"></script>
     <script src="~/Scripts/ElementUI/element-ui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script>
         var vm = new Vue({
             el: "#app",
             data() {
                 return {
-                    tableData: [{
-                        materialr_epertory_id: 1,
-                        materialr_details_name: '棉',
-                        materialr_num: 100,
-                        materialr_details_price: 20.00,
-                        material_supplier: '新疆棉公司',
-                    }, ],
-                    search: ''
+                    tableData: [],
+                    search: '',
+                    dialogTableVisible: false,
+                    dialogFormVisible: false,
+                    form: {
+                        cid:'',
+                        clName: '',
+                        clprice: '',
+                        clnum: '',
+                        clgys: ''
+                    },
+                    formLabelWidth: '120px'
                 }
             },
             methods: {
-                handleEdit() {
-                    alert("详情");
+                handleEdit(row) {
+                    //alert("详情");
+                    //dialogFormVisible = true;
+                    this.dialogFormVisible = true
+                    $.ajax({
+                        type: "GET",
+                        url: "https://localhost:44396/api/Material/select_xiangqing?id=" + row.clID,
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (data) {
+                            var info = eval(data);
+                            vm.form.cid = info[0].clID;
+                            vm.form.clName = info[0].clName;
+                            vm.form.clprice = info[0].clprice;
+                            vm.form.clnum = info[0].clnum;
+                            vm.form.clgys = info[0].clgys;
+                        }
+                    })
                 },
-                handleDelete() {
-                    alert("删除");
+                handleDelete(row) {
+                    //alert("删除");
+                    if (confirm("确定要删除吗？")) {
+                         $.ajax({
+                        type: "GET",
+                        url: "https://localhost:44396/api/Material/deleteyl?id=" + row.clID,
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (data) {
+                            alert("删除成功！")
+                            window.location.href = "@Url.Content("~/Material/Material/")";
+
+                        }
+                    })
+                    }
+                }, baocun() {
+
+                    var json1 = {
+                        "clID": vm.form.cid,
+                        "clName": vm.form.clName,
+                        "clnum":vm.form.clnum,
+                        "clprice":vm.form.clprice,
+                        "clgys":vm.form.clgys,
+                    };
+                    var json2 = JSON.stringify(json1);
+                    //新增数据
+                    $.ajax({
+                        url: "https://localhost:44396/api/Material/update_cl?json=" + json2,
+                     type: "get",
+                     contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                    this.dialogFormVisible = false;
+                    window.location.href = "@Url.Content("~/Material/Material")";
+                }
+            })
                 }
             }
         })
@@ -151,6 +240,23 @@
             data: {
 
             }
+        })
+
+        //原料库存查询
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:44396/api/Material/select_material",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    var jsonObj = JSON.parse(data)
+                    for (var i = 0; i < jsonObj.length; i++) {
+                        vm.tableData.push(jsonObj[i]);
+                    }
+                }
+            })
+
         })
     </script>
 </body>
