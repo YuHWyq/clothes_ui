@@ -12,6 +12,8 @@ namespace Clothes_UI.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ClothingDBEntities2 : DbContext
     {
@@ -51,5 +53,50 @@ namespace Clothes_UI.Models
         public virtual DbSet<product_plan_details> product_plan_details { get; set; }
         public virtual DbSet<product_quality_testing> product_quality_testing { get; set; }
         public virtual DbSet<product_type> product_type { get; set; }
+        public virtual DbSet<V_Product_index_selecte> V_Product_index_selecte { get; set; }
+    
+        public virtual ObjectResult<Product_index_selecte_Result> Product_index_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_index_selecte_Result>("Product_index_selecte");
+        }
+    
+        public virtual ObjectResult<Product_Productees_selecte_Result> Product_Productees_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Productees_selecte_Result>("Product_Productees_selecte");
+        }
+    
+        public virtual ObjectResult<Product_Productes_selecte_Result> Product_Productes_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Productes_selecte_Result>("Product_Productes_selecte");
+        }
+    
+        public virtual ObjectResult<Product_Quality_test_selecte_Result> Product_Quality_test_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Quality_test_selecte_Result>("Product_Quality_test_selecte");
+        }
+    
+        public virtual ObjectResult<Production_index_select_Result> Production_index_select()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Production_index_select_Result>("Production_index_select");
+        }
+    
+        public virtual ObjectResult<Production_index_selected_Result> Production_index_selected(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Production_index_selected_Result>("Production_index_selected", idParameter);
+        }
+    
+        public virtual ObjectResult<Production_Productions_selecte_Result> Production_Productions_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Production_Productions_selecte_Result>("Production_Productions_selecte");
+        }
+    
+        public virtual ObjectResult<Quality_test_index_selecte_Result> Quality_test_index_selecte()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Quality_test_index_selecte_Result>("Quality_test_index_selecte");
+        }
     }
 }

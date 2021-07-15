@@ -4,141 +4,121 @@
 }
 
 <!DOCTYPE html>
+
+<link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
+<link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
+<link href="~/Content/homestyle1.css" rel="stylesheet" />
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:400,300" />
+<link rel="stylesheet" href="/assets/css/ace.min.css" />
+<link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+<link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+<script src="/assets/js/ace-extra.min.js"></script>
 <style>
+    body {
+        background-color: #f1f1f0;
+    }
 
-    #header {
-        box-shadow: 0px 0px 5px 5px lightgray;
+    .one_se {
         width: 100%;
-        height: 250px;
-    }
-    #header {
-        margin-top: 50px;
-    }
-
-    a {
-        text-decoration: none;
+        height: 95px;
+        /*background-color: #438eb9;*/
+        border-radius: 0px 0px 10px 10px;
         font-size: 20px;
-    }
-    #contentbody {
-        box-shadow: 0px 0px 5px 5px lightgray;
-        width: 100%;
-        height: 600px;
-    }
-    .el-table .warning-row {
-        background: oldlace;
+        /*color: white;*/
+        text-align: center;
+        line-height: 95px;
     }
 
-    .el-table .success-row {
-        background: #f0f9eb;
+    .two_se {
+        float: left;
+        width: 210px;
+        height: 95px;
+        border-radius: 0px 10px 0px 0px;
+        font-size: 20px;
+        text-align: center;
+        line-height: 95px;
+    }
+
+    .title {
+        width: 300px;
+        height: 30px;
+        color: #808080;
+        font-size: 20px;
+        line-height: 30px;
+        padding-left: 200px;
     }
 </style>
-<link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>track</title>
 </head>
 <body>
-    
+
+    <div class="section">
+
+        <div class="section_box">
+            <div id="appbox">
+                <div id="app" style="width:1000px;height:500px;">
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="content">
-        <div id="contentheader">
-            <div id="headerbody" style="border: 1px solid white">
-                <p style="margin:40px; font-size: 30px;">客户管理</p>
-                <a href="" style="margin-left:20px ;">首页</a>
-                /<a href="">客户管理</a>
-                /<a href="">订单跟踪</a>
-            </div>
-        </div>
-        <div style="border: 1px solid lightgray; width: 100%; margin-top:20px;"></div>
-        <div id="header">
-            <span style="font-size: 20px; margin: 20px;">订单信息查询</span>
-            <div style="border: 1px solid lightgray; width: 100%; margin-top: 50px;"></div>
-            <div style="margin:50px;">
-                <span>
-                    产品订单ID：&nbsp;&nbsp;&nbsp;&nbsp;<select style="width: 250px; height: 30px; font-size:15px ; border-radius:5px ;">
-                        <option value="volovo">1</option>
-                        <option value="saab">2</option>
-                        <option value="opel">3</option>
-                        <option value="audi">4</option>
-                        <option value="audi">5</option>
-                        <option value="audi">6</option>
-                        <option value="audi">7</option>
-                        <option value="audi">8</option>
-                        <option value="audi">9</option>
-                        <option value="audi">10</option>
-                        <option value="audi">11</option>
-                        <option value="audi">12</option>
-
-                    </select>&nbsp;&nbsp;<input type="button" value="搜索" style="height: 35px; width: 75px; border-radius: 5px; background-color: #20B2AA; color: white;">
-                </span>
-            </div>
 
 
-
-        </div>
-        <div id="contentbody" style="margin-top:50px;">
-            <span style="font-size: 20px; margin: 20px;">订单详细信息</span>
-            <div style="border: 1px solid lightgray; width: 100%; margin-top:50px;"></div>
-            <div id="app" style="margin-top:40px;">
-                <template style="">
-                    <el-table :data="tableData"
-                              style="width: 50%"
-                              :row-class-name="tableRowClassName">
-                        <el-table-column prop="date"
-                                         label="订单信息"
-                                         width="180">
-                        </el-table-column>
-                        <el-table-column prop="name"
-                                         label="姓名"
-                                         width="180">
-                        </el-table-column>
-                        <el-table-column prop="address"
-                                         label="地址">
-                        </el-table-column>
-                    </el-table>
-                </template>
-
-            </div>
-        </div>
-    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/echarts.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scriptsue.min.js"></script>
     <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script>
-        var vm = new Vue({
-            el: "#app",
-            methods: {
-                tableRowClassName({ row, rowIndex }) {
-                    if (rowIndex === 1) {
-                        return 'warning-row';
-                    } else if (rowIndex === 3) {
-                        return 'success-row';
-                    }
-                    return '';
+        var myChart = echarts.init(document.getElementById('app'));
+        option = {
+            title: {
+                text: '订单统计',
+                subtext: '数据来自数据统计'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
                 }
             },
-            data() {
-                return {
-                    tableData: [{
-                        date: '2016-05-02',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄',
-                    }, {
-                        date: '2016-05-04',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄'
-                    }, {
-                        date: '2016-05-01',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄',
-                    }, {
-                        date: '2016-05-03',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄'
-                    }]
+            legend: {
+                data: ['2020年', '2021年']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01]
+            },
+            yAxis: {
+                type: 'category',
+                data: ['7月份', '8月份', '9月份', '10月份', '11月份', '2020-2021总订单统计']
+            },
+            series: [
+                {
+                    name: '2020年',
+                    type: 'bar',
+                    data: [18203, 23489, 29034, 104970, 131744, 630230]
+                },
+                {
+                    name: '2021年',
+                    type: 'bar',
+                    data: [19325, 23438, 31000, 121594, 134141, 681807]
                 }
-            }
-        })
+            ]
+        };
+        myChart.setOption(option);
     </script>
 </body>
+
+
 </html>
