@@ -12,13 +12,12 @@ namespace Clothes_UI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class out_repertory
+    public partial class cl
     {
-        public int out_repertoryout_repertory_id { get; set; }
-        public int order_id { get; set; }
-        public string operator_per { get; set; }
-        public System.DateTime out_time { get; set; }
-    
-        public virtual orders orders { get; set; }
+        public int clID { get; set; }
+        public string clName { get; set; }
+        public int clnum { get; set; }
+        public int clprice { get; set; }
+        public string clgys { get; set; }
     }
 }

@@ -15,10 +15,10 @@ namespace Clothes_UI.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class ClothingDBEntities3 : DbContext
+    public partial class ClothingDBEntities4 : DbContext
     {
-        public ClothingDBEntities3()
-            : base("name=ClothingDBEntities3")
+        public ClothingDBEntities4()
+            : base("name=ClothingDBEntities4")
         {
         }
     
@@ -29,6 +29,7 @@ namespace Clothes_UI.Models
     
         public virtual DbSet<admin> admin { get; set; }
         public virtual DbSet<buy_materials_details> buy_materials_details { get; set; }
+        public virtual DbSet<cl> cl { get; set; }
         public virtual DbSet<customer> customer { get; set; }
         public virtual DbSet<get_materials> get_materials { get; set; }
         public virtual DbSet<in_materialr> in_materialr { get; set; }

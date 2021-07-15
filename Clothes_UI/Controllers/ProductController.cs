@@ -9,7 +9,7 @@ namespace Clothes_UI.Controllers
 {
     public class ProductController : Controller
     {
-        ClothingDBEntities3 db = new ClothingDBEntities3();
+        ClothingDBEntities4 db = new ClothingDBEntities4();
         // GET: Product
         //产品库存管理
         public ActionResult Index()

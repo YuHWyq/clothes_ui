@@ -23,6 +23,16 @@
           <Property Name="materialr_details_num" Type="int" Nullable="false" />
           <Property Name="materialr_details_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="cl">
+          <Key>
+            <PropertyRef Name="clID" />
+          </Key>
+          <Property Name="clID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="clnum" Type="int" Nullable="false" />
+          <Property Name="clprice" Type="int" Nullable="false" />
+          <Property Name="clgys" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="customer">
           <Key>
             <PropertyRef Name="customer_id" />
@@ -165,6 +175,7 @@
           <Property Name="order_paid" Type="money" Nullable="false" />
           <Property Name="order_unpaid" Type="money" Nullable="false" />
           <Property Name="order_status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ss" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="out_materialr">
           <Key>
@@ -187,7 +198,6 @@
           </Key>
           <Property Name="out_repertoryout_repertory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="order_id" Type="int" Nullable="false" />
-          <Property Name="person_handling" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="operator_per" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="out_time" Type="date" Nullable="false" />
         </EntityType>
@@ -587,6 +597,7 @@
         <EntityContainer Name="ClothingDBModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="buy_materials_details" EntityType="Self.buy_materials_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cl" EntityType="Self.cl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="get_materials" EntityType="Self.get_materials" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="in_materialr" EntityType="Self.in_materialr" Schema="dbo" store:Type="Tables" />
@@ -732,6 +743,16 @@
           <Property Name="materialr_details_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="in_materialr" Relationship="Self.FK_buy_materials_details_in_materialr" FromRole="buy_materials_details" ToRole="in_materialr" />
           <NavigationProperty Name="materialr" Relationship="Self.FK_buy_materials_details_materialr" FromRole="buy_materials_details" ToRole="materialr" />
+        </EntityType>
+        <EntityType Name="cl">
+          <Key>
+            <PropertyRef Name="clID" />
+          </Key>
+          <Property Name="clID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="clnum" Type="Int32" Nullable="false" />
+          <Property Name="clprice" Type="Int32" Nullable="false" />
+          <Property Name="clgys" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -898,6 +919,7 @@
           <Property Name="order_paid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="order_unpaid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="order_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="customer" Relationship="Self.FK_order_customer" FromRole="orders" ToRole="customer" />
           <NavigationProperty Name="in_money" Relationship="Self.FK_in_money_order" FromRole="orders" ToRole="in_money" />
           <NavigationProperty Name="order_details" Relationship="Self.FK_order_details_order_details" FromRole="orders" ToRole="order_details" />
@@ -927,7 +949,6 @@
           </Key>
           <Property Name="out_repertoryout_repertory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_id" Type="Int32" Nullable="false" />
-          <Property Name="person_handling" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="operator_per" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="out_time" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="orders" Relationship="Self.FK_out_repertory_order" FromRole="out_repertory" ToRole="orders" />
@@ -1018,32 +1039,6 @@
           </Key>
           <Property Name="product_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="product_type_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="V_Product_index_selecte">
-          <Key>
-            <PropertyRef Name="product_id" />
-            <PropertyRef Name="product_num" />
-            <PropertyRef Name="product_name" />
-            <PropertyRef Name="product_producer" />
-            <PropertyRef Name="product_type" />
-            <PropertyRef Name="product_price" />
-            <PropertyRef Name="product_address" />
-            <PropertyRef Name="unit" />
-            <PropertyRef Name="size" />
-            <PropertyRef Name="pro_repertory_num" />
-            <PropertyRef Name="repertory_id" />
-          </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" />
-          <Property Name="product_num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="product_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="product_producer" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="product_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="product_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="product_address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="pro_repertory_num" Type="Int32" Nullable="false" />
-          <Property Name="repertory_id" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_buy_materials_details_in_materialr">
           <End Role="in_materialr" Type="Self.in_materialr" Multiplicity="1" />
@@ -1340,7 +1335,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_product_plan_details_product_plan_details">
-          <End Role="product_plan" Type="Self.product_plan" Multiplicity="1" />
+          <End Role="product_plan" Type="Self.product_plan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="product_plan_details" Type="Self.product_plan_details" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product_plan">
@@ -1351,9 +1348,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ClothingDBEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ClothingDBEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admin" EntityType="Self.admin" />
           <EntitySet Name="buy_materials_details" EntityType="Self.buy_materials_details" />
+          <EntitySet Name="cl" EntityType="Self.cl" />
           <EntitySet Name="customer" EntityType="Self.customer" />
           <EntitySet Name="get_materials" EntityType="Self.get_materials" />
           <EntitySet Name="in_materialr" EntityType="Self.in_materialr" />
@@ -1378,7 +1376,6 @@
           <EntitySet Name="product_plan_details" EntityType="Self.product_plan_details" />
           <EntitySet Name="product_quality_testing" EntityType="Self.product_quality_testing" />
           <EntitySet Name="product_type" EntityType="Self.product_type" />
-          <EntitySet Name="V_Product_index_selecte" EntityType="Self.V_Product_index_selecte" />
           <AssociationSet Name="FK_buy_materials_details_in_materialr" Association="Self.FK_buy_materials_details_in_materialr">
             <End Role="in_materialr" EntitySet="in_materialr" />
             <End Role="buy_materials_details" EntitySet="buy_materials_details" />
@@ -1476,7 +1473,7 @@
             <End Role="product_plan_details" EntitySet="product_plan_details" />
           </AssociationSet>
           <FunctionImport Name="pro_plan_details" ReturnType="Collection(ClothingDBModel.pro_plan_details_Result)">
-          <Parameter Name="pro_plan_id" Mode="In" Type="Int32" />
+            <Parameter Name="pro_plan_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Product_index_selecte" ReturnType="Collection(ClothingDBModel.Product_index_selecte_Result)" />
           <FunctionImport Name="Product_Productees_selecte" ReturnType="Collection(ClothingDBModel.Product_Productees_selecte_Result)" />
@@ -1600,7 +1597,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ClothingDBModelStoreContainer" CdmEntityContainer="ClothingDBEntities3">
+        <EntityContainerMapping StorageEntityContainer="ClothingDBModelStoreContainer" CdmEntityContainer="ClothingDBEntities4">
           <EntitySetMapping Name="admin">
             <EntityTypeMapping TypeName="ClothingDBModel.admin">
               <MappingFragment StoreEntitySet="admin">
@@ -1618,6 +1615,17 @@
                 <ScalarProperty Name="in_materialr_id" ColumnName="in_materialr_id" />
                 <ScalarProperty Name="materialr_details_num" ColumnName="materialr_details_num" />
                 <ScalarProperty Name="materialr_details_id" ColumnName="materialr_details_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cl">
+            <EntityTypeMapping TypeName="ClothingDBModel.cl">
+              <MappingFragment StoreEntitySet="cl">
+                <ScalarProperty Name="clID" ColumnName="clID" />
+                <ScalarProperty Name="clName" ColumnName="clName" />
+                <ScalarProperty Name="clnum" ColumnName="clnum" />
+                <ScalarProperty Name="clprice" ColumnName="clprice" />
+                <ScalarProperty Name="clgys" ColumnName="clgys" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1775,6 +1783,7 @@
                 <ScalarProperty Name="order_paid" ColumnName="order_paid" />
                 <ScalarProperty Name="order_unpaid" ColumnName="order_unpaid" />
                 <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="ss" ColumnName="ss" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1800,7 +1809,6 @@
               <MappingFragment StoreEntitySet="out_repertory">
                 <ScalarProperty Name="out_repertoryout_repertory_id" ColumnName="out_repertoryout_repertory_id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="person_handling" ColumnName="person_handling" />
                 <ScalarProperty Name="operator_per" ColumnName="operator_per" />
                 <ScalarProperty Name="out_time" ColumnName="out_time" />
               </MappingFragment>
@@ -1882,23 +1890,6 @@
               <MappingFragment StoreEntitySet="product_type">
                 <ScalarProperty Name="product_type_id" ColumnName="product_type_id" />
                 <ScalarProperty Name="product_type_name" ColumnName="product_type_name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="V_Product_index_selecte">
-            <EntityTypeMapping TypeName="ClothingDBModel.V_Product_index_selecte">
-              <MappingFragment StoreEntitySet="V_Product_index_selecte">
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="product_num" ColumnName="product_num" />
-                <ScalarProperty Name="product_name" ColumnName="product_name" />
-                <ScalarProperty Name="product_producer" ColumnName="product_producer" />
-                <ScalarProperty Name="product_type" ColumnName="product_type" />
-                <ScalarProperty Name="product_price" ColumnName="product_price" />
-                <ScalarProperty Name="product_address" ColumnName="product_address" />
-                <ScalarProperty Name="unit" ColumnName="unit" />
-                <ScalarProperty Name="size" ColumnName="size" />
-                <ScalarProperty Name="pro_repertory_num" ColumnName="pro_repertory_num" />
-                <ScalarProperty Name="repertory_id" ColumnName="repertory_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
