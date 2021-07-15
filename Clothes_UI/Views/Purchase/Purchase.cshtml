@@ -36,13 +36,7 @@
         #header {
             margin-top: 20px;
         }
-        .btn2 {
-            float: right;
-            background-color: lightseagreen;
-            height: 40px;
-            width: 70px;
-            margin-left: 10px;
-        }
+       
 
     </style>
 </head>
@@ -63,7 +57,7 @@
 
             <span style="font-size: 20px; margin: 20px;">添加采购单</span>
 
-            <input type="button" class="btn2" value="添加" style="margin-right:20px; border-radius:5px; color: white;"></input>
+           
 
 
 
@@ -85,23 +79,24 @@
                     <tr>
                         <th scope="col">材料ID</th>
                         <th scope="col">材料名</th>
-                        <th scope="col">材料类型</th>
+                     
                         <th scope="col">材料价格</th>
                         <th scope="col">供应商</th>
 
                     </tr>
                 </thead>
+                @foreach (var materialr in Model)
+                {
                 <tbody>
 
                     <tr v-for="item in info">
-                        <td>002</td>
-                        <td>001</td>
-                        <td>品如</td>
-                        <td>T恤</td>
-                        <td>件</td>
-
+                        <td>@materialr.materialr_details_id</td>
+                        <td>@materialr.materialr_details_name</td>
+                        <td>@materialr.materialr_details_price</td>
+                        <td>@materialr.material_supplier</td>
                     </tr>
                 </tbody>
+                }
             </table>
             <div id="bodyfoot" style="margin-left:550px; margin-top:100px;">
                 <div id="app">

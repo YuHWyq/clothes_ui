@@ -19,7 +19,7 @@
     <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/vue.js"></script>
-   <link href="~/Scripts/ElementUI/element-ui.js" />
+    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
     <style>
         #content {
             width: 100%;
@@ -32,7 +32,7 @@
             margin-top: 20px;
         }
 
-      
+
 
         .btn2 {
             float: right;
@@ -51,9 +51,99 @@
             text-decoration: none;
             font-size: 20px;
         }
+
+        /*弹窗样式*/
+        table tr .shao {
+            width: 120px;
+        }
+
+        .table1 tr {
+            height: 65px;
+        }
+
+            .table1 tr .tdtext {
+                padding-left: 20px;
+            }
+
+        table tr .shao {
+            width: 80px;
+        }
+
+        table tr .duo {
+            width: 200px;
+        }
+
+        table tr td, table tr th {
+            text-align: center;
+        }
+
+        table thead tr {
+            background-color: rgb(52,123,183);
+            color: white;
+        }
+
+        .table1 tr {
+            padding: 50px;
+        }
+
+            .table1 tr td {
+                padding-right: 20px;
+            }
+
     </style>
 </head>
 <body>
+    <div id="update_num_app">
+        <el-dialog :visible.sync="visible" title="修改客户信息" width="63%" style="background-color: rgba(255,255,255,0.3)">
+            <div style="text-align:center;">
+                <table class="table1" cellpadding="20" cellspacing="10" style="margin-left:80px">
+                    <tr>
+                        <td>客户名称：</td>
+                        <td class="lefttd">
+                            <el-input placeholder="请输入内容" v-model="name"></el-input>
+                        </td>
+                        <td>客户电话号码：</td>
+                        <td>
+                            <el-input placeholder="请输入内容" v-model="photo"></el-input>
+                        </td>
+                        <td>联系人：</td>
+                        <td class="lefttd">
+                            <el-input placeholder="请输入内容" v-model="lianxiren"></el-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>电子邮箱：</td>
+                        <td class="lefttd">
+                            <el-input placeholder="请输入内容" v-model="email"></el-input>
+                        </td>
+                        <td>开户银行：</td>
+                        <td>
+                            <el-input placeholder="请输入内容" v-model="yinhang"></el-input>
+                        </td>
+                        <td>客户地址：</td>
+                        <td class="lefttd">
+                            <el-input placeholder="请输入内容" v-model="address"></el-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>客户传真：</td>
+                        <td>
+                            <el-input placeholder="请输入内容" v-model="chuanzhen"></el-input>
+                        </td>
+                        <td>银行账号：</td>
+                        <td>
+                            <el-input placeholder="请输入内容" v-model="zhanghu"></el-input>
+                        </td>
+                        <td>邮政编码：</td>
+                        <td>
+                            <el-input placeholder="请输入内容" v-model="bianma"></el-input>
+                        </td>
+                    </tr>
+                </table>
+                <el-button type="primary" style="background-color: rgb(52,123,183);margin-top:25px" onclick='baocun()'> 保存 </el-button>
+            </div>
+        </el-dialog>
+    </div>
     <div id="content">
         <div id="contentheader">
             <div id="headerbody" style="border: 1px solid white">
@@ -64,7 +154,6 @@
             </div>
         </div>
         <div style="border: 1px solid lightgray; width: 100%;  margin-top:20px ;"></div>
-
         <div id="header">
 
             <span style="font-size: 20px; margin: 20px;">客户资料</span>
@@ -93,66 +182,132 @@
                     <option value="audi">10</option>
                     <option value="audi">11</option>
                     <option value="audi">12</option>
-
                 </select>条
             </div>
-           
-                <table class="table table-bordered">
-                    <thead>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">客户ID</th>
+                        <th scope="col">用户名称</th>
+                        <th scope="col">用户电话号码</th>
+                        <th scope="col">联系人</th>
+                        <th scope="col">用户邮箱</th>
+                        <th scope="col">客户地址</th>
+                        <th scope="col">客户传真</th>
+                        <th scope="col">邮政编码</th>
+                        <th scope="col">开户银行</th>
+                        <th scope="col">银行账户</th>
+                        <th scope="col">操作</th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var Customer in Model)
+                {
+                    <tbody>
+
                         <tr>
-                            <th scope="col">客户ID</th>
-                            <th scope="col">用户名称</th>
-                            <th scope="col">用户电话号码</th>
-                            <th scope="col">联系人</th>
-                            <th scope="col">用户邮箱</th>
-                            <th scope="col">客户地址</th>
-                            <th scope="col">客户传真</th>
-                            <th scope="col">邮政编码</th>
-                            <th scope="col">开户银行</th>
-                            <th scope="col">银行账户</th>
-                            <th scope="col">操作</th>
-
+                            <td>@Customer.customer_id</td>
+                            <td>@Customer.customer_name</td>
+                            <td>@Customer.customer_phone</td>
+                            <td>@Customer.customer_linkman</td>
+                            <td>@Customer.customer_email</td>
+                            <td>@Customer.customer_address</td>
+                            <td>@Customer.customer_fax</td>
+                            <td>@Customer.customer_postcode</td>
+                            <td>@Customer.bank</td>
+                            <td>@Customer.bank_account</td>
+                            <td>
+                                <el-button type="primary" onclick="xiugai(@Customer.customer_id)">修改</el-button>
+                                <el-button type="danger">
+                                    <a href="/Customer/Delete?id=@Customer.customer_id" onclick="return confirm('确认删除吗？')" el-button type="danger">删除</a>
+                                </el-button>
+                                
+                            </td>
                         </tr>
-                    </thead>
+                    </tbody>
+}
 
-                    @foreach (var Customer in Model)
-                    {
-            <tbody>
+            </table>
 
-                <tr v-for="item in info">
-                    <td>@Customer.customer_id</td>
-                    <td>@Customer.customer_name</td>
-                    <td>@Customer.customer_phone</td>
-                    <td>@Customer.customer_linkman</td>
-                    <td>@Customer.customer_email</td>
-                    <td>@Customer.customer_address</td>
-                    <td>@Customer.customer_fax</td>
-                    <td>@Customer.customer_postcode</td>
-                    <td>@Customer.bank</td>
-                    <td>@Customer.bank_account</td>
-                    <td><button>修改</button><a href="/Customer/Delete?id=@Customer.customer_id" onclick="return confirm('确认删除吗？')" el-button type="danger">删除</a></td>
-                </tr>
-            </tbody>}
-
-                </table>
-            
         </div>
     </div>
-
     <script src="~/Scripts/vue.min.js"></script>
     <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script>
-        function skip() {
-            window.location.href = '/Customer/InsertCustomerInformation';
-
-        }
         var vm = new Vue({
-            el: "button",
-            data() {
+            el: "#content",
+            data: {
 
             }
         })
-
+        var vm1 = new Vue({
+            el: "#update_num_app",
+            data: {
+                id: "",
+                name: "",
+                photo: "",
+                email: "",
+                lianxiren: "",
+                yinhang: "",
+                address: "",
+                chuanzhen: "",
+                zhanghu: "",
+                bianma: "",
+                visible: false
+            }
+        })
+        function skip() {
+            window.location.href = '/Customer/InsertCustomerInformation';
+        }
+        function xiugai(id) {
+            vm1.visible = true;
+            //查数据返回赋值
+            $.ajax({
+                url: "https://localhost:44397/Customer/chaxunID?id="+id,
+                type: "get",
+                success: function (data) {
+                    var info = eval(data);
+                    console.log(info[0]);
+                    vm1.id = info[0].customer_id;
+                    vm1.name = info[0].customer_name;
+                    vm1.photo = info[0].customer_phone;
+                    vm1.lianxiren = info[0].customer_linkman;
+                    vm1.email = info[0].customer_email;
+                    vm1.yinhang = info[0].bank;
+                    vm1.address = info[0].customer_address;
+                    vm1.chuanzhen = info[0].customer_fax;
+                    vm1.zhanghu = info[0].bank_account;
+                    vm1.bianma = info[0].customer_postcode;
+                }
+            })
+        }
+        function baocun() {
+            var json1 = {
+                "customer_id": vm1.id,
+                "customer_name": vm1.name,
+                "customer_phone": vm1.photo,
+                "customer_linkman": vm1.lianxiren,
+                "customer_email": vm1.email,
+                "customer_address": vm1.address,
+                "customer_fax": vm1.chuanzhen,
+                "customer_postcode": vm1.bianma,
+                "bank": vm1.yinhang,
+                "bank_account": vm1.zhanghu
+            };
+            var json2 = JSON.stringify(json1);
+            console.log(json2);
+            //新增数据
+            $.ajax({
+                url: "https://localhost:44397/Customer/UpCustomer?json=" + json2,
+                type: "get",
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    vm1.visible = false;
+                    window.location.href = "@Url.Content("~/Customer/Customer")";
+                }
+            })
+        }
     </script>
 </body>
 </html>

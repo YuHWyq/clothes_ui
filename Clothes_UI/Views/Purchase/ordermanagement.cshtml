@@ -80,17 +80,22 @@
 
                     </tr>
                 </thead>
+                @foreach (var in_materialr in Model)
+                {
+
+
                 <tbody>
 
                     <tr v-for="item in info">
-                        <td>002</td>
-                        <td>001</td>
-                        <td>品如</td>
-                        <td>T恤</td>
-                        <td>件</td>
+                        <td>@in_materialr.in_materialr_id</td>
+                        <td>@in_materialr.materialr_plan_id</td>
+                        <td>@in_materialr.person_handling</td>
+                        <td>@in_materialr.status</td>
+                        <td>@in_materialr.operator_per</td>
 
                     </tr>
                 </tbody>
+                }
             </table>
         </div>
     </div>

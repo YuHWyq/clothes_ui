@@ -22,5 +22,6 @@ namespace Clothes_UI.Models
         public string product_name { get; set; }
         public string product_type { get; set; }
         public int product_details_num { get; set; }
+        public int product_plan_details_id1 { get; set; }
     }
 }

@@ -16,10 +16,8 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <script src="~/Scripts/vue.js"></script>
-    <link href="~/Scripts/ElementUI/element-ui.js" />
+    <link href="~/Content/ElementUI/element-ui.css" rel="stylesheet" />
     <style>
         #content {
             width: 100%;
@@ -60,6 +58,43 @@
     </style>
 </head>
 <body>
+    <div id="app">
+        <el-dialog :visible.sync="dialogVisible"
+                   width="50%"
+                   :before-close="handleClose">
+            <div style="font-size:30px; text-align:center;">订单详情</div>
+            <div>
+                <template>
+                    <el-table :data="tableData"
+                              stripe
+                              style="width: 100%">
+                        <el-table-column prop="order_details_id"
+                                         label="订单详情ID"
+                                         width="180">
+                        </el-table-column>
+
+                        <el-table-column prop="order_id"
+                                         label="订单ID">
+                        </el-table-column>
+                        <el-table-column prop="product_id"
+                                         label="产品ID">
+                        </el-table-column>
+                        <el-table-column prop="product_name"
+                                         label="产品名"
+                                         width="180">
+                        </el-table-column>
+                        <el-table-column prop="quantity"
+                                         label="数量">
+                        </el-table-column>
+                    </el-table>
+                </template>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button v-on:click="dialogVisible=false">取 消</el-button>
+                <el-button type="primary" v-on:click="dialogVisible=false">确 定</el-button>
+            </span>
+        </el-dialog>
+    </div>
     <div id="content">
         <div id="contentheader">
             <div id="headerbody" style="border: 1px solid white">
@@ -101,49 +136,109 @@
 
                 </select>条
             </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">订单编号</th>
-                        <th scope="col">用户id</th>
-                        <th scope="col">下单时间</th>
-                        <th scope="col">交付时间</th>
-                        <th scope="col">经手人</th>
-                        <th scope="col">操作人</th>
-                        <th scope="col">已付金额</th>
-                        <th scope="col">未付金额</th>
-                        <th scope="col">订单状态</th>
-                      
-                        <th scope="col">操作</th>
+            <div id="keyi">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">订单编号</th>
+                            <th scope="col">用户id</th>
+                            <th scope="col">下单时间</th>
+                            <th scope="col">交付时间</th>
+                            <th scope="col">经手人</th>
+                            <th scope="col">操作人</th>
+                            <th scope="col">已付金额</th>
+                            <th scope="col">未付金额</th>
+                            <th scope="col">订单状态</th>
 
-                    </tr>
-                </thead>
-                @foreach (var orders in Model)
-                {
-                    <tbody>
+                            <th scope="col">操作</th>
 
-                        <tr v-for="item in info">
-                            <td>@orders.order_id</td>
-                            <td>@orders.customer_id</td>
-                            <td>@orders.order_starttime</td>
-                            <td>@orders.order_endtime</td>
-                            <td>@orders.person_handling</td>
-                            <td>@orders.operator_per</td>
-                            <td>@orders.order_paid</td>
-                            <td>@orders.order_unpaid</td>
-                            <td>@orders.order_status</td>
-                          @*  <td>@order.order_delivery_way</td>*@
-                            <td><button>修改</button><button>删除</button></td>
                         </tr>
-                    </tbody>
-                }
-            </table>
+                    </thead>
+                    @foreach (var orders in Model)
+                    {
+                        <tbody>
+
+                            <tr>
+                                <td>@orders.order_id</td>
+                                <td>@orders.customer_id</td>
+                                <td>@orders.order_starttime</td>
+                                <td>@orders.order_endtime</td>
+                                <td>@orders.person_handling</td>
+                                <td>@orders.operator_per</td>
+                                <td>@orders.order_paid</td>
+                                <td>@orders.order_unpaid</td>
+                                <td>@orders.order_status</td>
+                                <td>
+                                    <el-button type="success" onclick="addinfo(@orders.order_id)">详情</el-button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
 
         </div>
     </div>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script src="~/Scripts/ElementUI/element-ui.js"></script>
     <script>
         function skip() {
             window.location.href = '/Customer/insertmanage';
+        }
+        function addinfo() {
+            vm.dialogVisible = true;
+        }
+        var vm1 = new Vue({
+            el: "#bodycontent",
+            data: {
+
+            }
+        })
+        var vm = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    tableData: [],
+                    dialogVisible: false,
+                }
+            },
+            methods: {
+                handleClose(done) {
+                    this.$confirm('确认关闭？')
+                        .then(_ => {
+                            done();
+                        })
+                        .catch(_ => { });
+                },
+                handleChange(value) {
+                    console.log(value);
+                }
+            }
+        })
+        var vv = new Vue({
+            el: "#button",
+            data: {
+
+            }
+        });
+        var vvs = new Vue({
+            el: "#keyi",
+            data: {
+
+            }
+        })
+        var ss = [];
+        function addinfo(id) {
+            vm.dialogVisible = true;
+            $.ajax({
+                url: "https://localhost:44397/Customer/order_details?id=" + id,
+                type: "get",
+                success: function (data) {
+                    var info = eval(data);
+                    vm.tableData = info;
+                    console.log(info);
+                }
+            })     
         }
     </script>
 
