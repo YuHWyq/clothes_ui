@@ -11,7 +11,7 @@ namespace Clothes_UI.Controllers
         // GET: Index
         //主页
         public ActionResult Index()
-        {
+        {   
             return View();
         }
     }

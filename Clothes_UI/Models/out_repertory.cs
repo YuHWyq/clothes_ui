@@ -16,7 +16,7 @@ namespace Clothes_UI.Models
     {
         public int out_repertoryout_repertory_id { get; set; }
         public int order_id { get; set; }
-        public string operator_per { get; set; }
+        public string person_handling { get; set; }
         public System.DateTime out_time { get; set; }
     
         public virtual orders orders { get; set; }

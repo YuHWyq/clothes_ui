@@ -9,7 +9,7 @@ namespace Clothes_UI.Controllers
 {
     public class PurchaseController : Controller
     {
-        ClothingDBEntities2 db = new ClothingDBEntities2();
+        ClothingDBEntities6 db = new ClothingDBEntities6();
         // GET: Purchase
         public ActionResult Index()
         {

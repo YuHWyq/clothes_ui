@@ -11,7 +11,7 @@ namespace Clothes_UI.Controllers
 {
     public class CustomerController : Controller
     {
-        ClothingDBEntities4 db = new ClothingDBEntities4();
+        ClothingDBEntities6 db = new ClothingDBEntities6();
         // GET: Customer
         public ActionResult Index()
         {

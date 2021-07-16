@@ -9,7 +9,7 @@ namespace Clothes_UI.Controllers
 {
     public class Quality_testController : Controller
     {
-        ClothingDBEntities4 db = new ClothingDBEntities4();
+        ClothingDBEntities6 db = new ClothingDBEntities6();
         // GET: Quality_test
         //待检产品
         public ActionResult Index()
