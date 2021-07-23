@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ClothingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ClothingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="ID" />
@@ -309,20 +309,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_get_materials_product_plan">
-          <End Role="product_plan" Type="Self.product_plan" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="get_materials" Type="Self.get_materials" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product_plan">
-              <PropertyRef Name="product_plan_id" />
-            </Principal>
-            <Dependent Role="get_materials">
-              <PropertyRef Name="product_plan_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_in_materialr_materials_plan">
           <End Role="materials_plan" Type="Self.materials_plan" Multiplicity="1" />
           <End Role="in_materialr" Type="Self.in_materialr" Multiplicity="*" />
@@ -336,9 +322,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_in_money_order">
-          <End Role="orders" Type="Self.orders" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
           <End Role="in_money" Type="Self.in_money" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="orders">
@@ -412,9 +396,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_order_customer">
-          <End Role="customer" Type="Self.customer" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
           <End Role="orders" Type="Self.orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="customer">
@@ -426,9 +408,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_order_details_order_details">
-          <End Role="orders" Type="Self.orders" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
           <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="orders">
@@ -490,9 +470,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_out_repertory_order">
-          <End Role="orders" Type="Self.orders" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="orders" Type="Self.orders" Multiplicity="1" />
           <End Role="out_repertory" Type="Self.out_repertory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="orders">
@@ -504,9 +482,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_pro_production_product_plan_details">
-          <End Role="product_plan_details" Type="Self.product_plan_details" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="product_plan_details" Type="Self.product_plan_details" Multiplicity="1" />
           <End Role="pro_production" Type="Self.pro_production" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product_plan_details">
@@ -634,10 +610,6 @@
             <End Role="materialr" EntitySet="materialr" />
             <End Role="get_materials" EntitySet="get_materials" />
           </AssociationSet>
-          <AssociationSet Name="FK_get_materials_product_plan" Association="Self.FK_get_materials_product_plan">
-            <End Role="product_plan" EntitySet="product_plan" />
-            <End Role="get_materials" EntitySet="get_materials" />
-          </AssociationSet>
           <AssociationSet Name="FK_in_materialr_materials_plan" Association="Self.FK_in_materialr_materials_plan">
             <End Role="materials_plan" EntitySet="materials_plan" />
             <End Role="in_materialr" EntitySet="in_materialr" />
@@ -719,8 +691,7 @@
             <End Role="product_quality_testing" EntitySet="product_quality_testing" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClothingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1473,7 +1444,7 @@
             <End Role="product_plan_details" EntitySet="product_plan_details" />
           </AssociationSet>
           <FunctionImport Name="pro_plan_details" ReturnType="Collection(ClothingDBModel.pro_plan_details_Result)">
-            <Parameter Name="pro_plan_id" Mode="In" Type="Int32" />
+          <Parameter Name="pro_plan_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Product_index_selecte" ReturnType="Collection(ClothingDBModel.Product_index_selecte_Result)" />
           <FunctionImport Name="Product_Productees_selecte" ReturnType="Collection(ClothingDBModel.Product_Productees_selecte_Result)" />
@@ -1481,7 +1452,7 @@
           <FunctionImport Name="Product_Quality_test_selecte" ReturnType="Collection(ClothingDBModel.Product_Quality_test_selecte_Result)" />
           <FunctionImport Name="Production_index_select" ReturnType="Collection(ClothingDBModel.Production_index_select_Result)" />
           <FunctionImport Name="Production_index_selected" ReturnType="Collection(ClothingDBModel.Production_index_selected_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Production_Productions_selecte" ReturnType="Collection(ClothingDBModel.Production_Productions_selecte_Result)" />
           <FunctionImport Name="Quality_test_index_selecte" ReturnType="Collection(ClothingDBModel.Quality_test_index_selecte_Result)" />

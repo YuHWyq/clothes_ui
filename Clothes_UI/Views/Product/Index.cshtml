@@ -123,21 +123,24 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach (var item in Model)
+                        {
                         <tr>
-                            @foreach (var item in Model)
-                            {
-                                <td><input type="checkbox" /></td>
-                                <td>@item.repertory_id</td>
-                                <td>@item.product_id</td>
-                                <td>@item.product_name</td>
-                                <td>@item.product_type</td>
-                                <td>@item.unit</td>
-                                <td>@item.product_producer</td>
-                                <td>@item.pro_repertory_num</td>
-                                <td><a href="/Product/Delete?id=@item.repertory_id" onclick="return confirm('确认删除嘛')"><input type="button" value="删除" class="btn2" /></a></td>
-                            }
+                            <td><input type="checkbox" /></td>
+                            <td>@item.repertory_id</td>
+                            <td>@item.product_id</td>
+                            <td>@item.product_name</td>
+                            <td>@item.product_type</td>
+                            <td>@item.unit</td>
+                            <td>@item.product_producer</td>
+                            <td>@item.pro_repertory_num</td>
+                            <td><a href="/Product/Delete?id=@item.repertory_id" onclick="return confirm('确认删除嘛')"><input type="button" value="删除" class="btn2" /></a></td>
                         </tr>
-                    </tbody>
+                                }
+
+                            
+                        </tbody>
                 </table>
             </div>
         </div>

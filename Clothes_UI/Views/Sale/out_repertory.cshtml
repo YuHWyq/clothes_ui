@@ -302,7 +302,15 @@
                     contentType: 'application/json;charset=utf-8',
                     success: function (data) {
                         console.log("进来了");
-                        alert("出库成功");
+
+                        $.ajax({
+                            url: "https://localhost:44396/api/Sale/kucun_num?id=" + vm.proid,
+                            type: "get",
+                            dataType: "json",
+                            contentType: 'application/json;charset=utf-8',
+                            success: function (data) {
+
+                                alert("出库成功");
                         $.ajax({
                             url: "https://localhost:44396/api/Sale/orderzt?id=" + vm.proid,
                             type: "get",
@@ -316,6 +324,11 @@
                         window.location.href = '@Url.Content("~/Sale/Sale/")';
                     }
                 });
+
+                            }
+                        });
+
+
 
             } else {
                 window.alert("请输入完整的数据！")

@@ -21,7 +21,7 @@ namespace Clothes_UI.Controllers
         public ActionResult Indexadd(product_quality_testing product_Quality_Testing)
         {
             var query = db.pro_production.FirstOrDefault(n => n.pro_production_id == product_Quality_Testing.pro_production_id);
-            query.status = "合格";
+            query.status = product_Quality_Testing.result;
             db.SaveChanges();
             db.product_quality_testing.Add(product_Quality_Testing);
             db.SaveChanges();

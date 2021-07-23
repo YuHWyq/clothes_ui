@@ -19,7 +19,6 @@ namespace Clothes_UI.Models
         public string result { get; set; }
         public int product_plan_details_id { get; set; }
         public string operator_per { get; set; }
-        public int product_plan_details_id1 { get; set; }
         public string product_name { get; set; }
     }
 }
